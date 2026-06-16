@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Colors — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* ------- THE PALETTE BAR ------- */
+  .palette {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0;
+    margin: 32px 0 100px;
+    border: 1px solid var(--rule);
+  }
+  .palette .swatch {
+    aspect-ratio: 3 / 4;
+    padding: 28px;
+    border-right: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .palette .swatch:last-child { border-right: none; }
+  .palette .swatch.black { background: var(--bg); color: var(--ivory); }
+  .palette .swatch.ivory { background: var(--ivory); color: var(--bg); }
+  .palette .swatch.pink-light { background: var(--pink); color: var(--bg); }
+  .palette .swatch.pink-dusty { background: var(--pink-dusty); color: var(--bg); }
+  .palette .swatch.pink-deep { background: var(--pink-email); color: var(--ivory); }
+  .palette .swatch .name {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 28px; line-height: 1;
+    letter-spacing: 0;
+  }
+  .palette .swatch .role {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px; letter-spacing: 0.24em;
+    text-transform: uppercase; opacity: 0.7;
+    margin-bottom: 14px;
+  }
+  .palette .swatch .hex {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; letter-spacing: 0.06em;
+  }
+  @media (max-width: 900px) {
+    .palette { grid-template-columns: 1fr 1fr; }
+    .palette .swatch:nth-child(2) { border-right: none; }
+    .palette .swatch:nth-child(odd) { border-right: 1px solid var(--rule); }
+  }
+  @media (max-width: 600px) {
+    .palette { grid-template-columns: 1fr; }
+    .palette .swatch { border-right: none; border-bottom: 1px solid var(--rule); aspect-ratio: 16 / 9; }
+  }
+
+  /* ------- ROLE-CLEAR TABLE ------- */
+  .roles {
+    margin: 24px 0 60px;
+    border: 1px solid var(--rule);
+  }
+  .roles .row {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    align-items: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  .roles .row:last-child { border-bottom: none; }
+  .roles .row.head {
+    background: rgba(196, 144, 153, 0.04);
+  }
+  .roles .row > * { padding: 20px 24px; }
+  .roles .chip {
+    height: 56px;
+    display: flex; align-items: center; padding: 0 24px;
+    font-family: 'Staatliches', sans-serif;
+    font-size: 22px; letter-spacing: 0;
+    line-height: 1;
+  }
+  .roles .chip.black { background: var(--bg); color: var(--ivory); }
+  .roles .chip.ivory { background: var(--ivory); color: var(--bg); }
+  .roles .chip.pink-light { background: var(--pink); color: var(--bg); }
+  .roles .chip.pink-dusty { background: var(--pink-dusty); color: var(--bg); }
+  .roles .chip.pink-deep { background: var(--pink-email); color: var(--ivory); }
+  .roles .cell {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px; color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+  .roles .cell.k {
+    font-size: 10px; letter-spacing: 0.22em;
+    color: var(--pink-dusty); text-transform: uppercase;
+  }
+  .roles .cell.role {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 14px; color: var(--ink-soft); letter-spacing: 0;
+  }
+  @media (max-width: 900px) {
+    .roles .row { grid-template-columns: 1fr; }
+    .roles .chip { width: 100%; }
+    .roles .row > * { padding: 14px 20px; }
+    .roles .row.head { display: none; }
+  }
+
+  /* ------- SURFACE LOGIC ------- */
+  .surfaces {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 24px 0 100px;
+  }
+  .surfaces .surf {
+    border: 1px solid var(--rule);
+    padding: 32px;
+  }
+  .surfaces .surf .lbl {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 14px;
+  }
+  .surfaces .surf h3 {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 36px; line-height: 1;
+    color: var(--ink);
+    margin-bottom: 16px;
+    text-transform: none; letter-spacing: 0;
+  }
+  .surfaces .surf p { font-size: 14px; line-height: 1.7; color: var(--ink-soft); margin: 0 0 14px; max-width: 36ch; }
+  .surfaces .surf .row {
+    display: flex; align-items: center; gap: 14px;
+    padding: 10px 0; border-top: 1px solid var(--rule); margin-top: 14px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; color: var(--ink-soft);
+  }
+  .surfaces .surf .row .dot {
+    width: 18px; height: 18px; border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .surfaces .surf .row .dot.bg { background: var(--bg); border: 1px solid var(--rule); }
+  .surfaces .surf .row .dot.ivory { background: var(--ivory); }
+  .surfaces .surf .row .dot.pink { background: var(--pink); }
+  .surfaces .surf .row .dot.dusty { background: var(--pink-dusty); }
+  .surfaces .surf .row .dot.deep { background: var(--pink-email); }
+  @media (max-width: 900px) { .surfaces { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="logos.html">← Logos</a>
+      <a href="themes.html">Next →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">03</span>
+    <div class="left">
+      <span class="eyebrow">Section 03</span>
+      <h1 class="display">Colors.</h1>
+    </div>
+    <div class="right">
+      <p>Five colors. Two canvases, three pinks. Each pink has one job. <em>Don't swap them.</em> The dusty one is the pop — use it like perfume.</p>
+    </div>
+  </div>
+
+  <!-- The palette as one clean row -->
+  <div class="palette">
+    <div class="swatch black">
+      <div>
+        <div class="role">— Canvas 01</div>
+        <div class="name">Page Black</div>
+      </div>
+      <div class="hex">#0A0807</div>
+    </div>
+    <div class="swatch ivory">
+      <div>
+        <div class="role">— Canvas 02</div>
+        <div class="name">Warm Ivory</div>
+      </div>
+      <div class="hex">#F5F0EC</div>
+    </div>
+    <div class="swatch pink-light">
+      <div>
+        <div class="role">— Accent · Dark</div>
+        <div class="name">Light Pink</div>
+      </div>
+      <div class="hex">#F9DDE1</div>
+    </div>
+    <div class="swatch pink-dusty">
+      <div>
+        <div class="role">— The Pop</div>
+        <div class="name">Dusty Pink</div>
+      </div>
+      <div class="hex">#C49099</div>
+    </div>
+    <div class="swatch pink-deep">
+      <div>
+        <div class="role">— Accent · Light</div>
+        <div class="name">Deep Dusty</div>
+      </div>
+      <div class="hex">#8E4F58</div>
+    </div>
+  </div>
+
+  <!-- Role table -->
+  <h2>What each color does</h2>
+  <div class="roles">
+    <div class="row head">
+      <div class="cell k">Color</div>
+      <div class="cell k">Token</div>
+      <div class="cell k">Hex</div>
+      <div class="cell k">Role</div>
+    </div>
+    <div class="row">
+      <div class="chip black">Page Black</div>
+      <div class="cell">--bg</div>
+      <div class="cell">#0A0807</div>
+      <div class="cell role">Dark canvas. Display copy on ivory. Button bg.</div>
+    </div>
+    <div class="row">
+      <div class="chip ivory">Warm Ivory</div>
+      <div class="cell">--ivory</div>
+      <div class="cell">#F5F0EC</div>
+      <div class="cell role">Light canvas (website + email default). Text on dark.</div>
+    </div>
+    <div class="row">
+      <div class="chip pink-light">Light Pink</div>
+      <div class="cell">--pink</div>
+      <div class="cell">#F9DDE1</div>
+      <div class="cell role">Accent for dark theme only. Disappears on Ivory.</div>
+    </div>
+    <div class="row">
+      <div class="chip pink-dusty">Dusty Pink</div>
+      <div class="cell">--pink-dusty</div>
+      <div class="cell">#C49099</div>
+      <div class="cell role">The pop. One moment per surface. Hover state, single chip, pull-quote.</div>
+    </div>
+    <div class="row">
+      <div class="chip pink-deep">Deep Dusty</div>
+      <div class="cell">--pink-email</div>
+      <div class="cell">#8E4F58</div>
+      <div class="cell role">Accent for light theme only. Goes muddy on black.</div>
+    </div>
+  </div>
+
+  <!-- Surface logic -->
+  <h2>Surface logic — where each pink lives</h2>
+  <div class="surfaces">
+    <div class="surf">
+      <div class="lbl">Dark theme</div>
+      <h3>Page Black canvas.</h3>
+      <p>Used only when we want the "fun moment" — campaign covers, hero pages, packaging fronts. Pink accent is Light Pink.</p>
+      <div class="row"><span class="dot bg"></span> Background · #0A0807</div>
+      <div class="row"><span class="dot ivory"></span> Text · #F5F0EC</div>
+      <div class="row"><span class="dot pink"></span> Accent · #F9DDE1</div>
+      <div class="row"><span class="dot dusty"></span> Pop · #C49099 (sparingly)</div>
+    </div>
+    <div class="surf">
+      <div class="lbl">Light theme · Default</div>
+      <h3>Warm Ivory canvas.</h3>
+      <p>The default for the website, every email, decks, lookbooks, hangtags. Pink accent is Deep Dusty.</p>
+      <div class="row"><span class="dot ivory"></span> Background · #F5F0EC</div>
+      <div class="row"><span class="dot bg"></span> Text · #0A0807</div>
+      <div class="row"><span class="dot deep"></span> Accent · #8E4F58</div>
+      <div class="row"><span class="dot dusty"></span> Pop · #C49099 (sparingly)</div>
+    </div>
+  </div>
+
+  <div class="pull-quote">Two canvases.<br/>Two <span style="color:var(--pink);">pinks.</span><br/>One pop.</div>
+
+  <div class="retired-box">
+    <span class="label">Retired — do not use</span>
+    <p>Blush #F2D8DB, Ghost Blush #F9EAEC, Dusty Rose #D89AA4, Deep Rose #864048, Midnight Rose #3A1218, and the old #F2C6CC / #D9A5AC pair. All warm pinks. Do not use on new work.</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="themes.html">Next · Themes →</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

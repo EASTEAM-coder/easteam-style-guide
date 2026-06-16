@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Packaging — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .layers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    margin: 32px 0 80px;
+    border: 1px solid var(--rule);
+  }
+  .layers .lay {
+    padding: 36px 28px;
+    border-right: 1px solid var(--rule);
+  }
+  .layers .lay:last-child { border-right: none; }
+  .layers .lay .lnum {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 56px; line-height: 0.95;
+    color: var(--pink-dusty); margin-bottom: 12px;
+  }
+  .layers .lay h4 { font-size: 12px; letter-spacing: 0.22em; color: var(--ink); margin-bottom: 12px; }
+  .layers .lay p { font-size: 13px; line-height: 1.65; color: var(--ink-soft); margin: 0; }
+  @media (max-width: 900px) {
+    .layers { grid-template-columns: 1fr; }
+    .layers .lay { border-right: none; border-bottom: 1px solid var(--rule); }
+  }
+  .pack-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 32px 0 60px;
+  }
+  .pack-row .b { transform: translateY(40px); }
+  @media (max-width: 900px) {
+    .pack-row { grid-template-columns: 1fr; }
+    .pack-row .b { transform: none; }
+  }
+  .pack-tile {
+    aspect-ratio: 4 / 3;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 24px; gap: 6px;
+    border: 1px solid var(--rule);
+  }
+  .pack-tile.on-black { background: var(--bg); border-color: var(--rule-strong); }
+  .pack-tile.on-ivory { background: var(--ivory); border-color: transparent; }
+  .pack-tile .wm {
+    font-family: 'Staatliches', sans-serif;
+    font-size: clamp(40px, 6vw, 72px); line-height: 1; letter-spacing: 0;
+  }
+  .pack-tile .tg {
+    font-family: 'Roboto Mono', monospace; font-weight: 400;
+    font-size: clamp(10px, 1.3vw, 13px);
+    letter-spacing: 0.32em; text-transform: uppercase;
+  }
+  .pack-tile.on-black .wm, .pack-tile.on-black .tg { color: var(--pink); }
+  .pack-tile.on-ivory .wm { color: var(--bg); }
+  .pack-tile.on-ivory .tg { color: var(--pink-email); }
+  .pack-caption {
+    margin-top: 12px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    text-align: center;
+  }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="social.html">← Social</a>
+      <a href="files.html">Next →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">11</span>
+    <div class="left">
+      <span class="eyebrow">Section 11</span>
+      <h1 class="display">Packaging.</h1>
+    </div>
+    <div class="right">
+      <p>Recyclable, minimal, hand-finished. Sustainability is the baseline — <em>not the marketing angle.</em> Packaging is part of the brand experience, not a logistics afterthought.</p>
+    </div>
+  </div>
+
+  <h2>The three layers</h2>
+  <div class="layers">
+    <div class="lay">
+      <div class="lnum">01</div>
+      <h4>Outer</h4>
+      <p>Recyclable mailer or box. No virgin plastic. Minimal print — wordmark in Staatliches, Pink on Black or Black on Pink only. Address label tucked, not slapped.</p>
+    </div>
+    <div class="lay">
+      <div class="lnum">02</div>
+      <h4>Inner</h4>
+      <p>Tissue wrap in Warm Ivory with a sticker seal. The wordmark + tagline lockup on the seal. Inside that — the garment, folded the same way every time.</p>
+    </div>
+    <div class="lay">
+      <div class="lnum">03</div>
+      <h4>The Touch</h4>
+      <p>A thank-you card or hand-signed note. Tier depends on order value. <em>Always something.</em> Always slipped in, never printed onto the box.</p>
+    </div>
+  </div>
+
+  <h2>Wordmark + tagline lockup</h2>
+  <p style="max-width:680px;">Use the wordmark-plus-tagline lockup (<em>EASTEAM</em> + <em>Made to Love You</em>) on packaging fronts, hangtags, and the press kit cover. Never use the lockup at small sizes — the tagline reads as visual noise under ~10pt.</p>
+
+  <div class="pack-row">
+    <div class="a">
+      <div class="pack-tile on-black">
+        <span class="wm">EASTEAM</span>
+        <span class="tg">Made to Love You</span>
+      </div>
+      <div class="pack-caption">Packaging Front · Pink on Black</div>
+    </div>
+    <div class="b">
+      <div class="pack-tile on-ivory">
+        <span class="wm">EASTEAM</span>
+        <span class="tg">Made to Love You</span>
+      </div>
+      <div class="pack-caption">Hangtag · Black on Ivory</div>
+    </div>
+  </div>
+
+  <h2>Materials checklist</h2>
+  <ul class="clean" style="max-width:760px;">
+    <li><strong>Mailer:</strong> recyclable kraft or compostable poly. No virgin plastic.</li>
+    <li><strong>Box (for sets / high-tier):</strong> rigid recycled cardboard, matte finish, single-color print only.</li>
+    <li><strong>Tissue:</strong> Warm Ivory, acid-free, FSC-certified.</li>
+    <li><strong>Seal sticker:</strong> wordmark + tagline lockup, 1.5" diameter, black-on-pink print.</li>
+    <li><strong>Hangtag:</strong> recycled cardstock, lockup printed, knotted with natural twine.</li>
+    <li><strong>Card insert:</strong> printed on the same stock as the hangtag.</li>
+    <li><strong>No</strong> virgin plastic, no exotic skins, no fur, no foiling, no glitter, no embossed logo blocks.</li>
+  </ul>
+
+  <div class="pull-quote">Sustainability is the<br/><span style="color:var(--pink);">floor</span>, not the ceiling.</div>
+
+  <div class="killed-box">
+    <span class="label">Don't write about it as a feature</span>
+    <p>Sustainability is woven into every decision we make. It's the baseline, not the selling point. Don't put "Eco-friendly!" on the box. Don't put "Made sustainably" in every email. The materials speak for themselves.</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="files.html">Next · Files →</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

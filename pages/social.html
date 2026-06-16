@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Social — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .platform-row {
+    display: grid;
+    grid-template-columns: 5fr 4fr 4fr;
+    gap: 24px;
+    margin: 32px 0 80px;
+  }
+  .platform-row .b { transform: translateY(40px); }
+  .platform-row .c { transform: translateY(-20px); }
+  @media (max-width: 900px) {
+    .platform-row { grid-template-columns: 1fr; }
+    .platform-row .b, .platform-row .c { transform: none; }
+  }
+  .pcard {
+    border: 1px solid var(--rule);
+    padding: 32px 28px;
+    min-height: 320px;
+    display: flex; flex-direction: column;
+  }
+  .pcard .plbl {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 12px;
+  }
+  .pcard .pn {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 44px; line-height: 1;
+    color: var(--ink); margin-bottom: 18px;
+  }
+  .pcard .pn .pop { color: var(--pink); }
+  .pcard p { font-size: 13px; line-height: 1.65; color: var(--ink-soft); margin: 0 0 18px; }
+  .pcard .specs {
+    margin-top: auto; padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; color: var(--ink-soft);
+    line-height: 1.8;
+  }
+  .pcard .specs .k {
+    color: var(--pink-dusty); text-transform: uppercase;
+    letter-spacing: 0.16em; font-size: 9px; margin-right: 6px;
+  }
+
+  /* social mockup tile */
+  .feed-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .feed {
+    aspect-ratio: 4 / 5;
+    background: var(--ivory);
+    color: var(--bg);
+    padding: 18px 16px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 1.55;
+    border: 1px solid var(--rule);
+  }
+  .feed .ftop {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink-email);
+  }
+  .feed .fmid {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 36px; line-height: 1;
+    color: var(--bg); letter-spacing: 0;
+  }
+  .feed .fmid .pop { color: var(--pink-email); }
+  .feed .fbot {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #4A4641;
+  }
+  .feed.dark {
+    background: var(--bg); color: var(--ivory);
+  }
+  .feed.dark .ftop { color: var(--pink); }
+  .feed.dark .fmid { color: var(--ivory); }
+  .feed.dark .fmid .pop { color: var(--pink); }
+  .feed.dark .fbot { color: var(--ink-muted); }
+  .feed.dusty {
+    background: var(--pink-dusty); color: var(--bg);
+  }
+  .feed.dusty .ftop { color: var(--bg); }
+  .feed.dusty .fmid { color: var(--bg); }
+  .feed.dusty .fbot { color: var(--bg); }
+  @media (max-width: 700px) { .feed-row { grid-template-columns: 1fr 1fr; } }
+
+  /* caption demo */
+  .caption-demo {
+    background: rgba(245, 240, 236, 0.03);
+    border: 1px solid var(--rule);
+    padding: 28px;
+    margin-top: 24px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 460px;
+  }
+  .caption-demo .cap-head {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500; font-size: 14px;
+    letter-spacing: 0.02em;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .caption-demo .cap-tags {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--pink-dusty);
+  }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="email.html">← Email</a>
+      <a href="packaging.html">Next →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">10</span>
+    <div class="left">
+      <span class="eyebrow">Section 10 · New</span>
+      <h1 class="display">Social.</h1>
+    </div>
+    <div class="right">
+      <p>IG / TikTok / Pinterest. Captions at <em>12px</em>, never bigger. In-graphic text small and tracked wide. <em>Lifestyle only on Story</em> (5/7 rule). Same brand, feed-dense scale.</p>
+    </div>
+  </div>
+
+  <h2>Per platform</h2>
+  <div class="platform-row">
+    <div class="pcard a">
+      <div class="plbl">Platform 01</div>
+      <div class="pn">Instagram<span class="pop">.</span></div>
+      <p>Feed is the showcase. Story is candid-only — no catalog stills (5/7 rule). Reels for BTS, fitting, UGC. Pinned grid follows a 3-up rhythm: lifestyle / catalog / dusty-pink graphic.</p>
+      <div class="specs">
+        <span class="k">Feed</span> 4:5 (1080×1350) <br>
+        <span class="k">Story / Reel</span> 9:16 (1080×1920) <br>
+        <span class="k">Caption body</span> 12px <br>
+        <span class="k">Hashtags</span> 5–8, end of caption
+      </div>
+    </div>
+    <div class="pcard b">
+      <div class="plbl">Platform 02</div>
+      <div class="pn">TikTok<span class="pop">.</span></div>
+      <p>Lifestyle, fitting, UGC. Voice-led, not slideshow. Caption sits below the video — keep it under 2 lines, the rest gets cut. Talk-to-her tone, not "babes/girlies".</p>
+      <div class="specs">
+        <span class="k">Video</span> 9:16 (1080×1920) <br>
+        <span class="k">Caption</span> 12px · 2 lines max <br>
+        <span class="k">Sound</span> Always-on (trending or native)
+      </div>
+    </div>
+    <div class="pcard c">
+      <div class="plbl">Platform 03</div>
+      <div class="pn">Pinterest<span class="pop">.</span></div>
+      <p>Catalog 3:4 + lifestyle 2:3. Title field works like an eyebrow — Roboto Mono ALL CAPS in the graphic, real product name in the title. SEO-friendly descriptions.</p>
+      <div class="specs">
+        <span class="k">Pin</span> 2:3 (1000×1500) <br>
+        <span class="k">Idea Pin</span> 9:16 <br>
+        <span class="k">Title</span> 14px in-graphic
+      </div>
+    </div>
+  </div>
+
+  <h2>In-graphic text — same three fonts, smaller</h2>
+  <p style="max-width:600px;">Captions on graphics are NOT the place to show off type. Small, tracked wide, off-center. Let the image do the talking. Display moments go to a single word, max.</p>
+  <div class="feed-row">
+    <div class="feed">
+      <div class="ftop">— New Drop</div>
+      <div class="fmid">Daydream.<br/><span class="pop">Back in pink.</span></div>
+      <div class="fbot">Friday · 10AM ET</div>
+    </div>
+    <div class="feed dark">
+      <div class="ftop">— Most saved</div>
+      <div class="fmid">She bought it<br/><span class="pop">twice.</span></div>
+      <div class="fbot">Daydream Set</div>
+    </div>
+    <div class="feed dusty">
+      <div class="ftop">— UGC drop</div>
+      <div class="fmid">Send a clip.<br/>Get $25.</div>
+      <div class="fbot">Reply on email</div>
+    </div>
+  </div>
+
+  <h2>Caption rhythm — what the text under the post looks like</h2>
+  <div class="asym left-heavy">
+    <div>
+      <div class="caption-demo">
+        <div class="cap-head">Daydream's back. Skirt + top. Friday 10AM ET.</div>
+        Cotton-silk blend, hand-finished hem, four colors. Most wanted, most saved. Set a reminder before it disappears.
+        <div class="cap-tags">#EASTEAM #Daydream #MadeToLoveYou #FoundInBrooklyn #SS26</div>
+      </div>
+    </div>
+    <div>
+      <p>Line 1 is the headline — the offer or the ask. Same rule as email: <em>meaning in the first sentence.</em></p>
+      <p>Line 2–3 fills in the texture. Real words, no filler. Keep total caption under 3 short lines for IG feed — anything more gets truncated in the scroll.</p>
+      <p>Hashtags last, 5–8 max, mixing brand + collection + discovery. Never first-line hashtag spam.</p>
+    </div>
+  </div>
+
+  <div class="killed-box">
+    <span class="label">The 5/7 rule</span>
+    <p>Of every 7 Instagram Story posts, <em>at least 5 are lifestyle</em> — candid, on-body, in-context. Maximum 2 can be catalog stills or graphics. Story is where she sees the person behind the brand, not the lookbook.</p>
+  </div>
+
+  <h2 style="margin-top:60px;">Hashtag templates</h2>
+  <table class="spec">
+    <thead>
+      <tr><th>Type</th><th>Stack</th><th>Where</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Drop</td><td class="mono">#EASTEAM #[Collection] #MadeToLoveYou + 2 discovery</td><td>Feed post, Reel</td></tr>
+      <tr><td>UGC</td><td class="mono">#EASTEAMcommunity #[Collection] + customer's own + 2 discovery</td><td>Story repost, UGC reel</td></tr>
+      <tr><td>Brand voice</td><td class="mono">#EASTEAM #MadeToLoveYou + 1 mood (e.g. #FoundInBrooklyn)</td><td>Editorial / BTS post</td></tr>
+      <tr><td>Wholesale</td><td class="mono">#EASTEAMwholesale #[Trade event] + buyer-targeted</td><td>LinkedIn, trade announcement</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note-box">
+    <span class="label">Don't</span>
+    <p>Don't use Light Pink #F9DDE1 on Warm Ivory in-graphics — invisible. Don't write captions longer than 3 lines. Don't lead with "Hey babes" / "Hi girlies" — talk to her, not at a group. Don't reuse the same caption on three platforms verbatim. Tailor the rhythm to each.</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="packaging.html">Next · Packaging →</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Email Playbook — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* ============================================================
+     PAGE-SPECIFIC STYLES
+     ============================================================ */
+
+  /* Locked component previews (header + footer) */
+  .lock-preview {
+    background: rgba(245,240,236,0.02);
+    border: 1px solid var(--rule);
+    padding: 36px 0 28px;
+    margin: 24px 0 12px;
+  }
+  .lock-preview .pv-label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    padding: 0 36px;
+    margin-bottom: 22px;
+  }
+  .preview-frame {
+    width: 600px; max-width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 24px 40px rgba(0,0,0,0.35);
+  }
+
+  /* Header preview */
+  .hdr {
+    background: #F5F0EC;
+    width: 600px; max-width: 100%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+  }
+  .hdr-wm {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 28px; line-height: 1; letter-spacing: 0;
+    color: #0A0807; text-transform: uppercase;
+    text-align: center;
+    padding: 44px 56px 0;
+  }
+  .hdr-tag {
+    font-family: 'Roboto Mono', monospace; font-weight: 500;
+    font-size: 10px; letter-spacing: 2.6px;
+    color: #D9A5AC; text-transform: uppercase;
+    text-align: center;
+    padding: 18px 56px 0;
+  }
+  .hdr-dot { width: 5px; height: 5px; background: #D9A5AC; margin: 14px auto 0; border-radius: 50%; }
+  .hdr-hair { height: 1px; background: rgba(10,8,7,0.14); margin: 13px 56px 0; }
+
+  /* Footer preview */
+  .ftr {
+    background: #0A0807;
+    width: 600px; max-width: 100%;
+    margin: 0 auto;
+    padding: 48px 44px;
+    text-align: center;
+  }
+  .ftr-wm {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 32px; line-height: 1; letter-spacing: 1px;
+    color: #F9EAEC; text-transform: uppercase;
+  }
+  .ftr-tag {
+    font-family: 'Roboto Mono', monospace; font-weight: 500;
+    font-size: 11px; letter-spacing: 2.6px;
+    color: #D9A5AC; text-transform: uppercase;
+    margin-top: 18px;
+  }
+  .ftr-socials {
+    margin-top: 26px;
+    display: flex; justify-content: center; gap: 24px;
+  }
+  .ftr-socials .ico {
+    width: 22px; height: 22px;
+    border: 1px solid #F9DDE1;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Roboto Mono', monospace; font-weight: 500;
+    font-size: 8px; letter-spacing: 0.3px;
+    color: #F9DDE1;
+  }
+  .ftr-addr {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 10px; letter-spacing: 1px;
+    color: #BFB0A9; margin-top: 26px;
+  }
+  .ftr-disc {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 9px; line-height: 1.6; letter-spacing: 0.5px;
+    color: #807570; max-width: 512px; margin: 24px auto 0;
+  }
+  .ftr-disc a {
+    color: #D9A5AC; text-decoration: underline;
+  }
+  .ftr-klaviyo {
+    margin-top: 22px;
+    font-family: 'Roboto Mono', monospace; font-weight: 400;
+    font-size: 7px; letter-spacing: 0.8px;
+    color: rgba(74,70,65,0.85);
+  }
+
+  /* Spec grids */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 16px 0 0;
+    border: 1px solid var(--rule);
+  }
+  .spec-grid .sc {
+    padding: 20px 22px;
+    border-right: 1px solid var(--rule);
+  }
+  .spec-grid .sc:last-child { border-right: none; }
+  .spec-grid .sc .k {
+    font-family: 'Roboto Mono', monospace; font-weight: 500;
+    font-size: 9px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 8px;
+  }
+  .spec-grid .sc .v {
+    font-family: 'Roboto Mono', monospace; font-size: 12px;
+    color: var(--ink); line-height: 1.55;
+  }
+  @media (max-width: 720px) {
+    .spec-grid { grid-template-columns: 1fr; }
+    .spec-grid .sc { border-right: none; border-bottom: 1px solid var(--rule); }
+  }
+
+  /* Section block list (for the section library) */
+  .blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin: 24px 0 56px;
+  }
+  .blocks .blk {
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--pink-dusty);
+    padding: 26px 26px 28px;
+  }
+  .blocks .blk .bl {
+    font-family: 'Roboto Mono', monospace; font-weight: 500;
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 12px;
+  }
+  .blocks .blk h4 {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 28px; line-height: 1; letter-spacing: 0;
+    color: var(--ink); margin-bottom: 12px;
+    text-transform: none;
+  }
+  .blocks .blk p {
+    font-size: 14px; line-height: 1.65; color: var(--ink-soft);
+    margin: 0 0 12px;
+  }
+  .blocks .blk .meta {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    margin-top: 14px;
+  }
+  @media (max-width: 900px) { .blocks { grid-template-columns: 1fr; } }
+
+  /* Recipes — per email type */
+  .recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    margin: 24px 0 60px;
+    border: 1px solid var(--rule);
+  }
+  .recipes .rcp {
+    padding: 28px 26px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .recipes .rcp:nth-child(3n) { border-right: none; }
+  .recipes .rcp:nth-last-child(-n+3) { border-bottom: none; }
+  .recipes .rcp .rn {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 44px; line-height: 0.95;
+    color: var(--pink-dusty); margin-bottom: 10px;
+  }
+  .recipes .rcp h5 {
+    font-family: 'Roboto Mono', monospace; font-weight: 500;
+    font-size: 13px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink);
+    margin: 0 0 12px;
+  }
+  .recipes .rcp p {
+    font-size: 13px; line-height: 1.6; color: var(--ink-soft);
+    margin: 0 0 10px;
+  }
+  .recipes .rcp .sig {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.08em;
+    color: var(--pink); padding-top: 12px;
+    border-top: 1px solid var(--rule); margin-top: 12px;
+  }
+  @media (max-width: 900px) {
+    .recipes { grid-template-columns: 1fr 1fr; }
+    .recipes .rcp:nth-child(3n) { border-right: 1px solid var(--rule); }
+    .recipes .rcp:nth-child(2n) { border-right: none; }
+    .recipes .rcp:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); }
+    .recipes .rcp:last-child { border-bottom: none; }
+  }
+  @media (max-width: 600px) {
+    .recipes { grid-template-columns: 1fr; }
+    .recipes .rcp { border-right: none !important; border-bottom: 1px solid var(--rule) !important; }
+    .recipes .rcp:last-child { border-bottom: none !important; }
+  }
+
+  /* The big button preview */
+  .btn-preview-row {
+    display: flex; align-items: center; gap: 32px;
+    padding: 36px 30px;
+    background: rgba(245,240,236,0.02);
+    border: 1px solid var(--rule);
+    margin: 24px 0 12px;
+    flex-wrap: wrap;
+  }
+  .btn-preview-row .btn-cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #0A0807; color: #F9DDE1;
+    font-family: 'Jost', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 1.54px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 26px;
+    height: 42px;
+    border-radius: 4px;
+    border: 0;
+  }
+  .btn-preview-row .btn-note {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; color: var(--ink-soft); line-height: 1.6;
+    letter-spacing: 0.04em;
+  }
+  .btn-preview-row .btn-note .k {
+    color: var(--pink-dusty); margin-right: 6px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 9px;
+  }
+
+  /* Variation gallery */
+  .variations {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 60px;
+  }
+  .variations .v {
+    border: 1px solid var(--rule);
+    padding: 20px 20px 22px;
+    border-top: 3px solid var(--pink);
+  }
+  .variations .v .vn {
+    font-family: 'Roboto Mono', monospace; font-weight: 500;
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 10px;
+  }
+  .variations .v h5 {
+    font-family: 'Roboto Mono', monospace; font-weight: 500;
+    font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink);
+    margin: 0 0 10px;
+  }
+  .variations .v p {
+    font-size: 12px; line-height: 1.55; color: var(--ink-soft);
+    margin: 0;
+  }
+  @media (max-width: 900px) { .variations { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .variations { grid-template-columns: 1fr; } }
+
+  /* Do / Don't */
+  .duo {
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+    gap: 28px;
+    margin-top: 24px;
+  }
+  .duo .col {
+    border: 1px solid var(--rule);
+    padding: 26px 26px 28px;
+  }
+  .duo .col.keep { border-top: 3px solid var(--pink); }
+  .duo .col.cut { border-top: 3px solid var(--pink-dusty); }
+  .duo .col h4 {
+    color: var(--ink); font-size: 12px;
+    letter-spacing: 0.22em; margin-bottom: 18px;
+  }
+  .duo .col ul { list-style: none; padding: 0; margin: 0; }
+  .duo .col li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-size: 14px; line-height: 1.6;
+  }
+  .duo .col li:last-child { border-bottom: none; }
+  .duo .col.cut li::before {
+    content: "✕"; color: var(--pink-dusty);
+    font-family: 'Roboto Mono', monospace;
+    margin-right: 10px; font-weight: 500;
+  }
+  .duo .col.keep li::before {
+    content: "✓"; color: var(--pink);
+    font-family: 'Roboto Mono', monospace;
+    margin-right: 10px; font-weight: 500;
+  }
+  .duo .col em { color: var(--pink); font-style: italic; }
+  @media (max-width: 900px) { .duo { grid-template-columns: 1fr; } }
+
+  /* Workflow steps */
+  .steps {
+    margin: 24px 0 60px;
+    border: 1px solid var(--rule);
+  }
+  .steps .step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .steps .step:last-child { border-bottom: none; }
+  .steps .step .sn {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 40px; line-height: 1;
+    color: var(--pink-dusty);
+    padding: 22px 0 22px 24px;
+    border-right: 1px solid var(--rule);
+  }
+  .steps .step .sd { padding: 22px 24px; }
+  .steps .step .sd h5 {
+    font-family: 'Roboto Mono', monospace; font-weight: 500;
+    font-size: 13px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink);
+    margin: 0 0 10px;
+  }
+  .steps .step .sd p {
+    font-size: 13px; line-height: 1.65; color: var(--ink-soft);
+    margin: 0;
+  }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="email.html">← Email</a>
+      <a href="email-template.html">Header &amp; Footer →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">09c</span>
+    <div class="left">
+      <span class="eyebrow">Section 09 · The Playbook</span>
+      <h1 class="display">Email<br/>Playbook.</h1>
+    </div>
+    <div class="right">
+      <p>How to actually <em>build</em> any Klaviyo email from the EASTEAM library. The locked components, the type and color scales sized for the inbox, the section blocks you stack, the layout moves you mix, the rules you don't break, and the workflow you follow when iterating.</p>
+      <p style="margin-top:16px;">This is the "how to make it" doc. <em>email.html</em> describes the canonical composition. <em>email-template.html</em> is the locked header &amp; footer paste-ready code. This page tells you how to put the rest of the email together.</p>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       01 · PRINCIPLES — the five rules before anything gets designed
+       =================================================================== -->
+  <h2 style="margin-bottom:14px;">— 01 · Five principles</h2>
+  <p style="max-width:720px; margin-bottom:24px;">If a draft contradicts any of these, rewrite or redraw before going further. The principles are non-negotiable; the section choices below are flexible.</p>
+
+  <div class="steps">
+    <div class="step"><div class="sn">01</div>
+      <div class="sd"><h5>Meaning in line one</h5>
+      <p>The reader knows what the email is about — and what to do about it — by the end of the first sentence. No pleasantries, no preamble. The first headline is the offer or the ask.</p></div>
+    </div>
+    <div class="step"><div class="sn">02</div>
+      <div class="sd"><h5>One reason per email</h5>
+      <p>Sell. Collect. Testimonial. Style. Restock. Pick one before writing a word. Two reasons in one email and neither lands. (See <em>email.html</em> — Every email exists for one reason.)</p></div>
+    </div>
+    <div class="step"><div class="sn">03</div>
+      <div class="sd"><h5>One primary CTA</h5>
+      <p>Per email — never two. Inline "shop the look" links inside styling-card sections are fine; the bottom button is the only Primary. Use Primary Dark in email (black bg, light pink text, <em>no border</em>).</p></div>
+    </div>
+    <div class="step"><div class="sn">04</div>
+      <div class="sd"><h5>Each email is its own composition</h5>
+      <p>The locked header and locked footer are identical on every send. Everything in between is not. Two emails should never feel like the same template recolored — pick the section blocks and layout moves so each one reads distinct.</p></div>
+    </div>
+    <div class="step"><div class="sn">05</div>
+      <div class="sd"><h5>Asymmetry &amp; breathing room</h5>
+      <p>Off-balance is the brand. Center-aligned everything is off-brand. But asymmetry without padding reads as crowded. Give every block enough vertical and horizontal room that the eye can rest.</p></div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       02 · UNIVERSAL HEADER — locked
+       =================================================================== -->
+  <h2 style="margin-bottom:14px;">— 02 · Universal Header</h2>
+  <p style="max-width:680px; margin-bottom:0;">600px wide, Warm Ivory canvas. Same on every email. Locked from the original <em>Film a Video</em> Klaviyo flow. Don't redraw, don't restyle, don't drop the dot or the hairline. Paste once at the top of the build, then never touch it.</p>
+
+  <div class="lock-preview">
+    <div class="pv-label">— Live preview · 600px</div>
+    <div class="preview-frame">
+      <div class="hdr">
+        <div class="hdr-wm">EASTEAM</div>
+        <div class="hdr-tag">MADE TO LOVE YOU</div>
+        <div class="hdr-dot"></div>
+        <div class="hdr-hair"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spec-grid">
+    <div class="sc"><div class="k">Canvas</div><div class="v">#F5F0EC · Warm Ivory</div></div>
+    <div class="sc"><div class="k">Width / Height</div><div class="v">600 × 142px</div></div>
+    <div class="sc"><div class="k">Wordmark</div><div class="v">Staatliches · 28px · #0A0807 · centered · padding-top 44px</div></div>
+    <div class="sc"><div class="k">Tagline</div><div class="v">Roboto Mono Medium · 10px · +2.6px · #D9A5AC · UPPERCASE · 18px below wordmark</div></div>
+    <div class="sc"><div class="k">Pink dot</div><div class="v">5×5px · #D9A5AC · centered · 14px below tagline</div></div>
+    <div class="sc"><div class="k">Hairline</div><div class="v">488×1px · rgba(10,8,7,0.14) · 13px below dot</div></div>
+  </div>
+
+  <p style="max-width:720px; margin-top:18px;"><em>The <code>#D9A5AC</code> tagline color and the pink dot are intentionally kept from the retired palette — this header is the one place that exception lives. Don't propagate them anywhere else.</em></p>
+
+  <p style="max-width:720px; margin-top:14px;">Paste-ready inline HTML lives in <em><a href="email-template.html">email-template.html</a> — Section 09b</em>. Copy from there.</p>
+
+  <!-- ===================================================================
+       03 · UNIVERSAL FOOTER — locked, with letter icons
+       =================================================================== -->
+  <h2 style="margin-top:80px; margin-bottom:14px;">— 03 · Universal Footer</h2>
+  <p style="max-width:680px; margin-bottom:0;">600px wide, Page Black canvas. Wordmark, mono tagline, four social icons (letter-labels in rounded outlined squares), address line, disclaimer with hyperlinked <code>unsubscribe</code>, and a designer-only Klaviyo merge-tag annotation.</p>
+
+  <div class="lock-preview">
+    <div class="pv-label">— Live preview · 600px</div>
+    <div class="preview-frame">
+      <div class="ftr">
+        <div class="ftr-wm">EASTEAM</div>
+        <div class="ftr-tag">MADE TO LOVE YOU</div>
+        <div class="ftr-socials">
+          <span class="ico">IG</span>
+          <span class="ico">FB</span>
+          <span class="ico">PT</span>
+          <span class="ico">TT</span>
+        </div>
+        <div class="ftr-addr">EASTEAM &nbsp;·&nbsp; 100 E 53rd St &nbsp;·&nbsp; New York, NY 10002</div>
+        <div class="ftr-disc">
+          DISCLAIMER &nbsp;·&nbsp; This email and any attachments are intended solely for the named recipient(s) and may contain confidential or proprietary information. Unauthorized use, disclosure, copying, or distribution is not permitted. If you have received this email in error, please delete it and notify the sender immediately. You may
+          <a href="https://easteamny.com/unsubscribe">unsubscribe</a>
+          at any time. Any views or opinions presented are solely those of the author and do not necessarily represent EASTEAM.
+        </div>
+        <div class="ftr-klaviyo">// KLAVIYO &nbsp;·&nbsp; replace unsubscribe href with &nbsp;{% unsubscribe %}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spec-grid">
+    <div class="sc"><div class="k">Canvas</div><div class="v">#0A0807 · Page Black</div></div>
+    <div class="sc"><div class="k">Width / Height</div><div class="v">600 × ~329px</div></div>
+    <div class="sc"><div class="k">Wordmark</div><div class="v">Staatliches · 32px · #F9EAEC · centered · padding-top 48px · tracking +1px</div></div>
+    <div class="sc"><div class="k">Tagline</div><div class="v">Roboto Mono Medium · 11px · +2.6px · #D9A5AC · UPPERCASE · centered · 18px below wordmark</div></div>
+    <div class="sc"><div class="k">Social icons</div><div class="v">4 letter-labels (IG · FB · PT · TT) · 22×22 rounded outline · 4px radius · 1.1 stroke #F9DDE1 · letter Roboto Mono Medium 8px #F9DDE1 · 24px gap · centered</div></div>
+    <div class="sc"><div class="k">Address</div><div class="v">Jost Light · 10px · +1px · #BFB0A9 · centered · 24px below icons</div></div>
+    <div class="sc"><div class="k">Disclaimer</div><div class="v">Jost Light · 9px · 1.6 LH · +0.5px · #807570 · centered · max-width 512px · 28px below address</div></div>
+    <div class="sc"><div class="k">Unsubscribe</div><div class="v">Inline link inside disclaimer · #D9A5AC · underline · href fallback https://easteamny.com/unsubscribe</div></div>
+    <div class="sc"><div class="k">Klaviyo note</div><div class="v">Designer-only annotation under disclaimer · Roboto Mono · 7px · #4a4641 / 85% · centered</div></div>
+  </div>
+
+  <div class="note-box" style="margin-top:18px;">
+    <span class="label">— Klaviyo unsubscribe</span>
+    <p>The Figma file shows the unsubscribe link going to <code>https://easteamny.com/unsubscribe</code> as a fallback because Figma rejects the merge-tag string as a URL. <em>When you paste the email HTML into Klaviyo, swap that href to</em> <code>{% unsubscribe %}</code> <em>so it populates per recipient.</em> The designer-only mono annotation under the disclaimer is the reminder; it should be deleted before sending in production (or kept gray-tone enough that it reads as a comment).</p>
+  </div>
+
+  <!-- ===================================================================
+       04 · TYPE — sized for the inbox
+       =================================================================== -->
+  <h2 style="margin-top:80px; margin-bottom:14px;">— 04 · Type, sized for the inbox</h2>
+  <p style="max-width:720px; margin-bottom:24px;">Three fonts, three scales. <em>Roboto Mono is the display font in email</em> — Staatliches is reserved for the wordmark only. Body type drops to ~13px because the inbox is dense and bigger reads as shouting. Never italic. (See <a href="typography.html">typography.html</a> for the full rules.)</p>
+
+  <table class="spec">
+    <thead>
+      <tr><th>Role</th><th>Sample</th><th>Family</th><th>Size / LH</th><th>Tracking</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Display headline</td>
+        <td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:22px; letter-spacing:1.76px;">AT BREAKFAST.</td>
+        <td class="mono">Roboto Mono Medium</td>
+        <td class="mono">22 / 1.35</td>
+        <td class="mono">+1.76px</td>
+      </tr>
+      <tr>
+        <td>Section subhead</td>
+        <td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:18px; letter-spacing:1.44px;">AT THE STUDIO.</td>
+        <td class="mono">Roboto Mono Medium</td>
+        <td class="mono">18 / 1.3</td>
+        <td class="mono">+1.44px</td>
+      </tr>
+      <tr>
+        <td>Eyebrow / tag</td>
+        <td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:10px; letter-spacing:2.4px; color:var(--pink-dusty);">— THE MORNING</td>
+        <td class="mono">Roboto Mono Medium</td>
+        <td class="mono">10 / 1.4</td>
+        <td class="mono">+2.2px to +2.6px</td>
+      </tr>
+      <tr>
+        <td>Numbered eyebrow</td>
+        <td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:10px; letter-spacing:2.2px;"><span style="color:var(--pink-dusty);">01</span> &nbsp; — &nbsp;THE PIECE</td>
+        <td class="mono">Roboto Mono Medium</td>
+        <td class="mono">10 / 1.4</td>
+        <td class="mono">+2.2px</td>
+      </tr>
+      <tr>
+        <td>Hero / lede body</td>
+        <td style="font-family:'Jost'; font-weight:300; font-size:16px; line-height:1.7;">Bone tank, leather slide, coffee in a real cup.</td>
+        <td class="mono">Jost Light 300</td>
+        <td class="mono">16 / 1.7</td>
+        <td class="mono">0</td>
+      </tr>
+      <tr>
+        <td>Default body</td>
+        <td style="font-family:'Jost'; font-weight:300; font-size:13px; line-height:1.7;">Walking to nowhere in particular — and that's the whole point.</td>
+        <td class="mono">Jost Light 300</td>
+        <td class="mono">13 / 1.7</td>
+        <td class="mono">0</td>
+      </tr>
+      <tr>
+        <td>Caption / items</td>
+        <td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:9px; letter-spacing:1.8px; color:var(--ink-soft);">skirt &nbsp;·&nbsp; tank &nbsp;·&nbsp; slide</td>
+        <td class="mono">Roboto Mono Medium</td>
+        <td class="mono">9 / 1.5</td>
+        <td class="mono">+1.8px</td>
+      </tr>
+      <tr>
+        <td>Big stat number</td>
+        <td style="font-family:'Roboto Mono'; font-weight:400; font-size:36px; color:var(--ink);">84</td>
+        <td class="mono">Roboto Mono Regular</td>
+        <td class="mono">30–64 / 1.0</td>
+        <td class="mono">−0.5 to −2px</td>
+      </tr>
+      <tr>
+        <td>Inline CTA link</td>
+        <td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:10px; letter-spacing:2.4px; color:var(--pink-dusty);">SHOP THIS LOOK&nbsp;&nbsp;→</td>
+        <td class="mono">Roboto Mono Medium</td>
+        <td class="mono">10 / 1</td>
+        <td class="mono">+2.4px</td>
+      </tr>
+      <tr>
+        <td>Button label</td>
+        <td style="font-family:'Jost'; font-weight:500; text-transform:uppercase; font-size:11px; letter-spacing:1.54px;">SHOP THE DROP &nbsp;→</td>
+        <td class="mono">Jost Medium 500</td>
+        <td class="mono">11 / 1</td>
+        <td class="mono">+1.54px</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="killed-box" style="margin-top:24px;">
+    <span class="label">Type rules — email only</span>
+    <p><strong>Roboto Mono is the display font.</strong> Cap at 22px. Always ALL CAPS, always tracked wide. <strong>Staatliches is the wordmark only</strong> — header and footer only. Never in section headlines. Never anywhere else. <strong>Body is Jost Light 300 at 13px.</strong> Not 14, not 12, not Regular. <strong>Never italic, anywhere.</strong> If you need emphasis, use weight (Jost 400, 500) or color (Deep Dusty on the last word).</p>
+  </div>
+
+  <!-- ===================================================================
+       05 · COLOR — what each one does in email
+       =================================================================== -->
+  <h2 style="margin-top:80px; margin-bottom:14px;">— 05 · Color in email</h2>
+  <p style="max-width:720px; margin-bottom:24px;">Same five-color palette as <a href="colors.html">colors.html</a>. The roles below are the email-specific application.</p>
+
+  <table class="spec">
+    <thead><tr><th>Color</th><th>Hex</th><th>Use in email</th></tr></thead>
+    <tbody>
+      <tr><td>Warm Ivory</td><td class="mono">#F5F0EC</td><td>Default canvas. Every section body. <em>Never put body type in any other tone of off-white.</em></td></tr>
+      <tr><td>Page Black</td><td class="mono">#0A0807</td><td>Dark section bg (the Sec-02 Reward band, dark dividers). Primary button fill. Display body type on Warm Ivory.</td></tr>
+      <tr><td>Deep Dusty</td><td class="mono">#8E4F58</td><td>The email accent on Warm Ivory. One pop word per title block, the inline CTA link color, numbered eyebrow numbers. <em>Goes muddy on black — don't use on dark sections.</em></td></tr>
+      <tr><td>Light Pink</td><td class="mono">#F9DDE1</td><td>The accent on dark sections. Sec-02 display copy, stat numbers, social-icon outlines, the button text color. <em>Disappears on Warm Ivory — never on light bg.</em></td></tr>
+      <tr><td>Dusty Pink</td><td class="mono">#C49099</td><td>The pop. One moment per email, max. Pull-quote color in a dark section, the very last word of the main headline if you want a beat. Use like perfume.</td></tr>
+      <tr><td>Legacy Pink</td><td class="mono">#D9A5AC</td><td><em>Header + footer only.</em> Preserved exception from the original Klaviyo flow — the header tag, the dot, the footer tagline, and the unsubscribe link. Never propagate into the body of any email.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="killed-box" style="margin-top:24px;">
+    <span class="label">Retired pinks — never use anywhere outside header/footer</span>
+    <p><code>#F2D8DB</code>, <code>#F9EAEC (in body)</code>, <code>#D89AA4</code>, <code>#864048</code>, <code>#3A1218</code>, <code>#F2C6CC</code>, and any retired warm pink. If a draft has body type or a UI element in any of these, replace before sending.</p>
+  </div>
+
+  <!-- ===================================================================
+       06 · THE CTA BUTTON — Primary Dark, no border
+       =================================================================== -->
+  <h2 style="margin-top:80px; margin-bottom:14px;">— 06 · The CTA button</h2>
+  <p style="max-width:680px; margin-bottom:18px;">One Primary CTA per email. Always at the bottom, just above the disclaimer, centered. <strong>Primary Dark</strong> is the email default: black fill, light pink text, <em>no border</em>, 4px radius. The inline "shop this look" links inside styling cards are not buttons — they're underlined mono text.</p>
+
+  <div class="btn-preview-row">
+    <a class="btn-cta" href="#">SHOP THE DROP &nbsp;→</a>
+    <div class="btn-note">
+      <span class="k">BG</span>#0A0807<br>
+      <span class="k">Text</span>#F9DDE1<br>
+      <span class="k">Border</span>None<br>
+      <span class="k">Radius</span>4px<br>
+      <span class="k">Label</span>Jost Medium 500 · 11px · +1.54px · UPPERCASE<br>
+      <span class="k">Size</span>~300 × 42px (height non-negotiable)
+    </div>
+  </div>
+
+  <div class="killed-box" style="margin-top:18px;">
+    <span class="label">Button rules</span>
+    <p><strong>No border.</strong> The Primary Dark button in email is fill-only — no light-pink outline around it. <strong>One per email.</strong> Inline "SHOP THIS LOOK →" pink mono text links inside section cards are fine and not counted as the Primary. <strong>4px corner radius, always.</strong> <strong>Never use the Primary Pink button</strong> from <a href="buttons.html">buttons.html</a> on Warm Ivory in email work — switch to Primary Dark.</p>
+  </div>
+
+  <!-- ===================================================================
+       07 · THE SECTION LIBRARY — building blocks
+       =================================================================== -->
+  <h2 style="margin-top:80px; margin-bottom:14px;">— 07 · Section library</h2>
+  <p style="max-width:720px; margin-bottom:8px;">The blocks you stack between the locked header and locked footer. Pick a sequence that suits the email's reason — every email doesn't need every block.</p>
+
+  <div class="blocks">
+
+    <div class="blk">
+      <div class="bl">— 01 · Editorial intro</div>
+      <h4>The opener.</h4>
+      <p>Eyebrow + 2–3 line display headline + indented body + small meta. The first thing the reader sees after the header. The meaning of the email lands here.</p>
+      <div class="meta">
+        Canvas Warm Ivory · ~280–340h · Display Roboto Mono Medium 22px · Body Jost Light 13px indented at x=130 width=414
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bl">— 02 · Hero image band</div>
+      <h4>The picture.</h4>
+      <p>Full-width image, dark canvas behind. Height varies: 340 standard, 460 for editorial cover, 580–680 for product spotlight in a Back-in-Stock or VIP email.</p>
+      <div class="meta">
+        Canvas Page Black · 340–680h · Placeholder mono Roboto Mono 10px centered "[ DESCRIPTION · RATIO · REPLACE ]"
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bl">— 03 · Numbered section</div>
+      <h4>The ask / the detail / the lookbook.</h4>
+      <p>The eyebrow pattern: <code>01</code> in Deep Dusty followed by <code>—  LABEL</code> in muted, on the same line. Then a two-line display headline (often with the second line in Deep Dusty), then body.</p>
+      <div class="meta">
+        Canvas Warm Ivory · ~260–320h · Numbered eyebrow Roboto Mono 10px +2.2px · 24px gutter between number and label
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bl">— 04 · Three-up grid (9:16)</div>
+      <h4>The trio.</h4>
+      <p>Three image cells in a row with one-word captions. Use for color samples, looks, lifestyle stills, sizes, or location stamps. <em>Grid math:</em> 488 content width = 3 × 152 + 2 × 16. Snap to that or it falls off-axis.</p>
+      <div class="meta">
+        Canvas Warm Ivory · ~322–362h · Cells 152×200 · 16px gap · captions Jost Light 13px below
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bl">— 05 · Product catalog</div>
+      <h4>The shoppable grid.</h4>
+      <p>Product cards in a clean grid. 3×2 for a full drop, 2×2 for a focused sale, 1×4 for a horizontal "bestsellers" strip, 2×4 for a deep sale. Each card: image + name + color or was-to-now price. <em>Never put pink-filled discount badges on cards.</em></p>
+      <div class="meta">
+        Canvas Warm Ivory · ~410–720h · Card image 124–157 wide · name Jost Reg 13 · price Jost Light 13 (Deep Dusty for "now" price)
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bl">— 06 · Dark Sec-02 (Reward)</div>
+      <h4>The dark moment.</h4>
+      <p>The single dark band inside an otherwise light email. Right-aligned eyebrow + display + body, then a hairline, then a two-up stat or a piece of visual storytelling. Or carry the dark all the way through with overlaid text.</p>
+      <div class="meta">
+        Canvas Page Black · ~380–540h · Display Roboto Mono Medium 22px in #F9EAEC and #F9DDE1 · stats Roboto Mono Light 30–48px
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bl">— 07 · CTA section</div>
+      <h4>The button.</h4>
+      <p>Center-aligned, the only centered section in the email. Eyebrow → 22px headline → 1-line sub → Primary Dark button. Sits second-to-last, just above the disclaimer.</p>
+      <div class="meta">
+        Canvas Warm Ivory · 220h · Button ~300×42 · no margin between sub and button beyond 30px
+      </div>
+    </div>
+
+    <div class="blk">
+      <div class="bl">— 08 · Disclaimer</div>
+      <h4>The fine print.</h4>
+      <p>Single-line or two-line caveat, centered, Jost Light 12px in muted gray. Specific to the email — "Made-to-order, restock not guaranteed" / "Promotion ends Sunday midnight" / "Style Notes featured looks shared with permission". Always present; never decorative.</p>
+      <div class="meta">
+        Canvas Warm Ivory · 60–90h · Jost Light 12px · #6B6661 · centered · padding 24px top
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===================================================================
+       08 · COMPOSITION VARIATIONS — how to keep emails distinct
+       =================================================================== -->
+  <h2 style="margin-top:80px; margin-bottom:14px;">— 08 · Layout variations</h2>
+  <p style="max-width:720px; margin-bottom:24px;">Mix and match these inside section blocks so no two emails read the same. Pick at least two distinctive moves per email; don't repeat the same move twice in one email.</p>
+
+  <div class="variations">
+    <div class="v">
+      <div class="vn">— 01</div>
+      <h5>Image-left, text-right</h5>
+      <p>Photo bleeds off the left edge, narrow text column floats on the right. Good for a single-look feature.</p>
+    </div>
+    <div class="v">
+      <div class="vn">— 02</div>
+      <h5>Image-right, text-left</h5>
+      <p>Mirror of 01. Use as the next section to zigzag the eye down the page.</p>
+    </div>
+    <div class="v">
+      <div class="vn">— 03</div>
+      <h5>Full-bleed image, text on top</h5>
+      <p>Dark image fills the section. Eyebrow top-right, headline + meta bottom-left, inline CTA bottom-right. Underline aligns to the right edge of the right-aligned text.</p>
+    </div>
+    <div class="v">
+      <div class="vn">— 04</div>
+      <h5>Three-up with one-word captions</h5>
+      <p>Three image tiles, identical sizing, snapped to the 488 / 3 × 152 grid. The week, the looks, the colors, the sizes.</p>
+    </div>
+    <div class="v">
+      <div class="vn">— 05</div>
+      <h5>Stamp announcement</h5>
+      <p>Outlined rectangle (no fill) with "★ RESTOCKED ★" or similar inside. Use for back-in-stock or limited-run signals. Never pink-fill the stamp.</p>
+    </div>
+    <div class="v">
+      <div class="vn">— 06</div>
+      <h5>Big-number takeover</h5>
+      <p>One number (the count, the discount, the countdown digit) at 48–64px Roboto Mono Light, dwarfing everything around it. Use sparingly — one per email.</p>
+    </div>
+    <div class="v">
+      <div class="vn">— 07</div>
+      <h5>Dot-grid inventory</h5>
+      <p>20 small dots in a row representing 200 units of stock. Dim the dots for "sold," bright pink for "remaining." Reads as a depletion bar at a glance.</p>
+    </div>
+    <div class="v">
+      <div class="vn">— 08</div>
+      <h5>Countdown timer</h5>
+      <p>Three 48px mono number blocks separated by pink colons — <code>47 : 23 : 14</code>. Tiny labels under each (HRS · MIN · SEC). Right-aligned eyebrow above.</p>
+    </div>
+    <div class="v">
+      <div class="vn">— 09</div>
+      <h5>Annotated catalog</h5>
+      <p>One large product image centered, four small labels around it with thin lines pointing at features (cotton-silk blend · hand-finished hem · lined throughout). Reads as a fashion-magazine spec page.</p>
+    </div>
+    <div class="v">
+      <div class="vn">— 10</div>
+      <h5>Asymmetric photo essay</h5>
+      <p>One large landscape image on top, three smaller thumbnails on a clean 488 / 3 × 152 grid below. Captions are location + day, not product names.</p>
+    </div>
+    <div class="v">
+      <div class="vn">— 11</div>
+      <h5>Outlined tier card</h5>
+      <p>For VIP only. Bordered rectangle (no fill), small mono labels in corners, big mono word in the middle (VIP), bottom row with member info. Like a stamped invitation, not a filled card.</p>
+    </div>
+    <div class="v">
+      <div class="vn">— 12</div>
+      <h5>Numbered perks list</h5>
+      <p>Four rows, each <code>01 / TITLE</code> + one-line description, with a hairline between rows. Cleaner than a card-grid for "what VIP means" or "why this drop matters."</p>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       09 · PER-TYPE RECIPES — brief, not specific
+       =================================================================== -->
+  <h2 style="margin-top:60px; margin-bottom:14px;">— 09 · Per-type recipes</h2>
+  <p style="max-width:680px; margin-bottom:24px;">Each email type has one or two signature moves that make it identifiable. Build the rest from the section library and variations above.</p>
+
+  <div class="recipes">
+    <div class="rcp"><div class="rn">01</div><h5>Product Launch</h5>
+      <p>The drop is the point. Open with a tight intro, big hero, then a real product catalog (3×2 or 2×3) followed by a colorway swatch row. Close with a dark scarcity / limited-run band.</p>
+      <div class="sig">Signature → catalog grid + 5-color swatch strip</div>
+    </div>
+    <div class="rcp"><div class="rn">02</div><h5>Sale / Promo</h5>
+      <p>The discount is the headline. Don't overstate "no code needed" — let the headline carry it. Use a strikethrough catalog (was → now in Deep Dusty), and close with a countdown timer in the dark section.</p>
+      <div class="sig">Signature → strikethrough catalog + countdown timer</div>
+    </div>
+    <div class="rcp"><div class="rn">03</div><h5>Editorial / Lookbook</h5>
+      <p>Storytelling, not selling. Open with a numbered "feeling" section at the top, follow with a pull-quote band (cream is fine, dark also fine), then an annotated-catalog or photo-essay block. End with a "read on" link, not a hard sell.</p>
+      <div class="sig">Signature → asymmetric split + pull quote + photo essay</div>
+    </div>
+    <div class="rcp"><div class="rn">04</div><h5>Back-in-Stock</h5>
+      <p>The announcement is the point. Lead with a stamp ("★ RESTOCKED ★" in a bordered box) above the headline. Big vertical product image, PDP-style info, and a visual inventory tracker (dot grid or count number) in the dark closer.</p>
+      <div class="sig">Signature → stamp opener + dot-grid inventory</div>
+    </div>
+    <div class="rcp"><div class="rn">05</div><h5>VIP / Loyalty</h5>
+      <p>Personal, not promotional. Open with a personalized Klaviyo merge tag (<code>Dear {{ first_name }},</code>) in the eyebrow position. Outlined tier card next, numbered perks list after, dark countdown for "doors close" timing.</p>
+      <div class="sig">Signature → outlined tier card + numbered perks list</div>
+    </div>
+    <div class="rcp"><div class="rn">06</div><h5>Style Notes</h5>
+      <p>Magazine, not catalog. One strong 1–2 line intro, hero cover image, then four styling cards in alternating layouts (image-left, full-bleed overlay, image-right, full-bleed overlay). Each card gets its own inline shop link. Close with a product grid for the literal shop.</p>
+      <div class="sig">Signature → four alternating cards + product grid</div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       10 · EMAIL DO's & DON'Ts — specific to this build
+       =================================================================== -->
+  <h2 style="margin-top:80px; margin-bottom:14px;">— 10 · Email do's &amp; don'ts</h2>
+  <p style="max-width:680px; margin-bottom:0;">Compiled from every email iteration in the EASTEAM Klaviyo Templates file. Add to this list as patterns surface.</p>
+
+  <div class="duo">
+    <div class="col keep">
+      <h4>Do</h4>
+      <ul>
+        <li>Use Roboto Mono Medium 500 for every display headline. Cap at 22px.</li>
+        <li>Body in Jost Light 300 at 13px with line-height 1.7.</li>
+        <li>One pop color moment per surface (Deep Dusty on the last word of a title block, or Dusty Pink in a quote).</li>
+        <li>Stack section blocks with breathing room — 30–48px of padding between content and section edges.</li>
+        <li>Renumber section eyebrows to match visual order (01, 02, 03, 04 top to bottom).</li>
+        <li>Right-align inline CTA underlines to match right-aligned text. Left-align when text is left-aligned.</li>
+        <li>Use Primary Dark button (no border) — black fill, light pink text, 4px radius.</li>
+        <li>Style <code>unsubscribe</code> in disclaimer as pink underlined link with hyperlink fallback; document the Klaviyo merge tag in a designer-only mono note.</li>
+        <li>Mix image proportions — portrait, landscape, square, round, full-bleed — across sections to keep visual rhythm.</li>
+        <li>Put text on top of images when the composition allows. Don't let text always live in its own box.</li>
+      </ul>
+    </div>
+    <div class="col cut">
+      <h4>Don't</h4>
+      <ul>
+        <li>Don't use Staatliches as a section title — it's the wordmark only.</li>
+        <li>Don't fill badges, stamps, pills, or sale circles in pink — outline them or skip the container entirely.</li>
+        <li>Don't put a border on the Primary Dark button. Black fill + light pink text, that's it.</li>
+        <li>Don't crowd cards — if image and text share a section, give them at least 12px between them and pad the section to 380–400h.</li>
+        <li>Don't repeat the same layout move twice in one email or across consecutive emails.</li>
+        <li>Don't run scary stats ("restock window: 4–6 weeks, <em>if at all</em>") — readers don't want a downer. Replace with a positive count or skip.</li>
+        <li>Don't leave a gap after removing a section — close it. Shift subsequent sections up and resize the frame.</li>
+        <li>Don't echo the footer tagline in a transition band above the footer ("MADE TO LOVE YOU" twice reads as a typo).</li>
+        <li>Don't propagate the retired pink palette into body sections — header and footer only.</li>
+        <li>Don't ship without checking the unsubscribe href is <code>{% unsubscribe %}</code> in the final Klaviyo HTML.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       11 · WORKFLOW — how to iterate in Figma
+       =================================================================== -->
+  <h2 style="margin-top:80px; margin-bottom:14px;">— 11 · Iteration workflow</h2>
+  <p style="max-width:720px; margin-bottom:0;">The Klaviyo Templates Figma file is a living document. Every meaningful change becomes its own labeled iteration so older versions stay intact for reference and A/B comparison.</p>
+
+  <div class="steps">
+    <div class="step"><div class="sn">01</div>
+      <div class="sd"><h5>Duplicate, never overwrite</h5>
+      <p>Every new change creates a new iteration frame placed below or beside the previous version. The earlier iterations stay untouched. <em>If a "fix" doesn't need the round-trip — a typo, a single color swap — modify in place, but flag it in the message.</em></p></div>
+    </div>
+    <div class="step"><div class="sn">02</div>
+      <div class="sd"><h5>Label every iteration</h5>
+      <p>Above each new frame, put a Staatliches 20px label: <code>02. SALE / PROMO · ITERATION 3</code>. Below it, a Jost Light 11px subline that summarizes the diff: <code>2x4 catalog · stat row removed · letter icons · button no outline</code>.</p></div>
+    </div>
+    <div class="step"><div class="sn">03</div>
+      <div class="sd"><h5>Never overlap existing work</h5>
+      <p>Before placing a new iteration, check what's at the target x/y. Place new frames in clearly empty regions of the canvas — typically directly below the previous version of the same template, or to the right of the v5 row. Don't drop frames on top of work-in-progress.</p></div>
+    </div>
+    <div class="step"><div class="sn">04</div>
+      <div class="sd"><h5>Header &amp; footer are locked</h5>
+      <p>Use the universal header and the locked footer from <a href="email-template.html">email-template.html</a> on every new template. If the user manually changed something inside the locked header/footer of a previous iteration, <em>copy that change forward</em> — never silently reset it.</p></div>
+    </div>
+    <div class="step"><div class="sn">05</div>
+      <div class="sd"><h5>Keep names descriptive</h5>
+      <p>Frames are named so the layers panel reads like an outline: <code>Email v5 · 06 · Style Notes · iteration 5</code>. Sections inside are <code>Header</code> · <code>Editorial-Intro</code> · <code>Hero-img</code> · <code>Card-01-Morning</code> · <code>Sec-02-Timer</code> · <code>Footer</code>. Children: <code>EASTEAM</code> · <code>header-tag</code> · <code>pink-dot</code> · <code>hairline</code>.</p></div>
+    </div>
+    <div class="step"><div class="sn">06</div>
+      <div class="sd"><h5>Don't fight the canvas</h5>
+      <p>If the file gets cluttered, the answer is more vertical space between rows of iterations — not a smaller font on the labels. The Klaviyo Templates file is built to be browsed, not just delivered.</p></div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       12 · CLOSING
+       =================================================================== -->
+  <div class="pull-quote" style="margin-top:80px;">
+    Composed.<br/>
+    <span style="color:var(--pink);">Cinematic.</span><br/>
+    Inboxable.
+  </div>
+
+  <div class="note-box" style="margin-top:40px;">
+    <span class="label">When in doubt</span>
+    <p>Open <em><a href="email.html">email.html</a></em> for the canonical composition. Open <em><a href="email-template.html">email-template.html</a></em> for the paste-ready locked header and footer. Open <em><a href="dos-donts.html">dos-donts.html</a></em> for the all-up brand reset. Open <em><a href="klaviyo-email-flow.html">klaviyo-email-flow.html</a></em> for the production build rules (fonts, no-dash rule, image &amp; mobile rules, links). <em>This page</em> is for everything between those three.</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="email-template.html">← Header &amp; Footer</a> · <a href="../index.html">↑ Back to top</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

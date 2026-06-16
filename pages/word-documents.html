@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Word Documents — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Roboto:wght@300;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* Local helpers for this page */
+  .swatch-row { display:grid; grid-template-columns: repeat(4,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0 56px; }
+  .swatch { background:var(--bg); padding:22px 18px; }
+  .swatch .chip { height:56px; border-radius:0; border:1px solid rgba(10,8,7,0.08); margin-bottom:14px; }
+  .swatch .nm { font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink); }
+  .swatch .hx { font-family:'Roboto Mono',monospace; font-size:10px; color:var(--ink-muted); margin-top:4px; }
+  .swatch .role { font-size:12px; line-height:1.5; color:var(--ink-soft); margin-top:8px; }
+  @media (max-width:900px){ .swatch-row { grid-template-columns:1fr 1fr; } }
+
+  .rule-block { border-left: 2px solid var(--pink-dusty); padding: 4px 0 4px 24px; margin: 32px 0; }
+  .rule-block .lbl { font-family:'Roboto Mono',monospace; font-size:10px; letter-spacing:0.24em; text-transform:uppercase; color:var(--pink-dusty); margin-bottom:10px; }
+  .rule-block p { margin:0 0 8px; } .rule-block p:last-child { margin:0; }
+
+  .do-dont { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin:32px 0; }
+  @media (max-width:720px) { .do-dont { grid-template-columns:1fr; } }
+  .do-col, .dont-col { padding:24px 26px; border:1px solid var(--rule); }
+  .do-col { border-left:3px solid var(--pink); }
+  .dont-col { border-left:3px solid var(--pink-dusty); }
+  .do-col .head, .dont-col .head { font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:var(--pink-dusty); margin-bottom:16px; }
+  .do-col ul, .dont-col ul { padding:0; margin:0; list-style:none; }
+  .do-col li, .dont-col li { padding:8px 0 8px 22px; color:var(--ink-soft); border-bottom:1px solid var(--rule); position:relative; line-height:1.55; font-size:13px; }
+  .do-col li:last-child, .dont-col li:last-child { border-bottom:none; }
+  .do-col li::before { content:"✓"; position:absolute; left:0; top:8px; color:var(--pink); font-weight:500; }
+  .dont-col li::before { content:"✕"; position:absolute; left:0; top:8px; color:var(--pink-dusty); font-weight:500; }
+
+  .anchor-nav { position:sticky; top:72px; background:var(--bg); border:1px solid var(--rule); padding:18px 22px; margin:32px 0 48px; z-index:100; }
+  .anchor-nav .lbl { font-family:'Roboto Mono',monospace; font-size:10px; letter-spacing:0.24em; text-transform:uppercase; color:var(--pink-dusty); margin-bottom:12px; }
+  .anchor-nav ul { display:flex; flex-wrap:wrap; gap:12px 22px; padding:0; margin:0; list-style:none; }
+  .anchor-nav a { font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink); text-decoration:none; }
+  .anchor-nav a:hover { color:var(--pink); }
+
+  .sub-section { margin: 80px 0 0; }
+  .sub-section h3 { font-size:18px; letter-spacing:0.12em; margin-bottom:8px; }
+  .sub-section .sub-lede { font-size:14px; color:var(--ink-muted); margin-bottom:24px; max-width:640px; }
+
+  /* Word document sample — gives a visual of the type system */
+  .doc-demo {
+    background: #FFFDFE;
+    border: 1px solid var(--rule);
+    padding: 56px 64px;
+    margin: 32px 0 48px;
+    max-width: 720px;
+  }
+  .doc-demo .demo-mark { font-family:'Staatliches',sans-serif; font-size:36px; color:#0A0807; letter-spacing:0; line-height:1; margin-bottom:14px; }
+  .doc-demo .demo-eyebrow { font-family:'Roboto',sans-serif; font-weight:500; font-size:9px; letter-spacing:0.24em; text-transform:uppercase; color:#C49099; margin-bottom:10px; }
+  .doc-demo .demo-rule { height:1px; background:#C49099; margin:14px 0 18px; }
+  .doc-demo .demo-intro { font-family:'Roboto',sans-serif; font-weight:300; font-size:11px; line-height:1.5; color:#0A0807; margin-bottom:36px; }
+  .doc-demo .demo-h2 { font-family:'Roboto',sans-serif; font-weight:500; font-size:12px; letter-spacing:0.20em; text-transform:uppercase; color:#C49099; margin:0 0 8px; }
+  .doc-demo .demo-body { font-family:'Roboto',sans-serif; font-weight:300; font-size:11px; line-height:1.5; color:#0A0807; margin:0 0 6px; }
+  .doc-demo .demo-item { font-family:'Roboto',sans-serif; font-weight:300; font-size:11px; line-height:1.5; color:#0A0807; margin:0 0 6px; }
+  .doc-demo .demo-item b { font-family:'Roboto',sans-serif; font-weight:500; color:#C49099; margin-right:8px; }
+  .doc-demo .demo-band { background:#0A0807; color:#F9DDE1; font-family:'Roboto',sans-serif; font-weight:500; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; padding:18px 24px; margin:24px 0; }
+  .doc-demo .demo-foot-rule { height:1px; background:#C49099; margin-top:48px; }
+  .doc-demo .demo-foot { display:flex; justify-content:space-between; font-family:'Roboto',sans-serif; font-weight:500; font-size:7.5px; letter-spacing:0.16em; text-transform:uppercase; color:#C49099; padding-top:8px; }
+</style>
+</head>
+<body class="locked">
+
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div>
+  <div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="website.html">← Website</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">15</span>
+    <div class="left">
+      <span class="eyebrow">Section 15 · Roboto System</span>
+      <h1 class="display">Word<br/>Documents.</h1>
+    </div>
+    <div class="right">
+      <p>The document-specific type treatment for all professional Word (.docx) deliverables — questionnaires, briefs, agreements, onboarding guides, internal documents. This page <em>intentionally overrides the general brand rule of Roboto Mono titles</em>: Word documents use a unified Roboto family because a single superfamily reads more cohesive and professional in long-form documents than a monospace/sans mix.</p>
+      <p style="margin-top:14px;"><strong>Core principle.</strong> One type family across the entire hierarchy. The wordmark, every heading, and all body text relate to each other by design. Cohesion comes from family unity, not from decoration.</p>
+    </div>
+  </div>
+
+  <!-- Anchor nav -->
+  <nav class="anchor-nav">
+    <div class="lbl">On this page</div>
+    <ul>
+      <li><a href="#scope">00 Scope</a></li>
+      <li><a href="#page-setup">01 Page setup</a></li>
+      <li><a href="#color">02 Color</a></li>
+      <li><a href="#typography">03 Typography</a></li>
+      <li><a href="#layout">04 Layout &amp; components</a></li>
+      <li><a href="#dos-donts">05 Do's &amp; Don'ts</a></li>
+      <li><a href="#production">06 Production &amp; file rules</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================================ 00 SCOPE ============================================ -->
+  <h2 id="scope">00 · Scope</h2>
+  <p style="max-width:680px;">Applies to <em>all professional Word (.docx) deliverables</em> — questionnaires, briefs, agreements, onboarding guides, internal documents. Email and web have their own rules (see §07 Type / §09 Email / §14 Website). This standard governs anything that opens in Microsoft Word and ships as a finished document.</p>
+
+  <div class="rule-block">
+    <div class="lbl">Why Word breaks the general type rule</div>
+    <p>Brand-wide, titles are Roboto Mono and body is Jost. In Word documents, that mix reads as two separate systems on a long page. We unify the entire document under one superfamily — <strong>Roboto</strong> — so the wordmark, headings, and body all relate visually. This rule is locked for .docx only.</p>
+  </div>
+
+  <!-- ============================================ 01 PAGE SETUP ============================================ -->
+  <h2 id="page-setup" style="margin-top:100px;">01 · Page setup</h2>
+  <table class="spec">
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Paper</td><td class="mono">US Letter, 8.5 × 11 in</td></tr>
+      <tr><td>Margin — top</td><td class="mono">0.75"</td></tr>
+      <tr><td>Margin — bottom</td><td class="mono">0.75"</td></tr>
+      <tr><td>Margin — left</td><td class="mono">1.0"</td></tr>
+      <tr><td>Margin — right</td><td class="mono">1.0"</td></tr>
+      <tr><td>Header from edge</td><td class="mono">0.5"</td></tr>
+      <tr><td>Footer from edge</td><td class="mono">~0.42"</td></tr>
+      <tr><td>Different first page</td><td class="mono">ON — page 1 carries masthead, pages 2+ carry running header</td></tr>
+      <tr><td>Alignment</td><td class="mono">Left-aligned only, throughout (never center — asymmetry is a locked brand rule)</td></tr>
+      <tr><td>Line spacing</td><td class="mono">1.15 for all body text</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================ 02 COLOR ============================================ -->
+  <h2 id="color" style="margin-top:100px;">02 · Color</h2>
+  <p style="max-width:680px;">Four colors, each with one job. Body text always stays Page Black for readability. Dusty Pink is the consistent accent throughout the document.</p>
+
+  <div class="swatch-row">
+    <div class="swatch"><div class="chip" style="background:#0A0807;"></div><div class="nm">Page Black</div><div class="hx">#0A0807</div><div class="role">Body text, wordmark, dark-band fill</div></div>
+    <div class="swatch"><div class="chip" style="background:#FFFDFE; border:1px solid rgba(10,8,7,0.16);"></div><div class="nm">Page background</div><div class="hx">#FFFDFE</div><div class="role">Page color — white with the faintest pink</div></div>
+    <div class="swatch"><div class="chip" style="background:#C49099;"></div><div class="nm">Dusty Pink (Rose)</div><div class="hx">#C49099</div><div class="role">Accent: all titles, labels, hairline rules, list numbers, header/footer</div></div>
+    <div class="swatch"><div class="chip" style="background:#F9DDE1;"></div><div class="nm">Light Pink</div><div class="hx">#F9DDE1</div><div class="role">Text on the dark emphasis band only</div></div>
+  </div>
+
+  <div class="rule-block">
+    <div class="lbl">Accent rule for Word docs</div>
+    <p>Dusty Pink Rose is the <em>repeating accent</em> — titles, hairlines, numbers, header/footer all use it. This differs from the social/email "pop = one per surface" rule. In documents the rose is the consistent thread; in other surfaces it is reserved for a single moment.</p>
+    <p style="color:var(--ink-muted); font-size:13px;">Body copy always stays Page Black. Do not color body text — readability over decoration.</p>
+  </div>
+
+  <!-- ============================================ 03 TYPOGRAPHY ============================================ -->
+  <h2 id="typography" style="margin-top:100px;">03 · Typography</h2>
+  <p style="max-width:680px;">One family: <strong>Roboto</strong>. Two cuts do all the text work — <strong>Roboto Light</strong> for body, <strong>Roboto Medium</strong> for everything else. The wordmark is the only outside element.</p>
+
+  <table class="spec">
+    <thead><tr><th>Role</th><th>Font</th><th>Size</th><th>Case</th><th>Tracking</th><th>Color</th></tr></thead>
+    <tbody>
+      <tr><td>Body / questions / bullets</td><td class="mono">Roboto Light</td><td class="mono">10.5 pt</td><td>Sentence</td><td class="mono">0</td><td class="mono">Black</td></tr>
+      <tr><td>Section titles</td><td class="mono">Roboto Medium</td><td class="mono">11.5 pt</td><td>ALL CAPS</td><td class="mono">+2.3 pt</td><td class="mono">Rose</td></tr>
+      <tr><td>Dark emphasis band</td><td class="mono">Roboto Medium</td><td class="mono">12.5 pt</td><td>ALL CAPS</td><td class="mono">+2.5 pt</td><td class="mono">Light Pink on Black</td></tr>
+      <tr><td>Eyebrow / sub-labels</td><td class="mono">Roboto Medium</td><td class="mono">8.5 pt</td><td>ALL CAPS</td><td class="mono">+2.0 pt</td><td class="mono">Rose</td></tr>
+      <tr><td>Running header label</td><td class="mono">Roboto Medium</td><td class="mono">7.5 pt</td><td>ALL CAPS</td><td class="mono">+1.7 pt</td><td class="mono">Rose</td></tr>
+      <tr><td>Footer</td><td class="mono">Roboto Medium</td><td class="mono">7.0 pt</td><td>ALL CAPS</td><td class="mono">+1.5 pt</td><td class="mono">Rose</td></tr>
+      <tr><td>List numbers</td><td class="mono">Roboto Medium</td><td class="mono">9.5 pt</td><td>—</td><td class="mono">—</td><td class="mono">Rose</td></tr>
+    </tbody>
+  </table>
+
+  <div class="killed-box">
+    <span class="label">Tracking in Word</span>
+    <p>Tracking values translate to Word as: <code>Font → Advanced → Spacing → Expanded By [X] pt</code>. The values above are the literal pt amounts to enter.</p>
+  </div>
+
+  <div class="sub-section">
+    <h3>The wordmark</h3>
+    <ul class="clean">
+      <li><strong>Font:</strong> Staatliches, 0% tracking, Page Black</li>
+      <li><strong>Placed as:</strong> embedded image (PNG), top-left — never live text. Embedding it as an image means it renders correctly on any machine regardless of installed fonts.</li>
+      <li><strong>Masthead size:</strong> ≈ 2.8" wide</li>
+      <li><strong>Running-header size:</strong> ≈ 1.0" wide</li>
+      <li>It is the <em>only</em> non-Roboto element in the document.</li>
+    </ul>
+  </div>
+
+  <div class="rule-block">
+    <div class="lbl">Italic rule (locked, brand-wide)</div>
+    <p>Never italic — anywhere, ever. This applies to documents as it does to every other surface.</p>
+  </div>
+
+  <!-- ============================================ 04 LAYOUT ============================================ -->
+  <h2 id="layout" style="margin-top:100px;">04 · Layout &amp; components</h2>
+  <p style="max-width:680px;">Top to bottom, here is how a standard EASTEAM Word document is composed.</p>
+
+  <div class="sub-section">
+    <h3>Masthead (page 1 only)</h3>
+    <ul class="clean">
+      <li>Wordmark image, top-left</li>
+      <li>Eyebrow label below (e.g. <em>"AI CONTENT CREATOR · APPLICATION QUESTIONNAIRE"</em>) — Roboto Medium 8.5 pt rose</li>
+      <li>Dusty-pink hairline rule</li>
+      <li>One intro line in body text (Roboto Light 10.5 pt black)</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Running header (pages 2+)</h3>
+    <ul class="clean">
+      <li>Small wordmark image, left (~1.0" wide)</li>
+      <li>Document label, right — Roboto Medium 7.5 pt rose</li>
+      <li>Dusty-pink hairline rule beneath</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Footer (all pages)</h3>
+    <ul class="clean">
+      <li>Left: <em>"Confidential — EASTEAM LLC. Do not distribute."</em></li>
+      <li>Right: <em>"Page X of Y"</em></li>
+      <li>Dusty-pink hairline rule above. Roboto Medium 7.0 pt rose.</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Section titles</h3>
+    <p class="sub-lede">Roboto Medium caps, rose. Generous breathing room.</p>
+    <ul class="clean">
+      <li><strong>Spacing:</strong> ~16 pt before, ~7.5 pt after</li>
+      <li><strong>Case:</strong> ALL CAPS, +2.3 pt tracking</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Numbered items</h3>
+    <ul class="clean">
+      <li>Numbers are Roboto Medium 9.5 pt rose</li>
+      <li>Body text is Roboto Light 10.5 pt black</li>
+      <li>~6.5 pt space after each item</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Bullets</h3>
+    <ul class="clean">
+      <li><strong>Marker:</strong> em-dash (—) in rose. <em>Never</em> default round dots.</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Dark emphasis band</h3>
+    <ul class="clean">
+      <li>One black bar with Light Pink caps</li>
+      <li><strong>At most one per document</strong> — reserved for the single most important block (e.g. the task)</li>
+      <li>Type: Roboto Medium 12.5 pt, +2.5 pt tracking, light-pink on black</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Hairline rules</h3>
+    <ul class="clean">
+      <li>Thin dusty-pink lines only</li>
+      <li>Use to separate masthead, header, and footer</li>
+      <li><strong>No boxes, no shading blocks</strong> — except the one dark band described above</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Sample layout</h3>
+    <p class="sub-lede">A miniature of how the type system stacks on the page.</p>
+    <div class="doc-demo">
+      <div class="demo-mark">EASTEAM</div>
+      <div class="demo-eyebrow">AI Content Creator · Application Questionnaire</div>
+      <div class="demo-rule"></div>
+      <div class="demo-intro">Please complete the questionnaire below. Your answers will help us understand how you think, build, and ship. Keep responses concise and specific.</div>
+
+      <div class="demo-h2">01 · Background</div>
+      <div class="demo-body">Tell us a little about your trajectory — schools, studios, brands, the last three creative jobs that shaped you.</div>
+
+      <div class="demo-h2" style="margin-top:22px;">02 · Tools &amp; workflow</div>
+      <div class="demo-item"><b>01.</b> Which AI image and video models are you fluent in today?</div>
+      <div class="demo-item"><b>02.</b> Walk us through your weekly workflow — brief to delivered asset.</div>
+
+      <div class="demo-band">The task — produce one editorial set, 5 stills + 1 short</div>
+
+      <div class="demo-body">— Submit the set as a single PDF plus raw files in a folder named with the EASTEAM file convention.</div>
+      <div class="demo-body">— Include a 100-word note describing your prompt strategy and references.</div>
+
+      <div class="demo-foot-rule"></div>
+      <div class="demo-foot">
+        <span>Confidential — EASTEAM LLC. Do not distribute.</span>
+        <span>Page 1 of 4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ 05 DOS / DONTS ============================================ -->
+  <h2 id="dos-donts" style="margin-top:100px;">05 · Do's &amp; Don'ts</h2>
+  <div class="do-dont">
+    <div class="do-col">
+      <div class="head">Do</div>
+      <ul>
+        <li>Keep everything in the Roboto family; the wordmark is the only exception</li>
+        <li>Keep body Page Black, accents Dusty Rose, background near-white #FFFDFE</li>
+        <li>Limit the document to one dark band, used for the single key block</li>
+        <li>Left-align every block of text — masthead, body, headings, footer</li>
+        <li>Use em-dash (—) markers in rose for bullets</li>
+        <li>Place the wordmark as an embedded PNG image (top-left)</li>
+        <li>Turn "Different first page" ON so page 1 carries the masthead and pages 2+ carry the running header</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <div class="head">Don't</div>
+      <ul>
+        <li>Don't center anything — left-aligned only, throughout</li>
+        <li>Don't use italics, anywhere</li>
+        <li>Don't introduce a third text font — Roboto Light + Roboto Medium + the Staatliches wordmark image, nothing else</li>
+        <li>Don't use round bullets — em-dash only</li>
+        <li>Don't add more than one accent color on a surface beyond the rose</li>
+        <li>Don't color body text — body always stays Page Black for readability</li>
+        <li>Don't set the wordmark as live text — always embed as PNG so the document survives fontless machines</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================================ 06 PRODUCTION ============================================ -->
+  <h2 id="production" style="margin-top:100px;">06 · Production &amp; file rules</h2>
+
+  <table class="spec">
+    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Format</td><td class="mono">.docx, US Letter</td></tr>
+      <tr><td>Fonts required on the editing machine</td><td class="mono">Roboto Light, Roboto Medium (both standard, widely available)</td></tr>
+      <tr><td>Wordmark font requirement</td><td class="mono">None — embedded as PNG image</td></tr>
+      <tr><td>Sharing to outside machines</td><td class="mono">File → Options → Save → Embed fonts in the file (so Roboto travels with the document)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="killed-box">
+    <span class="label">File naming convention (EASTEAM standard)</span>
+    <p><code>[Name]_[ContentType]_[MMDDYYYY].docx</code> — e.g. <code>AIContentCreator_Questionnaire_05262026.docx</code>. Underscores only, zero-padded two-digit month and day.</p>
+  </div>
+
+  <div class="rule-block">
+    <div class="lbl">Where source files live</div>
+    <p>Source files live in <em>Production Work File 2026</em> first, then are copied out to share. <strong>Never work off a shortcut</strong> — always open the actual file in its production location to avoid two-copies-drift.</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="../index.html">← Back to Home</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

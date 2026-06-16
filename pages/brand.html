@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brand — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .mission {
+    margin: 24px 0 96px;
+    padding: 64px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    text-align: left;
+  }
+  .mission .lbl {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 24px; display: block;
+  }
+  .mission .line {
+    font-family: 'Staatliches', sans-serif;
+    font-size: clamp(40px, 6.4vw, 88px);
+    line-height: 1.05; color: var(--ink);
+    margin: 0; max-width: 20ch; letter-spacing: 0;
+    text-transform: none;
+  }
+  .mission .line .pop { color: var(--pink); }
+
+  .truth-row {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    gap: 40px;
+    align-items: center;
+    margin: 0 0 100px;
+  }
+  .truth-row .truth {
+    font-family: 'Staatliches', sans-serif;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 0.98; color: var(--pink-dusty);
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .truth-row .truth .pink { color: var(--pink); }
+  .truth-row p { font-size: 15px; line-height: 1.7; max-width: 40ch; color: var(--ink-soft); margin: 0; }
+  @media (max-width: 900px) { .truth-row { grid-template-columns: 1fr; } }
+
+  .personality {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin: 32px 0 100px;
+  }
+  .personality .trait {
+    padding: 28px 24px;
+    border-top: 2px solid var(--pink);
+  }
+  .personality .trait.dusty { border-top-color: var(--pink-dusty); }
+  .personality .trait .tn {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.28em;
+    color: var(--pink-dusty); margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .personality .trait h3 {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 36px; line-height: 1;
+    color: var(--ink); margin-bottom: 12px;
+    text-transform: none; letter-spacing: 0;
+  }
+  .personality .trait p {
+    font-size: 14px; line-height: 1.65;
+    color: var(--ink-soft); margin: 0;
+  }
+  @media (max-width: 900px) { .personality { grid-template-columns: 1fr; } }
+
+  .not-assume {
+    display: grid;
+    grid-template-columns: 4fr 7fr;
+    gap: 56px;
+    align-items: start;
+    margin-top: 16px;
+  }
+  .not-assume .label-side h2 { margin-bottom: 16px; }
+  .not-assume p.k { color: var(--ink-soft); font-size: 15px; line-height: 1.7; max-width: 32ch; margin: 0; }
+  @media (max-width: 900px) { .not-assume { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="logos.html">Next →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">01</span>
+    <div class="left">
+      <span class="eyebrow">Section 01</span>
+      <h1 class="display">Brand.</h1>
+    </div>
+    <div class="right">
+      <p>Who EASTEAM is. The personality you write into every line and shoot into every frame. If the work doesn't feel like one of these, kill it.</p>
+    </div>
+  </div>
+
+  <div class="mission">
+    <span class="lbl">— The Mission</span>
+    <p class="line">To make every <span class="pop">version of her</span> feel seen.</p>
+  </div>
+
+  <div class="truth-row">
+    <div class="truth">Privately<br/><span class="pink">vulnerable.</span><br/>Publicly composed.</div>
+    <p>The single sentence to test every page, post, ad, and email against. If the work performs <em>only</em> the polished half, it's missing the brand. If it performs <em>only</em> the soft half, same problem. Both, always.</p>
+  </div>
+
+  <h2>Personality — five traits</h2>
+  <div class="personality">
+    <div class="trait">
+      <div class="tn">— 01</div>
+      <h3>Composed.</h3>
+      <p>Confident without being loud. She knows what she's doing. We write like that, too.</p>
+    </div>
+    <div class="trait dusty">
+      <div class="tn">— 02</div>
+      <h3>Exotic.</h3>
+      <p>Sun-on-skin, island-girl ease — but never costume. The warmth comes from the woman, not the styling.</p>
+    </div>
+    <div class="trait">
+      <div class="tn">— 03</div>
+      <h3>Intimate.</h3>
+      <p>Speaks to one woman at a time. Never to "ladies," never to a group, never to a demographic.</p>
+    </div>
+    <div class="trait dusty">
+      <div class="tn">— 04</div>
+      <h3>Romantic.</h3>
+      <p>Not sugary. The kind of romance that stays — quiet, lived-in, not on display.</p>
+    </div>
+    <div class="trait">
+      <div class="tn">— 05</div>
+      <h3>Feminine.</h3>
+      <p>Unapologetically. On her terms, not the world's. Soft is not the opposite of strong.</p>
+    </div>
+  </div>
+
+  <div class="not-assume">
+    <div class="label-side">
+      <span class="dusty-chip">Reset your defaults</span>
+      <h2 style="margin-top:18px;">Don't assume.</h2>
+      <p class="k">Five things to never assume about her. If you catch yourself writing toward any of these, rewrite.</p>
+    </div>
+    <ul class="clean">
+      <li>That she is only one thing.</li>
+      <li>That she is performatively feminine or loud.</li>
+      <li>That she wants to be "empowered" by a brand.</li>
+      <li>That price is the main decision factor.</li>
+      <li>That she needs instruction. <em>She doesn't. She needs recognition.</em></li>
+    </ul>
+  </div>
+
+  <div class="note-box">
+    <span class="label">If in doubt</span>
+    <p>Read it back. Would she text this to her best friend? Would she screenshot this and save it? If the answer is no, rewrite.</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="logos.html">Next · Logos →</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

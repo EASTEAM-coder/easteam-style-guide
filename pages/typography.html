@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Typography — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .font-card {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .font-card:last-of-type { border-bottom: none; }
+  .specimen-jost {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: clamp(48px, 8vw, 96px);
+    color: var(--ink); line-height: 1.05;
+    margin: 16px 0 32px;
+  }
+  .specimen-roboto {
+    font-family: 'Roboto Mono', monospace; font-weight: 500;
+    font-size: clamp(20px, 3vw, 32px);
+    color: var(--pink);
+    line-height: 1.3; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 16px 0 32px;
+  }
+  .specimen-staatliches {
+    font-family: 'Staatliches', sans-serif;
+    font-size: clamp(80px, 14vw, 200px);
+    color: var(--pink); line-height: 0.92;
+    margin: 16px 0 32px; letter-spacing: 0;
+  }
+  .specimen-staatliches .dust { color: var(--pink-dusty); }
+
+  .font-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 32px;
+  }
+  .font-head .meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 32px;
+  }
+  .font-head .meta .lbl {
+    color: var(--pink-dusty); display: block;
+    margin-bottom: 6px; font-size: 10px;
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: 0.22em; text-transform: uppercase;
+  }
+  .font-head .meta .val {
+    color: var(--ink); font-family: 'Jost', sans-serif;
+    font-weight: 300; font-size: 15px;
+    line-height: 1.6;
+  }
+  @media (max-width: 900px) { .font-head { grid-template-columns: 1fr; } }
+
+  .weight-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 32px;
+    border: 1px solid var(--rule);
+  }
+  .weight-row .w {
+    padding: 28px;
+    border-right: 1px solid var(--rule);
+  }
+  .weight-row .w:last-child { border-right: none; }
+  .weight-row .w .ws {
+    font-family: 'Jost', sans-serif;
+    font-size: 32px; line-height: 1.1;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  .weight-row .w .wl {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink);
+    margin-bottom: 6px;
+  }
+  .weight-row .w .wu {
+    font-size: 13px; color: var(--ink-soft); line-height: 1.6;
+  }
+  @media (max-width: 900px) {
+    .weight-row { grid-template-columns: 1fr; }
+    .weight-row .w { border-right: none; border-bottom: 1px solid var(--rule); }
+    .weight-row .w:last-child { border-bottom: none; }
+  }
+
+  .surface-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 40px 0 8px;
+  }
+  .surface-tabs .stab {
+    padding: 22px 24px;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--pink-dusty);
+  }
+  .surface-tabs .stab .stl {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 8px;
+  }
+  .surface-tabs .stab .stn {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .surface-tabs .stab .sts {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+  @media (max-width: 900px) { .surface-tabs { grid-template-columns: 1fr; } }
+
+  .pair-demo {
+    margin: 40px 0 0;
+    padding: 48px;
+    border: 1px solid var(--rule);
+    background: rgba(245, 240, 236, 0.02);
+  }
+  .pair-demo .pe {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 16px;
+  }
+  .pair-demo .pd {
+    font-family: 'Staatliches', sans-serif;
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 1; color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .pair-demo .pd .pop { color: var(--pink); }
+  .pair-demo .ph {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink);
+    margin-bottom: 20px; font-weight: 500;
+  }
+  .pair-demo .pb {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 17px; line-height: 1.7;
+    color: var(--ink-soft); max-width: 56ch;
+  }
+  .pair-demo .pc {
+    margin-top: 28px;
+    font-family: 'Jost', sans-serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--pink);
+  }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="themes.html">← Themes</a>
+      <a href="voice.html">Next →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">05</span>
+    <div class="left">
+      <span class="eyebrow">Section 05</span>
+      <h1 class="display">Type.</h1>
+    </div>
+    <div class="right">
+      <p>Three fonts. Each one has one job. <em>Roboto Mono is the default title font</em> across emails, social, and most web sections. Staatliches is the wordmark only — reserved for very rare campaign hero moments.</p>
+    </div>
+  </div>
+
+  <h2>Surfaces — three scales, three contexts</h2>
+  <div class="surface-tabs">
+    <div class="stab">
+      <div class="stl">Surface 01</div>
+      <div class="stn">Web</div>
+      <div class="sts">Body 17–18px · Heads 14–26px</div>
+    </div>
+    <div class="stab">
+      <div class="stl">Surface 02</div>
+      <div class="stn">Email</div>
+      <div class="sts">Body 12–13px · Heads 22px Roboto Mono</div>
+    </div>
+    <div class="stab">
+      <div class="stl">Surface 03</div>
+      <div class="stn">Social</div>
+      <div class="sts">Body 12px · Heads 11–14px Roboto Mono</div>
+    </div>
+  </div>
+  <p style="max-width:640px; margin-top:24px; font-size:14px;">Web bodies live at 17–18px because the screen sits two feet from her face. Email and social bodies drop to ~12px because the inbox and feed are dense — bigger looks like shouting. <em>All section titles on email + social use Roboto Mono.</em> Staatliches stays reserved for the wordmark and rare hero moments only.</p>
+
+  <!-- ===================== JOST ===================== -->
+  <div class="font-card">
+    <h4>Font 01 · Body — Jost</h4>
+    <div class="specimen-jost">She already knows what she wants.</div>
+
+    <div class="font-head">
+      <div>
+        <p style="max-width:480px;">The everyday workhorse. Body copy, captions, button labels, navigation, UI. Sentence case for body, ALL CAPS for buttons and nav.</p>
+      </div>
+      <div class="meta">
+        <div><span class="lbl">Family</span><span class="val">Jost</span></div>
+        <div><span class="lbl">Weights</span><span class="val">300 Light · 400 Regular · 500 Medium</span></div>
+        <div><span class="lbl">Role</span><span class="val">Body, captions, buttons, nav, UI.</span></div>
+        <div><span class="lbl">Casing</span><span class="val">Sentence (body) · UPPERCASE (UI)</span></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px;">Weights — when to use which</h3>
+    <div class="weight-row">
+      <div class="w">
+        <div class="ws" style="font-weight:300;">Light 300</div>
+        <div class="wl">Default body</div>
+        <div class="wu">All running paragraph copy, captions, descriptions, list items. The everyday weight.</div>
+      </div>
+      <div class="w">
+        <div class="ws" style="font-weight:400;">Regular 400</div>
+        <div class="wl">Inline emphasis</div>
+        <div class="wu">Names of products / sets, links inside running text, emphasis inside a paragraph.</div>
+      </div>
+      <div class="w">
+        <div class="ws" style="font-weight:500;">Medium 500</div>
+        <div class="wl">UI + buttons</div>
+        <div class="wu">Button labels, nav items, form labels, table headers. Anything tappable.</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:48px;">Jost scale · Web (17–18px body)</h3>
+    <table class="spec">
+      <thead>
+        <tr><th>Role</th><th>Sample</th><th>Size / LH</th><th>Weight</th><th>Tracking</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Lede paragraph</td><td style="font-family:'Jost'; font-weight:300; font-size:22px; line-height:1.5;">Lede paragraph</td><td class="mono">20–22 / 1.6</td><td class="mono">300</td><td class="mono">0</td></tr>
+        <tr><td>Body — default</td><td style="font-family:'Jost'; font-weight:300; font-size:18px; line-height:1.5;">Body — default</td><td class="mono">17–18 / 1.7</td><td class="mono">300</td><td class="mono">0</td></tr>
+        <tr><td>Body — small</td><td style="font-family:'Jost'; font-weight:300; font-size:15px; line-height:1.5;">Body — small</td><td class="mono">14–15 / 1.6</td><td class="mono">300</td><td class="mono">0</td></tr>
+        <tr><td>Caption</td><td style="font-family:'Jost'; font-weight:300; font-size:13px; line-height:1.5; color:var(--ink-soft);">Caption</td><td class="mono">12–13 / 1.5</td><td class="mono">300</td><td class="mono">+0.02em</td></tr>
+        <tr><td>Button label</td><td style="font-family:'Jost'; font-weight:500; text-transform:uppercase; font-size:11px; letter-spacing:0.14em;">Button — Medium</td><td class="mono">10–11 / 1</td><td class="mono">500</td><td class="mono">+0.12em</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:48px;">Jost scale · Email (12–13px body)</h3>
+    <table class="spec">
+      <thead>
+        <tr><th>Role</th><th>Sample</th><th>Size / LH</th><th>Weight</th><th>Tracking</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Lede / Hero copy</td><td style="font-family:'Jost'; font-weight:300; font-size:16px; line-height:1.5;">Lede / Hero copy</td><td class="mono">15–16 / 1.5</td><td class="mono">300</td><td class="mono">0</td></tr>
+        <tr><td>Body — default</td><td style="font-family:'Jost'; font-weight:300; font-size:13px; line-height:1.6;">Body — default</td><td class="mono">12–13 / 1.6</td><td class="mono">300</td><td class="mono">0</td></tr>
+        <tr><td>Caption / Meta</td><td style="font-family:'Jost'; font-weight:300; font-size:11px; line-height:1.5; color:var(--ink-soft);">Caption</td><td class="mono">10–11 / 1.5</td><td class="mono">300</td><td class="mono">+0.02em</td></tr>
+        <tr><td>Email button</td><td style="font-family:'Jost'; font-weight:500; text-transform:uppercase; font-size:11px; letter-spacing:0.14em;">Email CTA</td><td class="mono">10–11 / 1</td><td class="mono">500</td><td class="mono">+0.12em</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:48px;">Jost scale · Social (12px body)</h3>
+    <table class="spec">
+      <thead>
+        <tr><th>Role</th><th>Sample</th><th>Size / LH</th><th>Weight</th><th>Tracking</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Caption headline</td><td style="font-family:'Jost'; font-weight:500; font-size:14px; line-height:1.4;">Caption headline</td><td class="mono">13–14 / 1.4</td><td class="mono">500</td><td class="mono">+0.02em</td></tr>
+        <tr><td>Caption body</td><td style="font-family:'Jost'; font-weight:300; font-size:12px; line-height:1.55;">Caption body</td><td class="mono">12 / 1.55</td><td class="mono">300</td><td class="mono">0</td></tr>
+        <tr><td>In-graphic text</td><td style="font-family:'Jost'; font-weight:500; text-transform:uppercase; font-size:11px; letter-spacing:0.18em;">In-graphic label</td><td class="mono">10–12 / 1.2</td><td class="mono">500</td><td class="mono">+0.18em</td></tr>
+      </tbody>
+    </table>
+
+    <div class="killed-box">
+      <span class="label">Rules — Jost</span>
+      <p>Default body is Jost Light 300 — never 400 as the default. Reserve 400 for emphasis. Use 500 only for UI / buttons / table headers. Nothing heavier than 500. Don't italicize Jost — ever.</p>
+    </div>
+  </div>
+
+  <!-- ===================== ROBOTO MONO ===================== -->
+  <div class="font-card">
+    <h4>Font 02 · Headers + Eyebrows — Roboto Mono</h4>
+    <div class="specimen-roboto">Most wanted, most saved.</div>
+
+    <div class="font-head">
+      <div>
+        <p style="max-width:480px;">Every header, every eyebrow, every tag, every table column header. Always ALL CAPS, always tracked wide. Keep it small to mid (10–24px). Goes ugly at display sizes — Staatliches handles those.</p>
+      </div>
+      <div class="meta">
+        <div><span class="lbl">Family</span><span class="val">Roboto Mono</span></div>
+        <div><span class="lbl">Weights</span><span class="val">400 Regular · 500 Medium</span></div>
+        <div><span class="lbl">Role</span><span class="val">Heads, eyebrows, labels, nav, table headers.</span></div>
+        <div><span class="lbl">Casing</span><span class="val">ALL CAPS. No exceptions.</span></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px;">Roboto Mono scale · Web</h3>
+    <table class="spec">
+      <thead>
+        <tr><th>Role</th><th>Sample</th><th>Size / LH</th><th>Weight</th><th>Tracking</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Section title</td><td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:26px; letter-spacing:0.08em;">Section title</td><td class="mono">24–26 / 1.3</td><td class="mono">500</td><td class="mono">+0.08em</td></tr>
+        <tr><td>Sub-section</td><td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:18px; letter-spacing:0.08em;">Sub-section</td><td class="mono">18–22 / 1.3</td><td class="mono">500</td><td class="mono">+0.08em</td></tr>
+        <tr><td>Block label</td><td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:14px; letter-spacing:0.18em;">Block label</td><td class="mono">14–15 / 1.4</td><td class="mono">500</td><td class="mono">+0.18em</td></tr>
+        <tr><td>Eyebrow / tag</td><td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:11px; letter-spacing:0.22em; color:var(--pink-dusty);">Eyebrow</td><td class="mono">10–12 / 1.4</td><td class="mono">500</td><td class="mono">+0.22em</td></tr>
+        <tr><td>Inline mono / code</td><td style="font-family:'Roboto Mono'; font-weight:400; font-size:13px;">inline_code</td><td class="mono">11–13 / 1.6</td><td class="mono">400</td><td class="mono">+0.04em</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:48px;">Roboto Mono scale · Email + Social</h3>
+    <table class="spec">
+      <thead>
+        <tr><th>Role</th><th>Sample</th><th>Size / LH</th><th>Weight</th><th>Tracking</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Email section head</td><td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:16px; letter-spacing:0.08em;">Email section head</td><td class="mono">15–18 / 1.3</td><td class="mono">500</td><td class="mono">+0.08em</td></tr>
+        <tr><td>Email eyebrow</td><td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:10px; letter-spacing:0.24em; color:var(--pink-dusty);">Email eyebrow</td><td class="mono">10–11 / 1.4</td><td class="mono">500</td><td class="mono">+0.24em</td></tr>
+        <tr><td>Social in-graphic head</td><td style="font-family:'Roboto Mono'; font-weight:500; text-transform:uppercase; font-size:12px; letter-spacing:0.18em;">In-graphic head</td><td class="mono">11–14 / 1.3</td><td class="mono">500</td><td class="mono">+0.18em</td></tr>
+      </tbody>
+    </table>
+
+    <div class="killed-box">
+      <span class="label">Rules — Roboto Mono</span>
+      <p>Always ALL CAPS. Minimum tracking +0.06em — usually +0.08–0.24em depending on size. Cap at 24px on web, 18px on email, 14px on social. Never set Roboto Mono as a display headline. <em>Staatliches is the display font.</em> Never italic.</p>
+    </div>
+  </div>
+
+  <!-- ===================== STAATLICHES ===================== -->
+  <div class="font-card">
+    <h4>Font 03 · Display — Staatliches</h4>
+    <div class="specimen-staatliches">EAS<span class="dust">TEAM</span></div>
+
+    <div class="font-head">
+      <div>
+        <p style="max-width:480px;">The wordmark — and very little else. Reserved for the EASTEAM logo and <em>rare</em> hero moments (campaign cover, lookbook front, packaging print). <em>Don't use it in emails. Don't use it as a title in social posts. Don't use it for everyday display.</em></p>
+        <p style="max-width:480px; margin-top:14px; font-size:14px; color:var(--ink-muted);">For everyday titles — including the headline inside every email and social graphic — use Roboto Mono at 22px or smaller.</p>
+      </div>
+      <div class="meta">
+        <div><span class="lbl">Family</span><span class="val">Staatliches</span></div>
+        <div><span class="lbl">Weights</span><span class="val">400 Regular (only weight)</span></div>
+        <div><span class="lbl">Role</span><span class="val">Wordmark + rare campaign hero moments.</span></div>
+        <div><span class="lbl">Casing</span><span class="val">UPPERCASE. 0% tracking.</span></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px;">Staatliches scale</h3>
+    <table class="spec">
+      <thead>
+        <tr><th>Role</th><th>Sample</th><th>Size</th><th>Line height</th><th>Tracking</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Hero · Web</td><td style="font-family:'Staatliches'; font-size:72px; line-height:0.95;">HERO</td><td class="mono">96–180</td><td class="mono">0.9–1.0</td><td class="mono">0</td></tr>
+        <tr><td>Hero · Email</td><td style="font-family:'Staatliches'; font-size:48px; line-height:1;">HERO</td><td class="mono">40–64</td><td class="mono">1.0</td><td class="mono">0</td></tr>
+        <tr><td>Wordmark · Page</td><td style="font-family:'Staatliches'; font-size:48px; line-height:1;">EASTEAM</td><td class="mono">48–88</td><td class="mono">1.0</td><td class="mono">0</td></tr>
+        <tr><td>Wordmark · Inline</td><td style="font-family:'Staatliches'; font-size:28px; line-height:1;">EASTEAM</td><td class="mono">24–40</td><td class="mono">1.0</td><td class="mono">0</td></tr>
+        <tr><td>Pull-quote</td><td style="font-family:'Staatliches'; font-size:32px; line-height:1; color:var(--pink-dusty);">PULL-QUOTE</td><td class="mono">40–80</td><td class="mono">1.0</td><td class="mono">0</td></tr>
+        <tr><td>Minimum size</td><td style="font-family:'Staatliches'; font-size:18px; line-height:1; color:var(--ink-muted);">18 PX</td><td class="mono">≥18</td><td class="mono">1.0</td><td class="mono">0</td></tr>
+      </tbody>
+    </table>
+
+    <div class="killed-box">
+      <span class="label">Rules — Staatliches</span>
+      <p><em>Rare campaign moments only.</em> The wordmark, and the occasional hero / lookbook cover / packaging print. <strong>Never in emails.</strong> Never as a section title in social. Never for body. Never for UI. Never below 18px. 0% letter-spacing, no exceptions. Never italic.</p>
+    </div>
+  </div>
+
+  <!-- ===================== PAIRING ===================== -->
+  <h2 style="margin-top:80px;">Pairing — how the three stack</h2>
+  <p style="max-width:600px;">Every EASTEAM block follows the same rhythm — eyebrow, display, header, body, CTA. Same five layers, every surface. Just different sizes.</p>
+
+  <div class="pair-demo">
+    <div class="pe">— New Drop · April 2026</div>
+    <div class="pd">The <span class="pop">Daydream</span> Set.</div>
+    <div class="ph">Skirt + Top · Made to Love You</div>
+    <p class="pb">The Daydream Set is the one she's been saving on Pinterest for six months. Cotton-silk blend, hand-finished hem, designed for a body that's lived in. Drops Friday at 10AM ET. Most wanted, most saved.</p>
+    <div class="pc">Shop the drop →</div>
+  </div>
+
+  <div class="killed-box" style="margin-top:40px;">
+    <span class="label">Universal rule</span>
+    <p>No italics. Anywhere. Italic feels romance-novel; EASTEAM is composed, not breathless. If you need emphasis, use weight (Jost 400 inside body, 500 for UI) or color (Light Pink for the last word).</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="voice.html">Next · Voice →</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# OS cruft
+.DS_Store
+
+# Local tooling (not part of the published site)
+.claude/
+
+# Internal skill files & source playbooks — not for the public repo
+*.skill
+SKILL.md
+*.docx
+
+# Stray temp blobs
+ziUTf2Ym
+zit1a4GS

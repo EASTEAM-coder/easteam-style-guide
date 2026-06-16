@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Files &amp; Folders — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .pattern-card {
+    background: rgba(196, 144, 153, 0.06);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--pink-dusty);
+    padding: 44px 48px;
+    margin: 32px 0 60px;
+  }
+  .pattern-card .pe {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 18px;
+  }
+  .pattern-card .pp {
+    font-family: 'Roboto Mono', monospace;
+    font-size: clamp(18px, 2.6vw, 28px);
+    color: var(--ink); line-height: 1.3;
+    margin: 0; letter-spacing: 0.02em;
+  }
+  .pattern-card .pp .seg { color: var(--pink); }
+  .pattern-card .pp .punc { color: var(--ink-muted); }
+
+  /* GOLDEN RULES */
+  .golden {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 24px 0 80px;
+    border: 1px solid var(--rule);
+  }
+  .golden .g {
+    padding: 28px 26px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .golden .g:nth-child(3n) { border-right: none; }
+  .golden .g:nth-last-child(-n+3) { border-bottom: none; }
+  .golden .g .gn {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 48px; line-height: 0.95;
+    color: var(--pink-dusty);
+    margin-bottom: 10px;
+  }
+  .golden .g h4 { font-size: 12px; letter-spacing: 0.18em; color: var(--ink); margin-bottom: 10px; }
+  .golden .g p { font-size: 13px; line-height: 1.65; color: var(--ink-soft); margin: 0; }
+  .golden .g code { font-size: 11px; }
+  @media (max-width: 900px) {
+    .golden { grid-template-columns: 1fr 1fr; }
+    .golden .g:nth-child(3n) { border-right: 1px solid var(--rule); }
+    .golden .g:nth-child(2n) { border-right: none; }
+    .golden .g:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); }
+    .golden .g:nth-last-child(-n+2) { border-bottom: none; }
+  }
+  @media (max-width: 600px) {
+    .golden { grid-template-columns: 1fr; }
+    .golden .g { border-right: none; border-bottom: 1px solid var(--rule); }
+    .golden .g:last-child { border-bottom: none; }
+  }
+
+  /* WORKFLOW */
+  .flow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin: 24px 0 80px;
+  }
+  @media (max-width: 900px) { .flow { grid-template-columns: 1fr; } }
+  .flow .step {
+    border: 1px solid var(--rule);
+    padding: 36px 32px;
+    position: relative;
+  }
+  .flow .step .badge {
+    position: absolute; top: 22px; right: 22px;
+    background: var(--pink-dusty); color: var(--bg);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px; letter-spacing: 0.22em;
+    padding: 5px 10px; border-radius: 2px;
+  }
+  .flow .step.b .badge { background: var(--pink); }
+  .flow .step .sn {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 56px; line-height: 0.95;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .flow .step h4 {
+    font-size: 13px; letter-spacing: 0.18em; color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .flow .step p { font-size: 14px; line-height: 1.7; color: var(--ink-soft); margin: 0 0 12px; }
+  .flow .step a { color: var(--pink); }
+  .flow .step a:hover { color: var(--pink-dusty); }
+  .flow .step .mono {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px; color: var(--ink); letter-spacing: 0.02em;
+    background: rgba(245,240,236,0.04);
+    padding: 12px 14px; margin-top: 14px;
+    border-left: 2px solid var(--pink-dusty);
+  }
+
+  /* CONTENT TYPES PILL ROW */
+  .ctype-row {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin: 20px 0 56px;
+  }
+  .ctype {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    background: rgba(245,240,236,0.04);
+    border: 1px solid var(--rule);
+    padding: 8px 14px; border-radius: 999px;
+  }
+  .ctype.pop { background: var(--pink-tint); border-color: var(--pink); color: var(--pink); }
+
+  /* DESTINATIONS TABLE */
+  table.dest {
+    width: 100%; border-collapse: collapse;
+    margin-top: 16px;
+  }
+  table.dest th, table.dest td {
+    text-align: left; padding: 16px 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  table.dest th {
+    font-family: 'Roboto Mono', monospace;
+    text-transform: uppercase; font-size: 10px;
+    letter-spacing: 0.22em; color: var(--pink-dusty);
+    font-weight: 500;
+  }
+  table.dest td {
+    color: var(--ink-soft); font-size: 13px; line-height: 1.6;
+  }
+  table.dest td.first {
+    color: var(--ink); font-family: 'Jost', sans-serif; font-weight: 500;
+  }
+  table.dest td a { color: var(--pink); }
+  table.dest td a:hover { color: var(--pink-dusty); }
+
+  pre.code {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    background: rgba(245, 240, 236, 0.03);
+    border: 1px solid var(--rule);
+    padding: 24px 26px;
+    margin: 0;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  pre.code .seg    { color: var(--pink); }
+  pre.code .com    { color: var(--ink-muted-dark); }
+  pre.code .num    { color: var(--pink-dusty); }
+  pre.code .folder { color: var(--ink); font-weight: 500; }
+
+  .ex-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin: 24px 0 80px;
+  }
+  @media (max-width: 900px) { .ex-grid { grid-template-columns: 1fr; } }
+  .ex-grid h3 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px; letter-spacing: 0.18em;
+    color: var(--pink); margin-bottom: 14px;
+  }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="packaging.html">← Packaging</a>
+      <a href="dos-donts.html">Next →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">12</span>
+    <div class="left">
+      <span class="eyebrow">Section 12 · New</span>
+      <h1 class="display">Files<br/>&amp; Folders.</h1>
+    </div>
+    <div class="right">
+      <p>One pattern, six golden rules, two-step delivery. <em>Every raw asset hits Production Work File 2026 first, then copies to its permanent home.</em></p>
+      <p style="margin-top:14px; font-size:14px;"><a href="https://www.notion.so/362578efc99881c3ad31ffb34ac06abc" target="_blank" class="dusty-chip" style="text-decoration:none;">→ Content Production Guidebook</a></p>
+    </div>
+  </div>
+
+  <!-- ===================== GOLDEN RULES ===================== -->
+  <h2>The Six Golden Rules — apply to EVERYTHING</h2>
+  <div class="golden">
+    <div class="g">
+      <div class="gn">01</div>
+      <h4>Names match the linesheet</h4>
+      <p>Exactly. No abbreviations, no inventions. Wrong name = file gets sent back.</p>
+    </div>
+    <div class="g">
+      <div class="gn">02</div>
+      <h4>Underscores · no spaces · no hyphens</h4>
+      <p>Only exception: compound names with <code>+</code> (e.g. <code>Her_Weekend_+_Her_Outfit</code>).</p>
+    </div>
+    <div class="g">
+      <div class="gn">03</div>
+      <h4>NEVER use Drive shortcuts</h4>
+      <p>Always download + re-upload, or right-click → Make a Copy. Shortcuts break.</p>
+    </div>
+    <div class="g">
+      <div class="gn">04</div>
+      <h4>Raw assets → Production Work File 2026 first</h4>
+      <p>Then copy approved edits to their permanent home. Never move.</p>
+    </div>
+    <div class="g">
+      <div class="gn">05</div>
+      <h4>Color accuracy is non-negotiable</h4>
+      <p>Skirt yellow on camera = real skirt yellow. If unsure, pull the linesheet reference.</p>
+    </div>
+    <div class="g">
+      <div class="gn">06</div>
+      <h4>When in doubt, Slack Scarlett first</h4>
+      <p>Faster to ask than to redo.</p>
+    </div>
+  </div>
+
+  <!-- ===================== FOLDER NAMING PATTERN ===================== -->
+  <h2>Folder naming pattern</h2>
+  <div class="pattern-card">
+    <div class="pe">— For every dated shoot folder</div>
+    <p class="pp"><span class="seg">[LookOrCollection]</span><span class="punc">_</span><span class="seg">[ContentType]</span><span class="punc">_</span><span class="seg">[MMDDYYYY]</span></p>
+  </div>
+
+  <p style="max-width:680px;">Three real examples — read them and you should immediately know what's inside without opening the folder.</p>
+  <pre class="code"><span class="folder">Daydream_LifestyleEPV_05052026/</span>     <span class="com"># Daydream lifestyle EPV shot 05/05/2026</span>
+<span class="folder">Bloom_ModelFitting_05082026/</span>        <span class="com"># Bloom model fitting on 05/08/2026</span>
+<span class="folder">DDSkirt_AdEdit_05162026/</span>            <span class="com"># Daydream Skirt ad edit, 05/16/2026</span></pre>
+
+  <h3 style="margin-top:36px;">ContentType — pick exactly one</h3>
+  <p style="max-width:580px; margin-bottom:0;">These are the only valid ContentType segments. Don't invent new ones — if a category doesn't exist, ping Scarlett first.</p>
+  <div class="ctype-row">
+    <span class="ctype">Lifestyle</span>
+    <span class="ctype">LifestyleEPV</span>
+    <span class="ctype">EPVLifestyle</span>
+    <span class="ctype">UGC</span>
+    <span class="ctype">Catalog</span>
+    <span class="ctype">Campaign</span>
+    <span class="ctype">ModelFitting</span>
+    <span class="ctype">USPVideo</span>
+    <span class="ctype">SocialMedia</span>
+    <span class="ctype">AdEdit</span>
+  </div>
+
+  <!-- ===================== WORKFLOW ===================== -->
+  <h2>File Delivery Workflow — two steps</h2>
+  <div class="flow">
+    <div class="step a">
+      <span class="badge">STEP 01</span>
+      <div class="sn">01.</div>
+      <h4>Upload to Production Work File first</h4>
+      <p>Every raw asset lands in <a href="https://drive.google.com/drive/folders/1OFA3zZomS94iUFP3X0UcZG19GxaQBq3L" target="_blank">Production Work File 2026</a>. Create a dated folder using the naming pattern above.</p>
+      <div class="mono">Daydream_LifestyleEPV_05052026</div>
+    </div>
+    <div class="step b">
+      <span class="badge">STEP 02</span>
+      <div class="sn">02.</div>
+      <h4>Once Scarlett approves → copy to permanent home</h4>
+      <p>Download + re-upload (or right-click → Make a Copy) to the matching destination below. <em>NEVER use a Drive shortcut.</em> Originals stay in Production Work File.</p>
+      <div class="mono">Right-click → Make a Copy → Choose destination</div>
+    </div>
+  </div>
+
+  <!-- ===================== PERMANENT DESTINATIONS ===================== -->
+  <h2>Permanent destinations · where final files live</h2>
+  <p style="max-width:640px; margin-bottom:0;">Match the content to the right destination. Each row links to the live Drive folder or master sheet.</p>
+  <table class="dest">
+    <thead>
+      <tr><th>Content</th><th>Permanent home</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="first">Daydream new colourways<br/><span style="color:var(--ink-muted); font-size:11px; font-family:'Roboto Mono', monospace;">Yellow / White / Black / Pink / Petal / Ivory / Noir</span></td>
+        <td><a href="https://drive.google.com/drive/folders/1u7UBRN-rl2tQAEFQvL6FAN5ygn-ai0fB" target="_blank">Hot Seller 2026 → DaydreamCollection_2026</a></td>
+      </tr>
+      <tr>
+        <td class="first">Original Daydream Skirt<br/><span style="color:var(--ink-muted); font-size:11px; font-family:'Roboto Mono', monospace;">OG product, pre-relaunch</span></td>
+        <td><a href="https://drive.google.com/drive/folders/14Id0z2ho9vJuTPB7wC4Jl7k70m1YUwOM" target="_blank">2025 archive → HotSeller_2025_Daydream</a></td>
+      </tr>
+      <tr>
+        <td class="first">Bloom<br/><span style="color:var(--ink-muted); font-size:11px; font-family:'Roboto Mono', monospace;">Cardigan / Top / Shorts / Skirt</span></td>
+        <td><a href="https://drive.google.com/drive/folders/1gE-XF_rpqSuTKwIyFzZ0vr4z8OVTq7UB" target="_blank">2025 archive → HotSeller_2025_Bloom</a></td>
+      </tr>
+      <tr>
+        <td class="first">SS26 Drop 01 / 02 / 03 / 04 looks</td>
+        <td><a href="https://drive.google.com/drive/folders/1KoyQNgYRQaCy6_ZM3Ssry7hN0vWtHDSu" target="_blank">SS26_2026 → SS26_DropXX_2026</a></td>
+      </tr>
+      <tr>
+        <td class="first">SS26 SMC / Lifestyle campaign</td>
+        <td>SS26_2026 → SS26_SMC_2026</td>
+      </tr>
+      <tr>
+        <td class="first">Instagram post / Story Highlight cover</td>
+        <td>Extra 2026 → Instagram Posts 2026 / Highlights Covers 2026</td>
+      </tr>
+      <tr>
+        <td class="first">KOL reposts<br/><span style="color:var(--ink-muted); font-size:11px; font-family:'Roboto Mono', monospace;">saved from IG / TikTok tags</span></td>
+        <td>Assets Media Production 2026 → KOL 2026</td>
+      </tr>
+      <tr>
+        <td class="first">Customer testimonial</td>
+        <td>Assets Media Production 2026 → Customer Testimonial 2026</td>
+      </tr>
+      <tr>
+        <td class="first">Ad creatives<br/><span style="color:var(--ink-muted); font-size:11px; font-family:'Roboto Mono', monospace;">Meta / Google ads</span></td>
+        <td><a href="https://docs.google.com/spreadsheets/d/1Xl8QYvSdfd1UTK-RaGywabVWh3kJXfxe244LpINe270/edit?gid=0#gid=0" target="_blank">Ad creatives master sheet</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===================== FILE-LEVEL PATTERN ===================== -->
+  <h2 style="margin-top:80px;">File-level naming · inside each folder</h2>
+  <p style="max-width:680px;">Every file inside a folder inherits the folder name as its prefix. Two-digit sequence number. CamelCase inside segments.</p>
+  <div class="ex-grid">
+    <div>
+      <h3>Catalog model</h3>
+      <pre class="code"><span class="folder">EASTEAM_Catalog_Daydream/</span>
+  <span class="seg">EASTEAM_Catalog_Daydream</span>_Black_Front_<span class="num">01</span>.jpg
+  <span class="seg">EASTEAM_Catalog_Daydream</span>_Black_Side_<span class="num">01</span>.jpg
+  <span class="seg">EASTEAM_Catalog_Daydream</span>_Pink_Front_<span class="num">01</span>.jpg</pre>
+    </div>
+    <div>
+      <h3>Dated shoot</h3>
+      <pre class="code"><span class="folder">Daydream_LifestyleEPV_05052026/</span>
+  <span class="seg">Daydream_LifestyleEPV_05052026</span>_Pink_<span class="num">01</span>.jpg
+  <span class="seg">Daydream_LifestyleEPV_05052026</span>_Black_<span class="num">01</span>.jpg
+  <span class="seg">Daydream_LifestyleEPV_05052026</span>_Raw_<span class="num">01</span>.mp4</pre>
+    </div>
+  </div>
+
+  <h2 style="margin-top:48px;">Two-step temp rename · for batch renames</h2>
+  <p style="max-width:720px;">When renaming a folder of files, never rename in one pass — you'll overwrite each other. Always go through a temp prefix first.</p>
+  <pre class="code"><span class="com"># Step 1 — rename everything to a temp prefix</span>
+shopt -s nullglob
+counter=1
+for f in *.jpg; do
+  mv "$f" "_tmp_<span class="seg">$(printf '%02d' $counter)</span>.jpg"
+  counter=$((counter+1))
+done
+
+<span class="com"># Step 2 — replace the temp prefix with the final folder name</span>
+for f in _tmp_*.jpg; do
+  mv "$f" "Daydream_LifestyleEPV_05052026_<span class="seg">${f#_tmp_}</span>"
+done</pre>
+
+  <div class="killed-box" style="margin-top:36px;">
+    <span class="label">Hard rules</span>
+    <p>No spaces in filenames. No hyphens. No single-digit numbers (use <code>01</code>, not <code>1</code>). No Drive shortcuts. Folder name lives in every file inside it. Look names must match the linesheet exactly. <em>If you're guessing, you're doing it wrong.</em></p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="dos-donts.html">Next · Do's &amp; Don'ts →</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Logos — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* tile + wordmark */
+  .logo-tile {
+    aspect-ratio: 4 / 3;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    border: 1px solid var(--rule);
+    padding: 28px; gap: 8px;
+  }
+  .logo-tile.on-black { background: var(--bg); border-color: var(--rule-strong); }
+  .logo-tile.on-ivory { background: var(--ivory); border-color: transparent; }
+  .logo-tile.on-pink  { background: var(--pink); border-color: transparent; }
+  .logo-tile.on-dusty { background: var(--pink-dusty); border-color: transparent; }
+  .logo-tile .wordmark {
+    font-family: 'Staatliches', sans-serif;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 1; letter-spacing: 0;
+  }
+  .logo-tile .tagline {
+    font-family: 'Roboto Mono', monospace; font-weight: 400;
+    font-size: clamp(10px, 1.3vw, 13px);
+    letter-spacing: 0.32em; text-transform: uppercase;
+  }
+  .logo-tile.on-black .wordmark, .logo-tile.on-black .tagline { color: var(--pink); }
+  .logo-tile.on-ivory .wordmark { color: var(--bg); }
+  .logo-tile.on-ivory .tagline { color: var(--pink-email); }
+  .logo-tile.on-pink .wordmark, .logo-tile.on-pink .tagline { color: var(--bg); }
+  .logo-tile.on-dusty .wordmark, .logo-tile.on-dusty .tagline { color: var(--bg); }
+
+  /* outline wordmark — uses text-stroke */
+  .wordmark.outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--pink);
+    text-stroke: 1.5px var(--pink);
+  }
+  .logo-tile.on-ivory .wordmark.outline { -webkit-text-stroke-color: var(--bg); text-stroke-color: var(--bg); }
+  .logo-tile.on-pink .wordmark.outline { -webkit-text-stroke-color: var(--bg); text-stroke-color: var(--bg); }
+  .logo-tile.on-dusty .wordmark.outline { -webkit-text-stroke-color: var(--bg); text-stroke-color: var(--bg); }
+
+  .logo-row {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px; margin-bottom: 56px;
+  }
+  .logo-row.two { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 900px) {
+    .logo-row, .logo-row.two { grid-template-columns: 1fr; }
+  }
+  .logo-caption {
+    margin-top: 14px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    text-align: center;
+  }
+  .section-h {
+    margin: 24px 0 28px;
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  .section-h .ch {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.24em;
+    color: var(--pink-dusty); text-transform: uppercase;
+  }
+  .section-h .ct {
+    font-family: 'Staatliches', sans-serif;
+    font-size: clamp(36px, 4.4vw, 56px);
+    line-height: 1; color: var(--ink);
+    margin: 0; letter-spacing: 0; text-transform: none;
+  }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="brand.html">← Brand</a>
+      <a href="colors.html">Next →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">02</span>
+    <div class="left">
+      <span class="eyebrow">Section 02</span>
+      <h1 class="display">Logos.</h1>
+    </div>
+    <div class="right">
+      <p>Two builds — solid and outline. One wordmark. One tagline lockup. Don't redraw, don't recolor outside the palette, don't substitute the font.</p>
+    </div>
+  </div>
+
+  <!-- SOLID -->
+  <div class="section-h">
+    <span class="ch">— 01</span>
+    <h2 class="ct">Solid.</h2>
+  </div>
+  <div class="logo-row">
+    <div>
+      <div class="logo-tile on-black"><span class="wordmark">EASTEAM</span></div>
+      <div class="logo-caption">Primary · Pink on Black</div>
+    </div>
+    <div>
+      <div class="logo-tile on-ivory"><span class="wordmark">EASTEAM</span></div>
+      <div class="logo-caption">Light · Black on Ivory</div>
+    </div>
+    <div>
+      <div class="logo-tile on-dusty"><span class="wordmark">EASTEAM</span></div>
+      <div class="logo-caption">Dusty Pop · Black on Dusty</div>
+    </div>
+  </div>
+
+  <!-- OUTLINE -->
+  <div class="section-h">
+    <span class="ch">— 02</span>
+    <h2 class="ct">Outline.</h2>
+  </div>
+  <p style="max-width:680px; margin-bottom:24px;">For oversized hero moments, packaging emboss, video supers, and any layout that needs the wordmark to breathe through whatever's behind it. Stroke weight scales with the mark — heavier strokes for smaller sizes, hairline for displays.</p>
+  <div class="logo-row">
+    <div>
+      <div class="logo-tile on-black"><span class="wordmark outline">EASTEAM</span></div>
+      <div class="logo-caption">Outline · Pink on Black</div>
+    </div>
+    <div>
+      <div class="logo-tile on-ivory"><span class="wordmark outline">EASTEAM</span></div>
+      <div class="logo-caption">Outline · Black on Ivory</div>
+    </div>
+    <div>
+      <div class="logo-tile on-pink"><span class="wordmark outline">EASTEAM</span></div>
+      <div class="logo-caption">Outline · Black on Light Pink</div>
+    </div>
+  </div>
+
+  <!-- TAGLINE -->
+  <div class="section-h">
+    <span class="ch">— 03</span>
+    <h2 class="ct">Tagline lockup.</h2>
+  </div>
+  <p style="max-width:680px; margin-bottom:24px;">For packaging fronts, hangtags, press kit covers, and the email footer. Never below 18pt — the tagline disappears.</p>
+  <div class="logo-row two">
+    <div>
+      <div class="logo-tile on-black">
+        <span class="wordmark">EASTEAM</span>
+        <span class="tagline">Made to Love You</span>
+      </div>
+      <div class="logo-caption">Pink on Black · Solid</div>
+    </div>
+    <div>
+      <div class="logo-tile on-ivory">
+        <span class="wordmark">EASTEAM</span>
+        <span class="tagline">Made to Love You</span>
+      </div>
+      <div class="logo-caption">Black on Ivory · Light Theme</div>
+    </div>
+  </div>
+  <div class="logo-row two">
+    <div>
+      <div class="logo-tile on-black">
+        <span class="wordmark outline">EASTEAM</span>
+        <span class="tagline">Made to Love You</span>
+      </div>
+      <div class="logo-caption">Pink on Black · Outline</div>
+    </div>
+    <div>
+      <div class="logo-tile on-ivory">
+        <span class="wordmark outline">EASTEAM</span>
+        <span class="tagline">Made to Love You</span>
+      </div>
+      <div class="logo-caption">Black on Ivory · Outline</div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:80px;">Construction · How to build these</h2>
+  <table class="spec">
+    <thead>
+      <tr><th>Asset</th><th>Artboard</th><th>Mark size</th><th>Tagline</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Solid wordmark</td>
+        <td class="mono">1200 × 600 (2:1)</td>
+        <td class="mono">60% of width</td>
+        <td>—</td>
+        <td>Center. Equal padding top/bottom.</td>
+      </tr>
+      <tr>
+        <td>Outline wordmark</td>
+        <td class="mono">1200 × 600 (2:1)</td>
+        <td class="mono">62% of width</td>
+        <td>—</td>
+        <td>Stroke 1.5–2% of cap height. Same baseline, slightly larger compensating for hollow letterforms.</td>
+      </tr>
+      <tr>
+        <td>Wordmark + tagline</td>
+        <td class="mono">1200 × 800 (3:2)</td>
+        <td class="mono">55% width</td>
+        <td class="mono">22% width</td>
+        <td>Gap between = 0.5× wordmark cap height. Tagline always solid (never outline).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 style="margin-top:80px;">Clear space</h2>
+  <p style="max-width:600px;">Keep clear space around every lockup equal to <em>the cap height of the wordmark</em> on all four sides. Nothing crosses into it — not photos, not text, not edges.</p>
+
+  <div class="killed-box">
+    <span class="label">Don't</span>
+    <p>Recolor outside the palette. Stretch or skew. Substitute the font. Add a drop shadow, gradient, or stroke (the outline version IS the stroke version — don't add more). Mix outline and solid in the same lockup. Italicize. Rotate. Crop the mark in half "as a design moment." It's a wordmark. Treat it like one.</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="colors.html">Next · Colors →</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

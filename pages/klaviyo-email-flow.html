@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Klaviyo Email Flow — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .asset-table { margin: 16px 0 0; border: 1px solid var(--rule); }
+  .asset-table .row { display: grid; grid-template-columns: 180px 1fr; border-bottom: 1px solid var(--rule); }
+  .asset-table .row:last-child { border-bottom: none; }
+  .asset-table .row > * { padding: 14px 18px; }
+  .asset-table .k { font-family: 'Roboto Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pink-dusty); }
+  .asset-table .v { font-family: 'Roboto Mono', monospace; font-size: 11px; color: var(--ink-soft); word-break: break-all; line-height: 1.6; }
+  @media (max-width: 720px){ .asset-table .row { grid-template-columns: 1fr; } }
+  .swatchline { display:flex; gap:10px; align-items:center; margin-top:8px; font-family:'Roboto Mono',monospace; font-size:11px; color:var(--ink-soft); }
+  .swatchline .chip { width:18px; height:18px; border-radius:3px; border:1px solid var(--rule); }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="email-playbook.html">← Email Playbook</a>
+      <a href="../index.html">Home →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">09d</span>
+    <div class="left">
+      <span class="eyebrow">Section 09 · The Playbook</span>
+      <h1 class="display">Klaviyo<br/>Flow Rules.</h1>
+    </div>
+    <div class="right">
+      <p>The build rules refined in production while redesigning the <em>Welcome Flow</em>. These are additions to <em>email-playbook.html</em> — the things we learned only by shipping into Klaviyo and reading it on a real phone. When a rule here conflicts with an older note, <em>this page wins.</em></p>
+    </div>
+  </div>
+
+  <!-- 01 · FONTS IN KLAVIYO -->
+  <h2 style="margin-bottom:14px;">— 01 · Fonts, sized for Klaviyo</h2>
+  <p style="max-width:720px; margin-bottom:18px;">Klaviyo does not reliably load custom web fonts across inboxes, so email uses an inbox-safe stack. <em>Two fonts only.</em> No script fonts, no third family, no signature scripts.</p>
+  <table class="spec">
+    <thead><tr><th>Role</th><th>Family</th><th>Weight</th><th>Size</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Headers, eyebrows, labels, buttons</td><td class="mono">Arial</td><td class="mono">500 (Medium)</td><td class="mono">9–26px</td><td>Never bold (700) — reads too thick. ALL CAPS, tracked wide.</td></tr>
+      <tr><td>Body, letters, captions</td><td class="mono">Jost Light, fallback Helvetica</td><td class="mono">300</td><td class="mono">12–13px</td><td>Letters may run 13px / 1.8–1.9 line-height for readability.</td></tr>
+      <tr><td>Wordmark</td><td class="mono">Logo image (PNG)</td><td class="mono">—</td><td class="mono">—</td><td>Header/footer logo files. Never set the wordmark as live text in email.</td></tr>
+    </tbody>
+  </table>
+  <div class="killed-box" style="margin-top:20px;">
+    <span class="label">Type rules — Klaviyo</span>
+    <p>Arial replaces Roboto Mono as the on-brand header face <em>inside email</em> (same caps, same wide tracking, weight 500 not 700). Body is Jost Light 300 with a Helvetica fallback so it degrades gracefully. <strong>Never italic. Never a script signature.</strong></p>
+  </div>
+
+  <!-- 02 · NO DASHES -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 02 · The no-dash rule</h2>
+  <p style="max-width:720px;">No dashes. Anywhere. This applies to <em>everything we publish</em> — email, website, social, captions, all copy. No em dashes, no hyphens used as punctuation, and no decorative leading <code>—</code> on eyebrows.</p>
+  <div class="duo">
+    <div class="col cut">
+      <h4>Don't</h4>
+      <ul>
+        <li>EASTEAM started with a feeling — not a strategy.</li>
+        <li>— A LETTER FROM SCARLETT</li>
+        <li>two-faced</li>
+      </ul>
+    </div>
+    <div class="col keep">
+      <h4>Do</h4>
+      <ul>
+        <li>EASTEAM started with a feeling.</li>
+        <li>A LETTER FROM SCARLETT · FOUNDER</li>
+        <li>two faced</li>
+      </ul>
+    </div>
+  </div>
+  <p style="max-width:720px; margin-top:18px;">Use a middot <code>·</code> as the separator, or a comma, colon, or period. Arrows (<code>&rarr;</code>) on CTAs are fine — they are arrows, not dashes.</p>
+
+  <!-- 03 · VOICE -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 03 · Voice &amp; copy</h2>
+  <div class="duo">
+    <div class="col cut">
+      <h4>Banned / avoid</h4>
+      <ul>
+        <li>"Main character" / "main character energy." Dated. Never use it.</li>
+        <li>The word "strategy." It sounds calculated.</li>
+        <li>"Confidence comes from within." We reject the cliché.</li>
+        <li>Casual brag compliments ("you've got great taste").</li>
+        <li>Walls of text. Keep it simple, balance copy with image.</li>
+      </ul>
+    </div>
+    <div class="col keep">
+      <h4>Say instead</h4>
+      <ul>
+        <li>Confidence you can <em>wear</em>. The right piece changes how you stand, walk in, let yourself be seen.</li>
+        <li>"It started with a feeling."</li>
+        <li>Every version of you is real. You are one woman at home, another with friends, another with strangers. The world calls it two faced. It isn't. Wear them all, never apologize.</li>
+        <li>Classic compliments: "Your taste is exquisite. Let us dress it."</li>
+        <li>Edge is welcome, kept classy: honest, loud, unafraid.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note-box" style="margin-top:18px;">
+    <span class="label">Salutation &amp; sign-off</span>
+    <p>Style <code>HEY LOVE,</code> as a pink all-caps label (same treatment as an eyebrow, Deep Dusty). Sign off simply: <code>With all my love,</code> then <code>SCARLETT, FOUNDER OF EASTEAM</code> in Arial caps. No handwritten script.</p>
+  </div>
+
+  <!-- 04 · CODE / GIFT BLOCK -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 04 · The gift / code block</h2>
+  <p style="max-width:720px; margin-bottom:14px;">The welcome code is the gift. Two approved treatments. The <em>entire block is one clickable link</em> to the discount URL.</p>
+  <table class="spec">
+    <thead><tr><th>Treatment</th><th>Fill</th><th>Border</th><th>Code text</th><th>When</th></tr></thead>
+    <tbody>
+      <tr><td>Black gift card</td><td class="mono">#0A0807</td><td class="mono">none</td><td class="mono">#F9DDE1 (Light Pink)</td><td>When the button near it is an outline.</td></tr>
+      <tr><td>Pink outline</td><td class="mono">transparent</td><td class="mono">1px #C49099</td><td class="mono">#0A0807 (ink)</td><td>When the button near it is solid black.</td></tr>
+    </tbody>
+  </table>
+  <div class="killed-box" style="margin-top:18px;">
+    <span class="label">One black mass</span>
+    <p>Never stack two solid black blocks together (e.g. a black code box directly above a black button) — it reads as too much black. Pair one solid with one outline.</p>
+  </div>
+
+  <!-- 05 · BUTTONS -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 05 · Buttons</h2>
+  <p style="max-width:720px;">Two button styles, 4px radius, Arial Medium 500 11px label, +1.54px tracking, UPPERCASE.</p>
+  <div class="swatchline"><span class="chip" style="background:#0A0807;"></span> Primary Dark — black fill <code>#0A0807</code>, Light Pink text <code>#F9DDE1</code>, no border.</div>
+  <div class="swatchline"><span class="chip" style="background:transparent; border:1px solid #0A0807;"></span> Outline — transparent fill, 1px <code>#0A0807</code> border, ink text. Use to relieve black when next to a black code box.</div>
+
+  <!-- 06 · LINKS & UNSUB -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 06 · Links &amp; unsubscribe</h2>
+  <table class="spec">
+    <thead><tr><th>Element</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Discount apply link</td><td class="mono">https://easteamny.com/discount/CODE?redirect=%2Fcollections%2Fall</td></tr>
+      <tr><td>Welcome code</td><td class="mono">THATGIRL10 (cool-girl tone; verified live, applies 10% + redirects)</td></tr>
+      <tr><td>Unsubscribe</td><td class="mono">&lt;a href="{% unsubscribe_link %}" style="color:#D9A5AC;text-decoration:underline"&gt;unsubscribe&lt;/a&gt;</td></tr>
+    </tbody>
+  </table>
+  <div class="killed-box" style="margin-top:18px;">
+    <span class="label">Klaviyo unsubscribe — do not break it</span>
+    <p>Use <code>{% unsubscribe_link %}</code> (outputs a URL) inside your own styled <code>&lt;a&gt;</code>. <strong>Never</strong> use <code>{% unsubscribe %}</code> inside an href — it outputs a whole anchor, nests, and leaks the raw <code>style="..."</code> text into the footer. Style the link pink (<code>#D9A5AC</code>), underlined.</p>
+  </div>
+
+  <!-- 07 · IMAGE TREATMENTS -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 07 · Image treatments</h2>
+  <div class="steps">
+    <div class="step"><div class="sn">A</div><div class="sd"><h5>Text on image</h5><p>Full-bleed photo, text overlaid. Light text with a soft text-shadow if there is no panel behind it.</p></div></div>
+    <div class="step"><div class="sn">B</div><div class="sd"><h5>Frosted band</h5><p>Full-width band across the bottom third. <em>No border, no corner radius</em> (it is a band, not a floating card). Transparent black <code>rgba(0,0,0,0.42)</code> + <code>backdrop-filter: blur</code>, white text. Blur shows in Apple Mail; degrades to a soft tint elsewhere.</p></div></div>
+    <div class="step"><div class="sn">C</div><div class="sd"><h5>Whole-image tint</h5><p>To lower saturation, lay a flat <code>linear-gradient(rgba(0,0,0,0.10–0.20), ...)</code> over the whole image. Keep it light. Just a touch.</p></div></div>
+    <div class="step"><div class="sn">D</div><div class="sd"><h5>Contained band</h5><p>For a centered quote, put the transparent-black panel behind <em>only the text</em>, not the whole image.</p></div></div>
+    <div class="step"><div class="sn">E</div><div class="sd"><h5>Exact aspect</h5><p>When asked, preserve the image's exact ratio (no crop, no shrink): set the cell height to the image ratio at 600px wide.</p></div></div>
+    <div class="step"><div class="sn">F</div><div class="sd"><h5>Clear the subject</h5><p>Place labels and copy where they never cover the subject. If the photo's baked text sits bottom-left, put the label top-right. If the model sits right, put the quote top-left. For cutout PNGs, place them on the Warm Ivory canvas so transparency blends, and use dark text in the empty space.</p></div></div>
+  </div>
+
+  <!-- 08 · MOBILE -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 08 · Mobile (non-negotiable)</h2>
+  <div class="duo">
+    <div class="col keep">
+      <h4>Do</h4>
+      <ul>
+        <li>Give every inner section a class that forces <code>width:100%</code> under 480px.</li>
+        <li>Reduce side padding from 56px to ~24px on mobile.</li>
+        <li>Set explicit heights per breakpoint for background-image cells.</li>
+        <li>Stack side-by-side columns; make side images full-width.</li>
+        <li>Tuck overlaid text into a tighter column so it clears the subject.</li>
+        <li>Always preview the phone view before shipping.</li>
+      </ul>
+    </div>
+    <div class="col cut">
+      <h4>Don't</h4>
+      <ul>
+        <li>Never leave an inner table at a bare <code>width="600"</code> with no override — it overflows and distorts the whole email on a phone.</li>
+        <li>Never set <code>height:auto</code> on a background-image cell — it collapses to nothing.</li>
+        <li>Don't let overlaid text crowd the subject on a narrow screen.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 09 · RECIPES -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 09 · Welcome flow recipes</h2>
+  <div class="recipes">
+    <div class="rcp"><div class="rn">01</div><h5>Welcome · Offer</h5>
+      <p>Locked header, hero photo with welcome line, black/pink gift code, two product features (one full-bleed frosted band, one alternating side-by-side), dark reviews band, one CTA.</p>
+      <div class="sig">Signature → gift code + frosted product band</div>
+    </div>
+    <div class="rcp"><div class="rn">02</div><h5>Founder Letter</h5>
+      <p>Hero image (label top-right), the letter on a cream stationery card, a pull-quote over a photo, three beliefs merged and gently asymmetric, a grand pink "Welcome to EASTEAM" with a heart, gift + CTA.</p>
+      <div class="sig">Signature → stationery letter + pink welcome</div>
+    </div>
+  </div>
+
+  <!-- 10 · LOCKED ASSETS -->
+  <h2 style="margin-top:60px; margin-bottom:14px;">— 10 · Locked hosted assets</h2>
+  <p style="max-width:720px; margin-bottom:0;">Stable URLs for the locked header/footer. Use these so nothing expires.</p>
+  <div class="asset-table">
+    <div class="row"><div class="k">Header logo (black)</div><div class="v">https://cdn.shopify.com/s/files/1/0853/2813/4440/files/EASTEAM_logo_black_6d9db82f-39f3-4c72-8571-bd66aaaca914.png</div></div>
+    <div class="row"><div class="k">Footer logo (pink)</div><div class="v">https://cdn.shopify.com/s/files/1/0853/2813/4440/files/EASTEAM_logo_notification_email_footer_pink.png</div></div>
+    <div class="row"><div class="k">Social icons</div><div class="v">instagram_2.png · facebook_2.png · pinterest_2.png · tiktok_2.png (same Shopify files CDN)</div></div>
+    <div class="row"><div class="k">Library photos</div><div class="v">Klaviyo image library on d3k81ch9hvuctc.cloudfront.net — public &amp; stable, safe to reference directly.</div></div>
+  </div>
+
+  <div class="note-box" style="margin-top:24px;">
+    <span class="label">Previewing</span>
+    <p>The in-chat preview cannot load external image CDNs, so photos may show as neutral fills there. Verify the real render in Klaviyo's preview (desktop + mobile), and click the discount link once to confirm it applies before sending.</p>
+  </div>
+
+  <!-- 11 · OPERATIONS · editing the live flow -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 11 · Operations · editing the live flow</h2>
+  <p style="max-width:760px;">The sections above are the brand rules. The notes below are the operational rules — how to <strong>edit, bake, save, and verify</strong> a live Klaviyo flow email without breaking it. The companion skill is <code>klaviyo-email</code>.</p>
+
+  <h5 style="margin-top:32px;">Two surfaces, two tools</h5>
+  <div class="asset-table">
+    <div class="row"><div class="k">Standalone template</div><div class="v">/email-editor/&#123;TEMPLATE_ID&#125;/edit — editable via Klaviyo MCP (klaviyo_update_email_template).</div></div>
+    <div class="row"><div class="k">Live flow message</div><div class="v">/flow/message/&#123;MESSAGE_ID&#125;/content/edit — Chrome only. The MCP cannot write flow-message HTML.</div></div>
+  </div>
+  <p style="max-width:760px; margin-top:14px;">A flow message can be <em>created from</em> a template, but once it's edited inside the flow its HTML detaches. Pushing a template update will <strong>not</strong> change the live flow message.</p>
+
+  <h5 style="margin-top:28px;">Save verification (never skip)</h5>
+  <ul class="bullets">
+    <li>Click Save, wait ~3 seconds, watch for the green <em>"Your changes have been saved."</em> toast.</li>
+    <li>Re-read the Ace editor (<code>window.ace.edit(el).getValue()</code>) and grep for the change before navigating away.</li>
+    <li>If the editor still has unsaved state, Klaviyo will block navigation with a <em>"Leave site?"</em> dialog — accept only after the toast and re-read.</li>
+  </ul>
+
+  <h5 style="margin-top:28px;">No CSS rotation in production</h5>
+  <p style="max-width:760px;"><code>transform: rotate(90deg)</code> renders correctly in Apple Mail and the Klaviyo preview, but Gmail mobile, Outlook desktop, Outlook web, and Yahoo strip the transform — content squishes or stands upright. Rotation-locked phones also can't physically tilt to read sideways content. <strong>Don't ship live rotated panels.</strong> If the creative direction requires a tilt, bake each rotated panel as a static PNG and ship as a flat <code>&lt;img&gt;</code> — the same image renders identically across every client.</p>
+
+  <h5 style="margin-top:28px;">Baking rotated / image panels</h5>
+  <ul class="bullets">
+    <li>Navigate Chrome directly to the cloudfront source image so it becomes same-origin — canvas reads then work without CORS taint.</li>
+    <li>Render at <strong>4× display dimensions</strong> for retina (a 480×380 panel becomes a 1920×1520 canvas).</li>
+    <li>Use the <strong>9-argument</strong> <code>drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh)</code> form so the image cover-crops without stretch. The 5-arg form stretches and blurs.</li>
+    <li>For a calendar series with portrait model photos (~0.56 aspect ratio), keep slot width ≤ <code>imgAspect × slotHeight</code> (~270px for a 480px-tall slot) so height stays the constraining dimension. Otherwise one panel's model looks zoomed in next to the others.</li>
+    <li>Trigger the file via Blob: <code>canvas.toBlob → URL.createObjectURL → a[download]</code>. Chrome's save-to-disk flag is unreliable.</li>
+    <li>After the first auto-download in a tab, Chrome shows <em>"site wants to download multiple files"</em>. Tell the user to click <strong>Allow</strong>, or only the first file lands.</li>
+  </ul>
+
+  <h5 style="margin-top:28px;">Linking baked panels</h5>
+  <p style="max-width:760px;">Wrap every panel image in an anchor so the full image is tappable. Use <code>style="text-decoration:none;border:0;"</code> on both the <code>&lt;a&gt;</code> and the <code>&lt;img&gt;</code> to suppress the underline and link border.</p>
+
+  <h5 style="margin-top:28px;">Closing CTA pattern (shared across flows)</h5>
+  <p style="max-width:760px;">Every flow's closing block uses the cream-background pattern with the pink dashed 2-column coupon and the black SHOP button. <strong>Don't invent a black-background closing section</strong> for a single email — the body wrapper is 600px, so a 100%-wide black inner table only fills 600px on desktop and leaves cream edges around it. That stripe is what makes a one-off black closing look broken. Reuse the shared block.</p>
+
+  <h5 style="margin-top:28px;">Discount apply URL patterns</h5>
+  <div class="asset-table">
+    <div class="row"><div class="k">Hot seller landing</div><div class="v">https://easteamny.com/discount/THATGIRL10?redirect=%2Fcollections%2Fhot-seller</div></div>
+    <div class="row"><div class="k">All products landing</div><div class="v">https://easteamny.com/discount/THATGIRL10?redirect=%2Fcollections%2Fall</div></div>
+  </div>
+
+  <h5 style="margin-top:28px;">Icon transparency caveat</h5>
+  <p style="max-width:760px;">If you ship a small icon as a PNG with a transparent background, Klaviyo may flatten it to JPEG on upload — transparent pixels become <strong>black</strong> and the icon ends up sitting in a black square. Generate icons with a <strong>solid background matching the panel</strong> (cream <code>#F5F0EC</code>) so even a JPEG flatten blends in.</p>
+
+  <h5 style="margin-top:28px;">Flow timing &amp; reordering</h5>
+  <ul class="bullets">
+    <li><strong>Day 0 + no Time-delay block</strong> between trigger and the email = fires within ~5 minutes of the trigger. Pop-up signup → Welcome Email #1 is effectively instant.</li>
+    <li>Drag-drop reordering of flow cards is fragile under automation — Wait blocks pile up on one side and drop off the other. Ask the user to drag manually (30 seconds), or swap the <em>content</em> (subject + preview + HTML) in place. Functional swap, action positions and day cadence intact.</li>
+  </ul>
+
+  <div class="note-box" style="margin-top:24px;">
+    <span class="label">Brand library URLs</span>
+    <p>The reliable, public pattern for the Klaviyo brand library is <code>https://d3k81ch9hvuctc.cloudfront.net/company/R2LGSi/images/&#123;UUID&#125;.&#123;ext&#125;</code>. Anything uploaded shows up under that path and can be referenced directly in email HTML.</p>
+  </div>
+
+  <!-- 12 · LIQUID (DJANGO) -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 12 · Klaviyo Liquid is Django, not Shopify</h2>
+  <p style="max-width:760px;">Klaviyo's template engine is <strong>Django-based</strong>. Several familiar Shopify-Liquid tags simply don't exist in Klaviyo and cause the <em>"Email content will not render: Invalid template tag"</em> banner. These are the four that bit us in production.</p>
+  <table class="spec" style="margin-top:18px;">
+    <thead><tr><th>Don't write</th><th>Write instead</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">{% unless cond %}…{% endunless %}</td><td class="mono">{% if not cond %}…{% endif %}</td><td><code>unless</code> isn't a registered Django tag — render hard-fails.</td></tr>
+      <tr><td class="mono">{{ a|default:b|default:c }}</td><td class="mono">Single field reference</td><td>Chained <code>default:</code> with variable arguments breaks the parser.</td></tr>
+      <tr><td class="mono">style="margin:{% if x %}0{% else %}18px{% endif %};"</td><td>Move the conditional outside the element (a separate spacer row).</td><td>Liquid embedded inside HTML attribute values is fragile; most common silent-preview-failure cause.</td></tr>
+      <tr><td class="mono">{{ item.image.src }} · {{ item.product.image_url }}</td><td class="mono">{{ item.product.images.0.src }}</td><td>Those fields don't exist on Checkout Started events; raw event has <code>product.images[]</code> (an array). Django dot-index <code>.0.src</code> gets the first image.</td></tr>
+    </tbody>
+  </table>
+  <div class="killed-box" style="margin-top:18px;">
+    <span class="label">The unsubscribe token is the one Shopify-style tag that works</span>
+    <p><code>{% unsubscribe_link %}</code> inside an <code>href</code> is correct (see section 06). Everything else stays Django.</p>
+  </div>
+
+  <!-- 13 · CART LIQUID -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 13 · Cart Liquid for Checkout Started</h2>
+  <p style="max-width:760px;">Verified field paths for the Shopify <em>Checkout Started</em> event in Klaviyo (the trigger for the checkout abandonment flow).</p>
+  <table class="spec" style="margin-top:18px;">
+    <thead><tr><th>What</th><th>Path</th></tr></thead>
+    <tbody>
+      <tr><td>Loop array</td><td class="mono">event.extra.line_items</td></tr>
+      <tr><td>Cart recovery URL</td><td class="mono">event.extra.responsive_checkout_url</td></tr>
+      <tr><td>Product title</td><td class="mono">item.product.title</td></tr>
+      <tr><td>First product image</td><td class="mono">item.product.images.0.src</td></tr>
+      <tr><td>Variant title (Size / Color)</td><td class="mono">item.variant.title</td></tr>
+      <tr><td>Quantity</td><td class="mono">item.quantity</td></tr>
+      <tr><td>Line price (already total for that line)</td><td class="mono">item.line_price</td></tr>
+    </tbody>
+  </table>
+  <div class="note-box" style="margin-top:18px;">
+    <span class="label">Cart loop pattern (drop straight in)</span>
+    <pre style="font-family:'Roboto Mono',monospace; font-size:11px; line-height:1.6; background:#FCFAF7; padding:18px; overflow-x:auto; white-space:pre-wrap;">{% for item in event.extra.line_items %}
+  {% if not forloop.first %}
+    &lt;table&gt;&lt;tr&gt;&lt;td style="height:18px;"&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+  {% endif %}
+  &lt;a href="{{ event.extra.responsive_checkout_url }}"&gt;
+    &lt;img src="{{ item.product.images.0.src }}" alt="{{ item.product.title }}"&gt;
+    &lt;div&gt;{{ item.product.title }}&lt;/div&gt;
+    {% if item.variant.title %}
+      &lt;div&gt;{{ item.variant.title }}&lt;/div&gt;
+    {% endif %}
+    &lt;div&gt;Qty {{ item.quantity }}&lt;/div&gt;
+    &lt;div&gt;${{ item.line_price }}&lt;/div&gt;
+  &lt;/a&gt;
+{% endfor %}</pre>
+  </div>
+  <p style="max-width:760px; margin-top:14px;">No <code>floatformat</code> needed — raw values render as <code>1</code> and <code>202</code>. Place the inter-item spacer as a separate <code>&lt;table&gt;</code> inside the <code>{% if not forloop.first %}</code>, <strong>never</strong> as Liquid inside a <code>style="margin:…"</code> attribute.</p>
+
+  <!-- 14 · PREVIEW & TEST -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 14 · Preview &amp; Test verification</h2>
+  <p style="max-width:760px;">The Preview Email dialog has misled a generation of marketers. Defaults that surprise people:</p>
+  <table class="spec" style="margin-top:18px;">
+    <thead><tr><th>Setting</th><th>Default</th><th>What it actually does</th></tr></thead>
+    <tbody>
+      <tr><td>Radio: <em>Show directly in Klaviyo</em></td><td><strong>Selected</strong></td><td>Renders in the right pane. <strong>No email is sent.</strong> Easy to misread as "preview sent" — but no inbox delivery happens.</td></tr>
+      <tr><td>Radio: <em>Send as an email</em></td><td>Not selected</td><td>This is what actually delivers a test to the address you type.</td></tr>
+      <tr><td><em>Send To</em> field</td><td>Pre-filled with your login email</td><td>Edit it before sending.</td></tr>
+      <tr><td><em>Apply smart sending and send time optimization</em> (Advanced Options)</td><td>Varies</td><td>If checked AND the recipient got any email in the last hour, the test is <strong>silently skipped</strong>. Toggle off for tests.</td></tr>
+    </tbody>
+  </table>
+  <div class="killed-box" style="margin-top:18px;">
+    <span class="label">When the toast lies</span>
+    <p>Klaviyo's <em>"A preview email is on its way"</em> can appear even when no email leaves the queue. Three silent killers:</p>
+    <ul class="bullets">
+      <li><strong>Liquid syntax error in the HTML</strong> — render fails server-side, no event logged. Most often <code>{% unless %}</code> or chained <code>|default:</code>.</li>
+      <li><strong>Preview radio was set to "Show directly in Klaviyo"</strong> — no real send happened.</li>
+      <li><strong>Per-message smart sending checked</strong> AND recipient got mail in last hour — silently skipped.</li>
+    </ul>
+  </div>
+  <h5 style="margin-top:24px;">Verification protocol</h5>
+  <ol class="bullets">
+    <li>Select <em>Send as an email</em>, then expand Advanced Options and uncheck smart sending.</li>
+    <li>Wait 60 seconds after firing.</li>
+    <li>Check the recipient's inbox <strong>and</strong> spam / Promotions tab.</li>
+    <li>If nothing arrives, look for an <em>"Email content will not render"</em> banner under the message tile in the flow canvas — that's the Liquid error.</li>
+    <li>If even unrelated flows aren't delivering, escalate to Klaviyo support — it's account-side, not template-side.</li>
+  </ol>
+
+  <!-- 15 · HERO OVERLAY -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 15 · Hero overlay · the reliable pattern</h2>
+  <p style="max-width:760px;"><code>position:absolute</code> over an <code>&lt;img&gt;</code> works in Gmail and Apple Mail but Outlook strips it, and Klaviyo's preview renderer is inconsistent. The <strong>only reliable cross-client</strong> text-on-image pattern in email is <code>&lt;td background&gt;</code> with <em>exact</em> cell dimensions matching the image aspect ratio, plus a VML <code>&lt;v:rect&gt;</code> for Outlook.</p>
+  <h5 style="margin-top:24px;">Step 1 · Fetch the natural image dimensions</h5>
+  <p style="max-width:760px;">Don't guess. Open the cloudfront image URL in a Chrome tab and read it:</p>
+  <pre style="font-family:'Roboto Mono',monospace; font-size:11px; line-height:1.6; background:#FCFAF7; padding:18px; overflow-x:auto;">const img = document.querySelector('img');
+JSON.stringify(&#123; w: img.naturalWidth, h: img.naturalHeight,
+                 ratio: (img.naturalHeight/img.naturalWidth).toFixed(4) &#125;);</pre>
+  <p style="max-width:760px; margin-top:10px;">For a 600px-wide email, cell height = <code>600 × (naturalHeight ÷ naturalWidth)</code>. A 1230 × 1606 hero becomes a 600 × 784 cell with zero crop.</p>
+  <h5 style="margin-top:24px;">Step 2 · Use the td-background pattern</h5>
+  <pre style="font-family:'Roboto Mono',monospace; font-size:11px; line-height:1.6; background:#FCFAF7; padding:18px; overflow-x:auto;">&lt;td background="&lt;IMG_URL&gt;" bgcolor="#F5F0EC" class="es-hero"
+    style="background-color:#F5F0EC;
+           background-image:url('&lt;IMG_URL&gt;');
+           background-position:center top;
+           background-repeat:no-repeat;
+           background-size:cover;
+           height:784px;"
+    valign="top"&gt;
+  &lt;!--[if gte mso 9]&gt;
+  &lt;v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"
+          style="width:600px;height:784px;"&gt;
+    &lt;v:fill type="frame" src="&lt;IMG_URL&gt;" color="#F5F0EC"/&gt;
+    &lt;v:textbox inset="0,0,0,0"&gt;
+  &lt;![endif]--&gt;
+  &lt;!-- text content table here, valign="top" or "bottom" --&gt;
+  &lt;!--[if gte mso 9]&gt;&lt;/v:textbox&gt;&lt;/v:rect&gt;&lt;![endif]--&gt;
+&lt;/td&gt;</pre>
+  <p style="max-width:760px; margin-top:12px;">Mobile <code>@media</code>: override <code>.es-hero &#123; height: &lt;proportional-value&gt; !important; &#125;</code> so the cell stays at the same ratio on phone. For our 1230×1606 hero at ~360px width, that's 470px.</p>
+
+  <!-- 16 · FLOW SETUP -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 16 · Flow setup checklist</h2>
+  <h5 style="margin-top:18px;">Trigger panel</h5>
+  <ul class="bullets">
+    <li><strong>Re-entry:</strong> "Allow re-entry after a time period" with <strong>30 days</strong>. Default is plain "Allow re-entry" which lets a customer enter the flow on every Checkout Started — duplicate sequences in parallel.</li>
+    <li><strong>Profile filter:</strong> <code>Placed Order zero times since starting this flow</code>. Auto-cancels remaining emails if the customer completes the purchase mid-flow. In the Trigger panel under <em>Profile filters</em> (separate from Trigger filters).</li>
+  </ul>
+  <h5 style="margin-top:24px;">Each email message tile</h5>
+  <ul class="bullets">
+    <li>Subject + preview text match the deck.</li>
+    <li>Sender: <code>EASTEAM</code> / <code>info@easteamny.com</code>. "Use as reply-to" checked.</li>
+    <li><strong>Skip recently emailed profiles (Smart Sending): UNCHECKED</strong>. The account-level Smart Sending Period default of 1 hour is unrelated to previews; this per-message toggle is what causes silently-skipped real sends.</li>
+    <li>UTM Tracking checked.</li>
+    <li>Status: <strong>Live</strong> (not Draft, not Manual) before going live.</li>
+  </ul>
+  <div class="killed-box" style="margin-top:18px;">
+    <span class="label">Activation footgun</span>
+    <p>Setting <em>any one</em> email in a draft flow to Live flips the <em>entire flow</em> to Live immediately, with the congrats modal. If other emails are still Draft, those steps silently skip on real triggers. The clean way to activate everything in one shot: top-right <strong>Update status → Flow status → Live → Save</strong>. That sets every message in the flow to Live at once.</p>
+  </div>
+  <h5 style="margin-top:24px;">Conflict prevention · two flows on the same trigger</h5>
+  <p style="max-width:760px;">If you're replacing an existing live flow (e.g. an older Social Scout checkout abandonment) with a new EASTEAM version, <strong>draft the old flow FIRST</strong>, then activate the new one. Otherwise both fire on every Checkout Started event and customers receive duplicate sequences.</p>
+  <p style="max-width:760px;">To draft an old flow: open it → top-right <strong>Update status → Flow status → Draft → Save</strong>. The toast confirms <em>"All configured actions in your flow are now set to Draft."</em></p>
+
+  <!-- 17 · CHECKOUT ABANDONMENT RECIPE -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 17 · Checkout Abandonment · 3-email recipe</h2>
+  <p style="max-width:760px;">Replaces older Social-Scout-style abandonment. Trigger is the Shopify <code>Checkout Started</code> event. Total length ~3 days.</p>
+  <div class="asset-table" style="margin-top:16px;">
+    <div class="row"><div class="k">Trigger</div><div class="v">Checkout Started · Wait 1 hour · Email 1</div></div>
+    <div class="row"><div class="k">After Email 1</div><div class="v">Wait 1 day · Email 2</div></div>
+    <div class="row"><div class="k">After Email 2</div><div class="v">Wait 2 days · Email 3 · End</div></div>
+  </div>
+  <div class="recipes" style="margin-top:24px;">
+    <div class="rcp">
+      <div class="rn">01</div>
+      <h5>Email 1 · "You left something behind 👀"</h5>
+      <p>Headline above hero, full-bleed hero photo, solid CTA <code>COMPLETE MY CHECKOUT →</code>, brand separator, <code>HEY LOVE</code> eyebrow, soft body line, functional cart Liquid card (image left / info right), second CTA <code>RETURN TO YOUR CART →</code>. Preview text: <em>Your cart is still waiting, love. Pick up right where you left off.</em></p>
+    </div>
+    <div class="rcp">
+      <div class="rn">02</div>
+      <h5>Email 2 · "Don't just trust us. Trust them."</h5>
+      <p>Headline above hero, hero photo, <strong>outline</strong> CTA <code>RETURN TO YOUR CART →</code> as the softer first ask, separator, functional cart card, solid CTA <code>COMPLETE MY CHECKOUT →</code>, pink separator, eyebrow <code>FROM WOMEN WHO BOUGHT IT</code>, three reviews in alternating layout (img-left / text-left / img-left). All review photos square 240×240 via <code>object-fit:cover</code>. On mobile every review stacks image-on-top, which requires the <code>dir="rtl"</code> trick on review 2 (see section 18). No "HEY LOVE" body section, no founder sign-off.</p>
+    </div>
+    <div class="rcp">
+      <div class="rn">03</div>
+      <h5>Email 3 · "One last thing before your cart goes"</h5>
+      <p>Headline overlaid top-right on hero (use section 15 pattern), hero image, solid CTA <code>CLAIM 10% &amp; CHECK OUT →</code>, brand separator, <strong>pink-outline discount code box</strong> (clickable, code <code>COMEBACK10</code>, copy: <em>Applies automatically at checkout · Expires in 24 hours</em>), cart Liquid card, single solid end CTA. Discount link: <code>https://easteamny.com/discount/COMEBACK10?redirect=%2Fcheckout</code>.</p>
+    </div>
+  </div>
+  <div class="note-box" style="margin-top:20px;">
+    <span class="label">Universal across all 3</span>
+    <ul class="bullets">
+      <li>No em dashes anywhere.</li>
+      <li>Two CTAs minimum per email (one mobile-priority above the fold, one at end).</li>
+      <li>Cart Liquid uses the field paths in section 13.</li>
+      <li>Long footer disclaimer with confidentiality clause, address wrapped in a Google Maps link (see section 19).</li>
+    </ul>
+  </div>
+
+  <!-- 18 · MOBILE STACK ORDER · alternating layouts -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 18 · Mobile stack order with desktop alternation</h2>
+  <p style="max-width:760px;">When feature blocks alternate (img-left then text-left then img-left on desktop) but ALL should stack image-on-top on mobile, the text-LEFT row needs a trick: put the image cell <strong>first in DOM order</strong>, then use <code>dir="rtl"</code> on that row's inner table to flip the cells horizontally on desktop. Inner <code>&lt;td&gt;</code>s get <code>dir="ltr"</code> so the text inside doesn't mirror.</p>
+  <pre style="font-family:'Roboto Mono',monospace; font-size:11px; line-height:1.6; background:#FCFAF7; padding:18px; overflow-x:auto;">&lt;table dir="rtl" role="presentation" width="100%"&gt;
+  &lt;tr&gt;
+    &lt;td class="es-stack es-review-img" dir="ltr" width="240"&gt;…image…&lt;/td&gt;
+    &lt;td class="es-stack es-review-text" dir="ltr"&gt;…text…&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+  <p style="max-width:760px; margin-top:12px;">Desktop: <code>dir="rtl"</code> flips visual order — image renders on the right even though it's first in DOM. Mobile: <code>.es-stack</code> turns both cells <code>display:block; width:100%</code>; vertical stacking follows DOM order so image lands on top.</p>
+  <h5 style="margin-top:24px;">Square crop · uniform photos from mismatched sources</h5>
+  <pre style="font-family:'Roboto Mono',monospace; font-size:11px; line-height:1.6; background:#FCFAF7; padding:18px; overflow-x:auto;">&lt;img width="240" height="240" src="…"
+     style="display:block;width:240px;height:240px;
+            object-fit:cover;object-position:center;border:0;"&gt;
+
+/* Mobile media query · responsive square */
+.es-review-img img &#123;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+&#125;</pre>
+
+  <!-- 19 · SHOPIFY DISCOUNT INTEGRATION -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 19 · Shopify discount integration (recovery flows)</h2>
+  <p style="max-width:760px;">When a flow needs a discount code (e.g. <code>COMEBACK10</code> in Email 3), two steps:</p>
+  <ol class="bullets">
+    <li><strong>Create</strong> via Shopify MCP <code>create-discount</code> — title, code, percentage, <code>customerEligibility:"all_customers"</code>, <code>startsAt</code> (now), no <code>endsAt</code>.</li>
+    <li><strong>Update combinations</strong> via GraphQL mutation <code>discountCodeBasicUpdate</code> so the code <strong>stacks</strong> with any existing codes the customer already has in their cart. Without this, Klaviyo's auto-apply URL either silently no-ops or triggers a "discounts can't combine" prompt — either way conversion dies.</li>
+  </ol>
+  <pre style="font-family:'Roboto Mono',monospace; font-size:11px; line-height:1.6; background:#FCFAF7; padding:18px; overflow-x:auto;">mutation &#123;
+  discountCodeBasicUpdate(
+    id: "gid://shopify/DiscountCodeNode/&lt;NODE_ID&gt;",
+    basicCodeDiscount: &#123;
+      combinesWith: &#123;
+        orderDiscounts: true
+        productDiscounts: true
+        shippingDiscounts: true
+      &#125;
+    &#125;
+  ) &#123;
+    codeDiscountNode &#123; id &#125;
+    userErrors &#123; field message &#125;
+  &#125;
+&#125;</pre>
+  <p style="max-width:760px; margin-top:12px;">Discount URL pattern for recovery: <code>https://easteamny.com/discount/&#123;CODE&#125;?redirect=%2Fcheckout</code> sends them straight back to their cart with the code auto-applied.</p>
+
+  <!-- 20 · FOOTER · long disclaimer + maps link -->
+  <h2 style="margin-top:64px; margin-bottom:14px;">— 20 · Locked footer additions</h2>
+  <p style="max-width:760px;">Two tweaks added on top of the existing locked footer:</p>
+  <h5 style="margin-top:18px;">Address line wrapped in Google Maps</h5>
+  <pre style="font-family:'Roboto Mono',monospace; font-size:11px; line-height:1.6; background:#FCFAF7; padding:18px; overflow-x:auto;">&lt;a href="https://maps.google.com/?q=100+East+53rd+St+New+York+NY+10022"
+   style="text-decoration:none;" target="_blank"&gt;
+  &lt;div&gt;EASTEAM &nbsp;&middot;&nbsp; 100 E 53rd St &nbsp;&middot;&nbsp; New York, NY 10002&lt;/div&gt;
+&lt;/a&gt;</pre>
+  <h5 style="margin-top:24px;">Long disclaimer (use verbatim)</h5>
+  <div class="note-box" style="margin-top:8px;">
+    <p style="font-size:13px; line-height:1.7;">DISCLAIMER &nbsp;&middot;&nbsp; This email and any attachments are intended solely for the named recipient(s) and may contain confidential or proprietary information. Unauthorized use, disclosure, copying, or distribution is not permitted. If you have received this email in error, please delete it and notify the sender immediately. You may <a href="#" style="color:var(--pink); text-decoration:underline;">unsubscribe</a> at any time. Any views or opinions presented are solely those of the author and do not necessarily represent EASTEAM.</p>
+  </div>
+
+  <div class="pull-quote" style="margin-top:72px;">
+    Two fonts.<br/>
+    <span style="color:var(--pink);">No dashes.</span><br/>
+    Mobile first.
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="email-playbook.html">← Email Playbook</a> · <a href="../index.html">↑ Back to top</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

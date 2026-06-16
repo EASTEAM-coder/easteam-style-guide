@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon-fb" clip-path="url(#clip0_0_6)">
+<path id="Vector" d="M19 9.55542C19 4.275 14.7488 0 9.5 0C4.25125 0 0 4.275 0 9.55542C0 14.3292 3.47542 18.2875 8.01958 19V12.3183H5.605V9.55542H8.01167V7.44958C8.01167 5.05875 9.42875 3.73667 11.5979 3.73667C12.635 3.73667 13.7196 3.91875 13.7196 3.91875V6.27H12.5242C11.3446 6.27 10.9725 7.00625 10.9725 7.76625V9.55542H13.6008L13.1813 12.3183H10.9725V19C15.5246 18.2875 19 14.3292 19 9.55542Z" fill="var(--fill-0, #F9EAEC)"/>
+</g>
+<defs>
+<clipPath id="clip0_0_6">
+<rect width="19" height="19" fill="white"/>
+</clipPath>
+</defs>
+</svg>

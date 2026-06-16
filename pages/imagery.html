@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Imagery — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .cat-split {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 32px;
+    margin-bottom: 80px;
+  }
+  .cat-split .b { transform: translateY(50px); }
+  @media (max-width: 900px) {
+    .cat-split { grid-template-columns: 1fr; }
+    .cat-split .b { transform: none; }
+  }
+  .cat-card {
+    border: 1px solid var(--rule);
+    padding: 36px 32px;
+    min-height: 360px;
+    display: flex; flex-direction: column;
+  }
+  .cat-card .lbl {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 14px;
+  }
+  .cat-card .nm {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 48px; line-height: 1; color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .cat-card .nm .pop { color: var(--pink); }
+  .cat-card p { font-size: 14px; line-height: 1.65; color: var(--ink-soft); }
+  .cat-card .specs {
+    margin-top: auto; padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; color: var(--ink-soft);
+    line-height: 1.8;
+  }
+  .cat-card .specs .k { color: var(--pink-dusty); text-transform: uppercase; letter-spacing: 0.16em; font-size: 9px; margin-right: 6px; }
+  .pose-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin: 24px 0 40px;
+  }
+  .pose {
+    aspect-ratio: 2 / 3;
+    background: rgba(245, 240, 236, 0.04);
+    border: 1px solid var(--rule);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-end;
+    padding: 18px 12px;
+    text-align: center;
+  }
+  .pose .pn {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 44px; line-height: 1; color: var(--pink-dusty);
+    margin-bottom: 8px;
+  }
+  .pose .pd {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-soft);
+  }
+  @media (max-width: 900px) { .pose-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  /* category table */
+  .cat-table {
+    width: 100%; border-collapse: collapse;
+    margin-top: 16px;
+  }
+  .cat-table th, .cat-table td {
+    text-align: left; padding: 14px 12px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .cat-table th {
+    font-family: 'Roboto Mono', monospace;
+    text-transform: uppercase; font-size: 10px;
+    letter-spacing: 0.22em; color: var(--pink-dusty);
+    font-weight: 500;
+  }
+  .cat-table td { color: var(--ink-soft); font-size: 13px; line-height: 1.5; }
+  .cat-table td.name {
+    color: var(--ink); font-weight: 500;
+    font-family: 'Jost', sans-serif; font-size: 14px;
+  }
+  .cat-table td .ord {
+    font-family: 'Roboto Mono', monospace;
+    color: var(--pink-dusty); font-size: 10px;
+    letter-spacing: 0.18em; margin-right: 8px;
+  }
+  .cat-table td.ar {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px; color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  .cat-table td .type-chip {
+    display: inline-block;
+    padding: 2px 8px; border-radius: 2px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .cat-table td .type-chip.img { background: rgba(249,221,225,0.12); color: var(--pink); }
+  .cat-table td .type-chip.vid { background: rgba(196,144,153,0.18); color: var(--pink-dusty); }
+  .cat-table td .type-chip.both { background: rgba(142,79,88,0.30); color: #F2C6CC; }
+
+  /* export specs */
+  .export-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 24px 0 56px;
+    border: 1px solid var(--rule);
+  }
+  .export-grid .e {
+    padding: 20px 22px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .export-grid .e:nth-child(3n) { border-right: none; }
+  .export-grid .e .ek {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 6px;
+  }
+  .export-grid .e .ev {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px; color: var(--ink); line-height: 1.5;
+  }
+  .export-grid .e .ev .note {
+    color: var(--ink-muted); font-size: 11px;
+    display: block; margin-top: 2px;
+  }
+  @media (max-width: 900px) {
+    .export-grid { grid-template-columns: 1fr 1fr; }
+    .export-grid .e:nth-child(3n) { border-right: 1px solid var(--rule); }
+    .export-grid .e:nth-child(2n) { border-right: none; }
+  }
+  @media (max-width: 600px) {
+    .export-grid { grid-template-columns: 1fr; }
+    .export-grid .e { border-right: none; }
+  }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="voice.html">← Voice</a>
+      <a href="buttons.html">Next →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">07</span>
+    <div class="left">
+      <span class="eyebrow">Section 07</span>
+      <h1 class="display">Imagery.</h1>
+    </div>
+    <div class="right">
+      <p>Soft natural light. Real skin. Real fabric. <em>Composed, not loud.</em> Catalog runs at <em>2:3</em>. Five poses minimum. Color accuracy is non-negotiable.</p>
+      <p style="margin-top:14px; font-size:14px;"><a href="https://www.notion.so/362578efc99881c3ad31ffb34ac06abc" target="_blank" class="dusty-chip" style="text-decoration:none;">→ Content Production Guidebook</a></p>
+    </div>
+  </div>
+
+  <h2>The two categories — at a glance</h2>
+  <div class="cat-split">
+    <div class="cat-card a">
+      <div class="lbl">Category A</div>
+      <div class="nm">Catalog<br/><span class="pop">/ Hero.</span></div>
+      <p>Clean studio cutouts on transparent or pure Page Black. The product is the subject. Used on PDP, line sheets, ads, lookbooks. The image that sells.</p>
+      <div class="specs">
+        <span class="k">Ratio</span> 2:3 final <br>
+        <span class="k">Crops</span> 4:5 · 1:1 · 3:4 <br>
+        <span class="k">Resolution</span> 2667 × 4000 @ 300 DPI <br>
+        <span class="k">Format</span> JPG (sRGB) + RAW <br>
+        <span class="k">BG</span> Transparent or #0A0807
+      </div>
+    </div>
+    <div class="cat-card b">
+      <div class="lbl">Category B</div>
+      <div class="nm">Lifestyle<br/><span class="pop">/ Filler.</span></div>
+      <p>On-body, in-context, off-the-cuff. Used on social, stories, BTS reels, blog. Looser framing, real environments, candid energy. <em>Lifestyle only on Instagram Story (5/7 rule).</em></p>
+      <div class="specs">
+        <span class="k">Ratio</span> 4:5 + 1:1 + 9:16 <br>
+        <span class="k">Resolution</span> 1080p+ <br>
+        <span class="k">BG</span> Real environment <br>
+        <span class="k">Mood</span> Candid, lived-in <br>
+        <span class="k">Edits</span> Minimal
+      </div>
+    </div>
+  </div>
+
+  <h2>Full content categories — 12 in production</h2>
+  <p style="max-width:680px; margin-bottom:16px;">Every image and video EASTEAM produces falls into one of these. Each row in the guidebook has a full spec sheet — click out to Notion for the deep-dive.</p>
+
+  <table class="cat-table">
+    <thead>
+      <tr><th>Category</th><th>Type</th><th>Aspect Ratio</th><th>Where it lives</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="name"><span class="ord">01</span> Catalog — Ghost (Flat Product)</td><td><span class="type-chip img">Image</span></td><td class="ar">4:5 + 1:1</td><td>Ecom / PDP</td></tr>
+      <tr><td class="name"><span class="ord">02</span> Catalog — Model</td><td><span class="type-chip img">Image</span></td><td class="ar">2:3 final · 4:5 + 1:1 + 3:4 crops</td><td>Ecom / PDP</td></tr>
+      <tr><td class="name"><span class="ord">03</span> Catalog — Post-Pro SOP (Model Cutouts)</td><td><span class="type-chip img">Image</span></td><td class="ar">2:3 (2667 × 4000)</td><td>Ecom / PDP</td></tr>
+      <tr><td class="name"><span class="ord">04</span> Campaign / Lookbook</td><td><span class="type-chip img">Image</span></td><td class="ar">4:5 + 3:4 + 16:9</td><td>Homepage / IG Feed / Press</td></tr>
+      <tr><td class="name"><span class="ord">05</span> Lifestyle Stills</td><td><span class="type-chip img">Image</span></td><td class="ar">4:5 + 1:1 + 9:16</td><td>IG Feed / Story / Ads</td></tr>
+      <tr><td class="name"><span class="ord">06</span> EPV Stills (Extra Product View)</td><td><span class="type-chip img">Image</span></td><td class="ar">1:1 + 4:5</td><td>PDP gallery</td></tr>
+      <tr><td class="name"><span class="ord">07</span> EPV Lifestyle Cut Videos</td><td><span class="type-chip vid">Video</span></td><td class="ar">9:16 + 4:5</td><td>IG Reels / TikTok / Ads</td></tr>
+      <tr><td class="name"><span class="ord">08</span> UGC Videos</td><td><span class="type-chip vid">Video</span></td><td class="ar">9:16</td><td>Meta Ads / TikTok</td></tr>
+      <tr><td class="name"><span class="ord">09</span> Model Fitting Videos</td><td><span class="type-chip both">Both</span></td><td class="ar">9:16</td><td>Internal → Ads</td></tr>
+      <tr><td class="name"><span class="ord">10</span> Ad Video Edits (Meta / TikTok / Pinterest)</td><td><span class="type-chip vid">Video</span></td><td class="ar">9:16 (4:5 backup)</td><td>Meta / Pinterest / TikTok</td></tr>
+      <tr><td class="name"><span class="ord">11</span> Social Media Posts (IG Feed + Story)</td><td><span class="type-chip vid">Video</span></td><td class="ar">4:5 + 9:16</td><td>IG Feed + Story</td></tr>
+      <tr><td class="name"><span class="ord">12</span> BTS (Behind the Scenes)</td><td><span class="type-chip both">Both</span></td><td class="ar">9:16 native</td><td>Story / Reels / Archive</td></tr>
+    </tbody>
+  </table>
+
+  <h2 style="margin-top:80px;">Catalog deliverables — 5 poses minimum per look (2:3)</h2>
+  <p style="max-width:580px; margin-bottom:0;">Every model catalog look ships five poses at 2:3 final. Crops to 4:5, 1:1, and 3:4 are extracted from the same master file — no re-shoots.</p>
+  <div class="pose-grid">
+    <div class="pose"><div class="pn">01</div><div class="pd">Front · slight pose</div></div>
+    <div class="pose"><div class="pn">02</div><div class="pd">Side profile</div></div>
+    <div class="pose"><div class="pn">03</div><div class="pd">Back view</div></div>
+    <div class="pose"><div class="pn">04</div><div class="pd">Side view</div></div>
+    <div class="pose"><div class="pn">05</div><div class="pd">Full front</div></div>
+  </div>
+
+  <h2 style="margin-top:48px;">Lighting — the only on-set rule that matters</h2>
+  <div class="asym left-heavy">
+    <div>
+      <ul class="clean">
+        <li><strong>Light quality:</strong> soft, natural light. Avoid harsh shadows, blown highlights, or overly bright areas that distort fabric.</li>
+        <li><strong>Setup:</strong> minimum two sources — one front light to even the subject, one side or back light for depth and contour.</li>
+        <li><strong>Temperature:</strong> consistent across all lights. No mismatched tones, no post-production fixes.</li>
+        <li><strong>Color accuracy:</strong> non-negotiable. Skirt yellow on camera must equal the real skirt yellow. Pull the linesheet if unsure.</li>
+        <li><strong>Goal:</strong> show fabric, drape, and silhouette at their most refined — never let the lighting upstage the garment.</li>
+      </ul>
+    </div>
+    <div class="offset-r">
+      <div class="pull-quote" style="margin:0; font-size:clamp(36px, 5vw, 60px);">The garment is the subject. Not the <span style="color:var(--pink);">light.</span></div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:80px;">Export specs — master sheet</h2>
+  <p style="max-width:640px; margin-bottom:0;">The single source of truth for every file the team ships. Video defaults to Meta-standard; stills are 2:3 with JPG (sRGB) final + RAW archive.</p>
+  <div class="export-grid">
+    <div class="e"><div class="ek">Container</div><div class="ev">MP4</div></div>
+    <div class="e"><div class="ek">Video codec</div><div class="ev">H.264</div></div>
+    <div class="e"><div class="ek">Frame rate</div><div class="ev">30fps<span class="note">24fps · cinematic campaign only</span></div></div>
+    <div class="e"><div class="ek">Bitrate (1080p)</div><div class="ev">≥ 6 Mbps</div></div>
+    <div class="e"><div class="ek">Audio codec</div><div class="ev">AAC<span class="note">128 kbps stereo</span></div></div>
+    <div class="e"><div class="ek">Color profile</div><div class="ev">Rec. 709</div></div>
+    <div class="e"><div class="ek">Loudness</div><div class="ev">−14 LUFS<span class="note">Meta standard, integrated</span></div></div>
+    <div class="e"><div class="ek">BGM volume mix</div><div class="ev">−12 to −9 dB<span class="note">sits under voiceover / SFX</span></div></div>
+    <div class="e"><div class="ek">Max file size</div><div class="ev">4 GB hard<span class="note">target &lt; 100 MB</span></div></div>
+    <div class="e"><div class="ek">Still format</div><div class="ev">JPG (sRGB)<span class="note">+ RAW archive</span></div></div>
+    <div class="e"><div class="ek">Catalog ghost</div><div class="ev">2000 × 2500 min</div></div>
+    <div class="e"><div class="ek">Catalog model final</div><div class="ev">2667 × 4000<span class="note">@ 300 DPI · 2:3</span></div></div>
+    <div class="e"><div class="ek">Campaign</div><div class="ev">4000 × 5000 min</div></div>
+    <div class="e"><div class="ek">Color space</div><div class="ev">sRGB · web<span class="note">Adobe RGB · print</span></div></div>
+    <div class="e"><div class="ek">Naming</div><div class="ev">See Files &amp; Folders</div></div>
+  </div>
+
+  <div class="note-box">
+    <span class="label">Edits</span>
+    <p>Skin retouching flawless but natural. Slight saturation lift only. Body proportions can be lightly adjusted — never distorted. Background transparent or pure Page Black for catalog. Consistency across lighting, posing, and editing across the whole drop. <em>If the edit gets noticed, it's too much.</em></p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="buttons.html">Next · Buttons →</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

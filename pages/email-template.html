@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Universal Email Header &amp; Footer — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .preview-shell {
+    background: rgba(245,240,236,0.02);
+    border: 1px solid var(--rule);
+    padding: 32px;
+    margin: 24px 0 16px;
+  }
+  .preview-shell .pv-label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 16px;
+  }
+  .preview-frame {
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 24px 40px rgba(0,0,0,0.35);
+  }
+  .code-card {
+    margin-top: 18px;
+    border: 1px solid var(--rule);
+    background: rgba(245,240,236,0.02);
+    position: relative;
+  }
+  .code-card .code-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--rule);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .code-card .code-head .lhs { color: var(--pink-dusty); }
+  .code-card .code-head .rhs { color: var(--ink-muted); }
+  .code-card pre {
+    margin: 0;
+    padding: 20px 22px;
+    overflow-x: auto;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    white-space: pre;
+    max-height: 420px;
+  }
+  .code-card .copy-btn {
+    position: absolute;
+    top: 10px; right: 12px;
+    background: var(--bg);
+    border: 1px solid var(--rule-strong);
+    color: var(--pink);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 6px 12px; border-radius: 2px;
+    cursor: pointer;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .code-card .copy-btn:hover { border-color: var(--pink); color: var(--pink-dusty); }
+  .code-card .copy-btn.is-copied { color: var(--pink-dusty); border-color: var(--pink-dusty); }
+
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 16px 0 0;
+    border: 1px solid var(--rule);
+  }
+  .spec-grid .sc {
+    padding: 20px 22px;
+    border-right: 1px solid var(--rule);
+  }
+  .spec-grid .sc:last-child { border-right: none; }
+  .spec-grid .sc .k {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 8px;
+  }
+  .spec-grid .sc .v {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px; color: var(--ink); line-height: 1.55;
+  }
+  @media (max-width: 720px) {
+    .spec-grid { grid-template-columns: 1fr; }
+    .spec-grid .sc { border-right: none; border-bottom: 1px solid var(--rule); }
+  }
+
+  /* ============================================================
+     UNIVERSAL HEADER — live preview, scaled to fit
+     ============================================================ */
+  .hdr {
+    background: #F5F0EC;
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+  }
+  .hdr-wm {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 28px; line-height: 1; letter-spacing: 0;
+    color: #0A0807; text-transform: uppercase;
+    text-align: center;
+    padding: 44px 56px 0;
+  }
+  .hdr-tag {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 2.6px;
+    color: #D9A5AC; text-transform: uppercase;
+    text-align: center;
+    padding: 18px 56px 0;
+  }
+  .hdr-dot {
+    width: 5px; height: 5px;
+    background: #D9A5AC;
+    margin: 14px auto 0;
+  }
+  .hdr-hair {
+    height: 1px;
+    background: rgba(10,8,7,0.14);
+    margin: 13px 56px 0;
+  }
+
+  /* ============================================================
+     UNIVERSAL FOOTER — live preview
+     ============================================================ */
+  .ftr {
+    background: #0A0807;
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 48px 44px;
+    text-align: center;
+  }
+  .ftr-wm {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 32px; line-height: 1; letter-spacing: 1px;
+    color: #F9EAEC; text-transform: uppercase;
+  }
+  .ftr-tag {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 14px; color: #D9A5AC;
+    margin-top: 22px;
+  }
+  .ftr-socials {
+    margin-top: 24px;
+    display: flex; justify-content: center; gap: 24px;
+  }
+  .ftr-socials img { width: 19px; height: 19px; display: block; }
+  .ftr-addr {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 10px; letter-spacing: 1px;
+    color: #BFB0A9; margin-top: 24px;
+  }
+  .ftr-disc {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 9px; line-height: 1.6; letter-spacing: 0.5px;
+    color: #807570; max-width: 512px; margin: 28px auto 0;
+  }
+  .ftr-disc a { color: #D9A5AC; text-decoration: underline; }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="email.html">← Email</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">09b</span>
+    <div class="left">
+      <span class="eyebrow">Section 09 · Universal</span>
+      <h1 class="display">Email<br/>Header &amp; Footer.</h1>
+    </div>
+    <div class="right">
+      <p>The universal header and footer for every EASTEAM email. Locked from the <em>Film a Video</em> Klaviyo flow. Inline styles only. <em>Paste once at the top, once at the bottom. Don't redraw.</em></p>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       HEADER
+       ======================================================== -->
+  <h2 style="margin-bottom:14px;">— 01 · Universal Header</h2>
+  <p style="max-width:680px; margin-bottom:24px;">600px wide, Warm Ivory canvas (#F5F0EC). Staatliches wordmark at 28px, dusty-pink tagline + dot, hairline closer. Use at the very top of every email above the editorial region.</p>
+
+  <div class="preview-shell">
+    <div class="pv-label">— Live preview · 600px</div>
+    <div class="preview-frame">
+      <div class="hdr">
+        <div class="hdr-wm">EASTEAM</div>
+        <div class="hdr-tag">MADE TO LOVE YOU</div>
+        <div class="hdr-dot"></div>
+        <div class="hdr-hair"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spec-grid">
+    <div class="sc"><div class="k">Canvas</div><div class="v">#F5F0EC · Warm Ivory</div></div>
+    <div class="sc"><div class="k">Width</div><div class="v">600px · Height 142px</div></div>
+    <div class="sc"><div class="k">Wordmark</div><div class="v">Staatliches · 28px · #0A0807</div></div>
+    <div class="sc"><div class="k">Tagline</div><div class="v">Roboto Mono · 10px · +2.6px · #D9A5AC</div></div>
+    <div class="sc"><div class="k">Pink dot</div><div class="v">5×5px · #D9A5AC</div></div>
+    <div class="sc"><div class="k">Hairline</div><div class="v">488×1px · rgba(10,8,7,0.14)</div></div>
+  </div>
+
+  <div class="code-card">
+    <div class="code-head">
+      <span class="lhs">— Inline HTML · header.html</span>
+      <span class="rhs">copy → paste in Klaviyo</span>
+    </div>
+    <button type="button" class="copy-btn" data-copy="header">Copy</button>
+    <pre id="hdr-code">&lt;table role=&quot;presentation&quot; width=&quot;600&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot;
+  style=&quot;width:600px; max-width:600px; background:#F5F0EC; margin:0 auto;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; style=&quot;padding:44px 56px 0 56px;&quot;&gt;
+      &lt;div style=&quot;font-family:'Staatliches', Impact, sans-serif; font-size:28px; line-height:1;
+                  letter-spacing:0; color:#0A0807; text-transform:uppercase;&quot;&gt;EASTEAM&lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; style=&quot;padding:18px 56px 0 56px;&quot;&gt;
+      &lt;div style=&quot;font-family:'Roboto Mono', monospace; font-size:10px; line-height:1;
+                  letter-spacing:2.6px; color:#D9A5AC; text-transform:uppercase;&quot;&gt;MADE TO LOVE YOU&lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; style=&quot;padding:14px 0 0 0;&quot;&gt;
+      &lt;table role=&quot;presentation&quot; width=&quot;5&quot; height=&quot;5&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;
+             border=&quot;0&quot; style=&quot;background:#D9A5AC; line-height:5px; font-size:5px;&quot;&gt;
+        &lt;tr&gt;&lt;td style=&quot;height:5px; width:5px; line-height:5px; font-size:0;&quot;&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&quot;padding:13px 56px 0 56px;&quot;&gt;
+      &lt;div style=&quot;height:1px; line-height:1px; font-size:0; background:rgba(10,8,7,0.14);
+                  border-top:1px solid rgba(10,8,7,0.14);&quot;&gt;&amp;nbsp;&lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;&lt;td style=&quot;height:10px; line-height:10px; font-size:0;&quot;&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
+  </div>
+
+  <!-- ========================================================
+       FOOTER
+       ======================================================== -->
+  <h2 style="margin-top:96px; margin-bottom:14px;">— 02 · Universal Footer</h2>
+  <p style="max-width:680px; margin-bottom:24px;">600px wide, Page Black canvas (#0A0807). Staatliches wordmark, dusty-pink lowercase tagline, four social icons, address line, disclaimer with unsubscribe.</p>
+
+  <div class="preview-shell">
+    <div class="pv-label">— Live preview · 600px</div>
+    <div class="preview-frame">
+      <div class="ftr">
+        <a href="https://easteamny.com" target="_blank" style="text-decoration:none;">
+          <div class="ftr-wm">EASTEAM</div>
+        </a>
+        <a href="https://easteamny.com" target="_blank" style="text-decoration:none;">
+          <div class="ftr-tag">made to love you</div>
+        </a>
+        <div class="ftr-socials">
+          <a href="https://instagram.com/easteam_official" target="_blank"><img src="../assets/email/icons/ig.png" alt="Instagram" /></a>
+          <a href="https://www.facebook.com/p/Easteam-100093776396511/" target="_blank"><img src="../assets/email/icons/fb.png" alt="Facebook" /></a>
+          <a href="https://pinterest.com/easteam_official" target="_blank"><img src="../assets/email/icons/pn.png" alt="Pinterest" /></a>
+          <a href="https://tiktok.com/@easteam_official" target="_blank"><img src="../assets/email/icons/tt.png" alt="TikTok" /></a>
+        </div>
+        <a href="https://maps.google.com/?q=100+East+53rd+St+New+York+NY+10022" target="_blank" style="text-decoration:none;">
+          <div class="ftr-addr">EASTEAM &nbsp;·&nbsp; 100 E 53rd St &nbsp;·&nbsp; New York, NY 10002</div>
+        </a>
+        <div class="ftr-disc">
+          DISCLAIMER &nbsp;·&nbsp; This email and any attachments are intended solely for the named recipient(s) and may contain confidential or proprietary information. Unauthorized use, disclosure, copying, or distribution is not permitted. If you have received this email in error, please delete it and notify the sender immediately. You may
+          <a href="https://easteamny.com/unsubscribe" target="_blank">unsubscribe</a>
+          at any time. Any views or opinions presented are solely those of the author and do not necessarily represent EASTEAM.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spec-grid">
+    <div class="sc"><div class="k">Canvas</div><div class="v">#0A0807 · Page Black</div></div>
+    <div class="sc"><div class="k">Width</div><div class="v">600px · Height ~329px</div></div>
+    <div class="sc"><div class="k">Wordmark</div><div class="v">Staatliches · 32px · #F9EAEC</div></div>
+    <div class="sc"><div class="k">Tagline</div><div class="v">Jost Light · 14px · #D9A5AC · lowercase</div></div>
+    <div class="sc"><div class="k">Social icons</div><div class="v">19×19px · 24px gap · IG/FB/PN/TT</div></div>
+    <div class="sc"><div class="k">Address</div><div class="v">Jost Light · 10px · +1px · #BFB0A9</div></div>
+    <div class="sc"><div class="k">Disclaimer</div><div class="v">Jost Light · 9px · 1.6 LH · #807570 · max-width 512px</div></div>
+    <div class="sc"><div class="k">Unsubscribe</div><div class="v">Inline link inside disclaimer · #D9A5AC · underline</div></div>
+    <div class="sc"><div class="k">Padding</div><div class="v">48px top &amp; bottom · 44px sides</div></div>
+  </div>
+
+  <div class="code-card">
+    <div class="code-head">
+      <span class="lhs">— Inline HTML · footer.html</span>
+      <span class="rhs">copy → paste in Klaviyo</span>
+    </div>
+    <button type="button" class="copy-btn" data-copy="footer">Copy</button>
+    <pre id="ftr-code">&lt;table role=&quot;presentation&quot; width=&quot;600&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot;
+  style=&quot;width:600px; max-width:600px; background:#0A0807; margin:0 auto;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; style=&quot;padding:48px 44px 0 44px;&quot;&gt;
+      &lt;a href=&quot;https://easteamny.com&quot; target=&quot;_blank&quot; style=&quot;text-decoration:none;&quot;&gt;
+        &lt;div style=&quot;font-family:'Staatliches', Impact, sans-serif; font-size:32px; line-height:1;
+                    letter-spacing:1px; color:#F9EAEC; text-transform:uppercase;&quot;&gt;EASTEAM&lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; style=&quot;padding:22px 44px 0 44px;&quot;&gt;
+      &lt;a href=&quot;https://easteamny.com&quot; target=&quot;_blank&quot; style=&quot;text-decoration:none;&quot;&gt;
+        &lt;div style=&quot;font-family:'Jost', Helvetica, Arial, sans-serif; font-weight:300;
+                    font-size:14px; line-height:1; color:#D9A5AC;&quot;&gt;made to love you&lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; style=&quot;padding:24px 44px 0 44px;&quot;&gt;
+      &lt;table role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; align=&quot;center&quot;&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;padding:0 12px;&quot;&gt;&lt;a href=&quot;https://instagram.com/easteam_official&quot; target=&quot;_blank&quot;
+            &gt;&lt;img src=&quot;[IG-ICON-URL]&quot; alt=&quot;Instagram&quot; width=&quot;19&quot; height=&quot;19&quot;
+                  style=&quot;display:block; width:19px; height:19px; border:0;&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&quot;padding:0 12px;&quot;&gt;&lt;a href=&quot;https://www.facebook.com/p/Easteam-100093776396511/&quot; target=&quot;_blank&quot;
+            &gt;&lt;img src=&quot;[FB-ICON-URL]&quot; alt=&quot;Facebook&quot; width=&quot;19&quot; height=&quot;19&quot;
+                  style=&quot;display:block; width:19px; height:19px; border:0;&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&quot;padding:0 12px;&quot;&gt;&lt;a href=&quot;https://pinterest.com/easteam_official&quot; target=&quot;_blank&quot;
+            &gt;&lt;img src=&quot;[PN-ICON-URL]&quot; alt=&quot;Pinterest&quot; width=&quot;19&quot; height=&quot;19&quot;
+                  style=&quot;display:block; width:19px; height:19px; border:0;&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&quot;padding:0 12px;&quot;&gt;&lt;a href=&quot;https://tiktok.com/@easteam_official&quot; target=&quot;_blank&quot;
+            &gt;&lt;img src=&quot;[TT-ICON-URL]&quot; alt=&quot;TikTok&quot; width=&quot;19&quot; height=&quot;19&quot;
+                  style=&quot;display:block; width:19px; height:19px; border:0;&quot; /&gt;&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; style=&quot;padding:24px 44px 0 44px;&quot;&gt;
+      &lt;a href=&quot;https://maps.google.com/?q=100+East+53rd+St+New+York+NY+10022&quot; target=&quot;_blank&quot;
+         style=&quot;text-decoration:none;&quot;&gt;
+        &lt;div style=&quot;font-family:'Jost', sans-serif; font-weight:300; font-size:10px;
+                    letter-spacing:1px; color:#BFB0A9;&quot;&gt;EASTEAM &amp;nbsp;·&amp;nbsp; 100 E 53rd St &amp;nbsp;·&amp;nbsp; New York, NY 10002&lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td align=&quot;center&quot; style=&quot;padding:28px 44px 48px 44px;&quot;&gt;
+      &lt;div style=&quot;font-family:'Jost', sans-serif; font-weight:300; font-size:9px; line-height:1.6;
+                  letter-spacing:0.5px; color:#807570; max-width:512px;&quot;&gt;
+        DISCLAIMER &amp;nbsp;·&amp;nbsp; This email and any attachments are intended solely for the named
+        recipient(s) and may contain confidential or proprietary information. Unauthorized use,
+        disclosure, copying, or distribution is not permitted. If you have received this email in
+        error, please delete it and notify the sender immediately. You may
+        &lt;a href=&quot;https://easteamny.com/unsubscribe&quot; target=&quot;_blank&quot;
+           style=&quot;color:#D9A5AC; text-decoration:underline;&quot;&gt;unsubscribe&lt;/a&gt;
+        at any time. Any views or opinions presented are solely those of the author and do not
+        necessarily represent EASTEAM.
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+  </div>
+
+  <div class="note-box">
+    <span class="label">Before sending in production</span>
+    <p>Replace the four <code>[XX-ICON-URL]</code> placeholders with permanent image URLs (upload the icons in <code>/assets/email/icons/</code> to Klaviyo's image library or your CDN). The Figma asset URLs in <code>assets/email/footer.html</code> work for ~7 days only.</p>
+  </div>
+
+  <div class="killed-box">
+    <span class="label">Rules</span>
+    <p>Don't redraw. Don't substitute fonts. Don't change colors — even though <code>#D9A5AC</code> is on the retired list, it's preserved here exactly as designed in the original Klaviyo flow because the team approved this email visually. Don't shrink the wordmark below 24px. Don't drop the unsubscribe link from the disclaimer.</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="email.html">← Back to Email</a></span>
+  </footer>
+</div>
+
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+<script>
+  // Copy-to-clipboard for the two code blocks
+  document.querySelectorAll('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const which = btn.dataset.copy;
+      const pre = document.getElementById(which === 'header' ? 'hdr-code' : 'ftr-code');
+      const text = pre.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.classList.add('is-copied');
+        setTimeout(() => { btn.textContent = original; btn.classList.remove('is-copied'); }, 1600);
+      });
+    });
+  });
+</script>
+</body>
+</html>

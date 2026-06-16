@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Notification Emails — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .swatch-row { display:grid; grid-template-columns: repeat(5,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0 56px; }
+  .swatch { background:var(--bg); padding:22px 18px; }
+  .swatch .chip { height:56px; border-radius:6px; border:1px solid rgba(10,8,7,0.08); margin-bottom:14px; }
+  .swatch .nm { font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink); }
+  .swatch .hx { font-family:'Roboto Mono',monospace; font-size:10px; color:var(--ink-muted); margin-top:4px; }
+  .swatch .role { font-size:12px; line-height:1.5; color:var(--ink-soft); margin-top:8px; }
+  @media (max-width:900px){ .swatch-row { grid-template-columns:1fr 1fr; } }
+
+  .specbox { border:1px solid var(--rule); background:rgba(196,144,153,0.04); padding:24px 26px; margin:20px 0 40px; }
+  .specbox code { font-family:'Roboto Mono',monospace; font-size:12px; color:var(--pink-dusty); }
+  .specbox p { margin:0 0 10px; }
+  pre.code { background:var(--ink); color:#F5F0EC; padding:18px 20px; overflow-x:auto; font-family:'Roboto Mono',monospace; font-size:11px; line-height:1.6; border-radius:4px; margin:18px 0 40px; }
+
+  .qa { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:24px 0 56px; }
+  .qa .cell { background:var(--bg); padding:26px 24px; }
+  .qa .cell .lbl { font-family:'Roboto Mono',monospace; font-size:10px; letter-spacing:0.24em; text-transform:uppercase; color:var(--pink-dusty); margin-bottom:12px; }
+  .qa .cell p { font-size:13px; line-height:1.65; color:var(--ink-soft); margin:0 0 8px; }
+  @media (max-width:900px){ .qa { grid-template-columns:1fr; } }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="email.html">← Email</a>
+      <a href="social.html">Next →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">★</span>
+    <div class="left">
+      <span class="eyebrow">Featured · Shopify Transactional</span>
+      <h1 class="display">Notification<br/>Emails.</h1>
+    </div>
+    <div class="right">
+      <p>EASTEAM's full set of Shopify notification emails — <em>order confirmation, shipping confirmation, delivered, store credit issued, order refund, return request (received / approved / declined), order canceled, payment error, order edited, order invoice, shipping update, out for local delivery, return shipping instructions, and customer account welcome</em> — built as production Liquid in one brand system.</p>
+      <p style="margin-top:14px;">This page is the canonical reference for how we build, style, and ship them. The whole system is also packaged as the <em>shopify-notification-email</em> skill so a new session can pick up exactly where we left off. Everything below is the rulebook behind that skill.</p>
+    </div>
+  </div>
+
+  <!-- WORKFLOW -->
+  <h2>— 01 · The build workflow</h2>
+  <p style="max-width:760px;">Everything is generated from one Python source of truth. Never hand-edit the generated <code>.liquid</code> files, they get overwritten on every build.</p>
+  <div class="steps">
+    <div class="step"><div class="sn">01</div><div class="sd"><h5>Edit the builder</h5>
+      <p>All five emails live in <code>build_emails.py</code>. Shared header, footer, and HEAD CSS sit once at the top; each email body is a <code>MAIN_*</code> block; a <code>TEMPLATES</code> list wires filename, preheader text, UTM campaign, and pixel.</p></div></div>
+    <div class="step"><div class="sn">02</div><div class="sd"><h5>Build</h5>
+      <p>Run the builder. It writes the five <code>.liquid</code> files and prints a sanity table that balances every <code>if</code>/<code>endif</code>/<code>for</code>/<code>endfor</code>. Fix any mismatch before continuing.</p></div></div>
+    <div class="step"><div class="sn">03</div><div class="sd"><h5>Render &amp; screenshot</h5>
+      <p>Render to HTML with sample order data, then screenshot with Chromium and actually look at it. Zoom into fine details (corners, borders) to confirm pixels, never trust that the CSS "should" work.</p></div></div>
+    <div class="step"><div class="sn">04</div><div class="sd"><h5>Deliver</h5>
+      <p>Save the <code>.liquid</code> + HTML preview into <code>email-templates/</code> and hand over the links. Paste the Liquid into Shopify → Settings → Notifications. Send a real test before going live.</p></div></div>
+  </div>
+
+  <!-- PALETTE -->
+  <h2>— 02 · Email palette</h2>
+  <p style="max-width:760px;">Every email uses only these. Each color has one job.</p>
+  <div class="swatch-row">
+    <div class="swatch"><div class="chip" style="background:#F5F0EC;"></div><div class="nm">Cream</div><div class="hx">#F5F0EC</div><div class="role">Background, card fills</div></div>
+    <div class="swatch"><div class="chip" style="background:#0A0807;"></div><div class="nm">Page Black</div><div class="hx">#0A0807</div><div class="role">Body text, buttons, dark panels</div></div>
+    <div class="swatch"><div class="chip" style="background:#D9A5AC;"></div><div class="nm">Dusty Pink</div><div class="hx">#D9A5AC</div><div class="role">Labels, accents, borders, links</div></div>
+    <div class="swatch"><div class="chip" style="background:#F9EAEC;"></div><div class="nm">Blush Pink</div><div class="hx">#F9EAEC</div><div class="role">Button text on black, soft panels</div></div>
+    <div class="swatch"><div class="chip" style="background:#807570;"></div><div class="nm">Muted Grey</div><div class="hx">#807570</div><div class="role">Secondary / meta text</div></div>
+  </div>
+
+  <!-- TYPE -->
+  <h2>— 03 · Typography</h2>
+  <div class="specbox">
+    <p><strong>Jost</strong> — body copy. Weights 300 (default), 400, 500, 600. Body 13px / line-height 1.6; statements 22–24px.</p>
+    <p><strong>Arial</strong> — uppercase labels, eyebrows, button text. Bold, letter-spaced (0.14em buttons, 0.22–0.30em labels). Arial replaced Roboto Mono in emails because Roboto Mono rendered badly on the owner's Mac. Keep the same caps + letter-spacing treatment.</p>
+    <p><strong>Staatliches</strong> — wordmark only. In email the logo is a hosted PNG, not live text.</p>
+    <p><strong>Banned in email body:</strong> serif fonts, Italiana, Cormorant Garamond. Not brand fonts.</p>
+  </div>
+
+  <!-- HEADER FOOTER -->
+  <h2>— 04 · Header &amp; footer</h2>
+  <p style="max-width:760px;">Both are universal and defined once in the builder. Reuse them, never reinvent.</p>
+  <div class="qa">
+    <div class="cell"><div class="lbl">Header</div><p>Hosted black PNG logo, thin hairline rule beneath. Logo links to the shop with UTM.</p></div>
+    <div class="cell"><div class="lbl">Footer</div><p>Hosted pink PNG logo, tagline <strong>"MADE TO LOVE YOU" in ALL CAPS</strong>, small social icon row (IG, FB, TikTok, Pinterest), address, legal line. <strong>No unsubscribe link</strong> — these are transactional.</p></div>
+  </div>
+  <div class="specbox">
+    <p><strong>Hosted assets (Shopify Files CDN):</strong></p>
+    <p><code>EASTEAM_logo_black_…png</code> — header logo (black)</p>
+    <p><code>EASTEAM_logo_notification_email_footer_pink.png</code> — footer logo (pink)</p>
+    <p><code>facebook_2.png · instagram_2.png · tiktok_2.png · pinterest_2.png</code> — social icons</p>
+    <p style="margin-top:10px;">Use hosted PNGs, do not base64-inline (tried, abandoned) and do not use SVGs saved with a <code>.png</code> name.</p>
+  </div>
+
+  <!-- VOICE -->
+  <h2>— 05 · Voice &amp; copy rules</h2>
+  <div class="specbox">
+    <p>Cool girl, bougie, confident, direct, warm. Short sentences. Open with "Hey [name]." Use "Hey babe." in the Ambassador card.</p>
+    <p><strong>Never use:</strong> money, cheap, refund (as body voice), raw.</p>
+    <p><strong>No dashes anywhere</strong> (no em or en dash). Use commas or two sentences. Product names from Shopify data may contain dashes; that is data, not our copy.</p>
+  </div>
+
+  <!-- THE LIBRARY -->
+  <h2>— 06 · The email library</h2>
+  <p style="max-width:760px;">Sixteen emails, one system. Each is a <code>MAIN_*</code> block in <code>build_emails.py</code>. The first five are the originals; the rest were added to cover the full Shopify notification surface.</p>
+  <div class="steps">
+    <div class="step"><div class="sn">01</div><div class="sd"><h5>Order confirmation</h5>
+      <p>Hero (ORDER · CONFIRMED) → intro → Track-your-order button to the account → 3-step progress (Placed) → in-the-box line items → pricing → shipping / paid / note → 5% Rule panel → Ambassador card.</p></div></div>
+    <div class="step"><div class="sn">02</div><div class="sd"><h5>Shipping confirmation</h5>
+      <p>Hero (ON · THE WAY) → intro → Track-package button to the carrier URL (tracking number links to carrier too) → progress (Shipping) → shipped-via + shipped-items count + shipping-to → in-the-box → 5% Rule → Ambassador.</p></div></div>
+    <div class="step"><div class="sn">03</div><div class="sd"><h5>Delivered</h5>
+      <p>Hero (DELIVERED · ENJOY) → intro → progress (all complete) → delivered-to → your pieces → <em>review section</em> (fires Klaviyo Ready-to-review) → Ambassador card.</p></div></div>
+    <div class="step"><div class="sn">04</div><div class="sd"><h5>Store credit issued</h5>
+      <p>Credit card visual (1px Dusty Pink border, 25px radius) with amount, cardholder, expiry (auto one year out if blank) → Shop Now button (centered) → View Balance link beneath it → How It Works (3 steps). No promo panels, it is informational.</p></div></div>
+    <div class="step"><div class="sn">05</div><div class="sd"><h5>Order refund</h5>
+      <p>"Your refund is on the way" → store-credit flow (1-year validity) → items refunded → total refund (never hardcoded) → warm support link. No hard sell. Header never reminds them it's store credit.</p></div></div>
+    <div class="step"><div class="sn">06</div><div class="sd"><h5>Return request received</h5>
+      <p>Hero (RETURN · RECEIVED) → "your request is in, we're reviewing" → returned items with price per card → we'll email the moment there's an update. Reassurance, no action needed yet.</p></div></div>
+    <div class="step"><div class="sn">07</div><div class="sd"><h5>Return request approved</h5>
+      <p>Hero (RETURN · APPROVED) → self-ship vertical timeline (1 Pack · 2 Ship tracked + send us the tracking number · 3 Store credit in 3–5 business days) → bordered "Send your return to" address card → returned items. No label, customer self-ships.</p></div></div>
+    <div class="step"><div class="sn">08</div><div class="sd"><h5>Return request declined</h5>
+      <p>Empathy-first intro → kind general reason → keep-it / resell-it suggestion → EASTEAM20 code chip (links to <code>/discount/easteam20</code>) → testimonial-video Ambassador offer. Pink line divider, never a black band.</p></div></div>
+    <div class="step"><div class="sn">09</div><div class="sd"><h5>Order canceled</h5>
+      <p>Empathy-first intro (merged, no "any questions / thanks for understanding") → cancellation note → "before you go" testimonial freebie ("Keep it all, free." — film it, if we feature it the whole order is free). Send-your-video = survey, Continue = home.</p></div></div>
+    <div class="step"><div class="sn">10</div><div class="sd"><h5>Payment error</h5>
+      <p>"Your payment didn't go through, you haven't been charged" → bag saved → Return-to-cart button (UTM, points to <code>/cart</code>) → pick up where you left off. Calm, no blame.</p></div></div>
+    <div class="step"><div class="sn">11</div><div class="sd"><h5>Order edited</h5>
+      <p>"We've updated the items on your order" → updated line items + full breakdown → shipping address. Reflects Shopify order-edit changes.</p></div></div>
+    <div class="step"><div class="sn">12</div><div class="sd"><h5>Order invoice</h5>
+      <p>"You're almost there, a quick payment completes your order" → breakdown → Pay-now button to the payment collection URL. For draft orders / outstanding balances.</p></div></div>
+    <div class="step"><div class="sn">13</div><div class="sd"><h5>Shipping update</h5>
+      <p>"There's a fresh update on your order" → follow it live → 5% Rule + Ambassador (replaced the old "new arrivals" block).</p></div></div>
+    <div class="step"><div class="sn">14</div><div class="sd"><h5>Out for local delivery</h5>
+      <p>"Almost at your door" → out for delivery, headed your way → progress + items. Short and warm.</p></div></div>
+    <div class="step"><div class="sn">15</div><div class="sd"><h5>Return shipping instructions</h5>
+      <p><strong>Conditional (smart).</strong> If Shopify attached a return label → Print-return-label button (+ optional Track-return). Else → self-ship timeline + address card. EASTEAM never issues labels, so the self-ship branch always shows.</p></div></div>
+    <div class="step"><div class="sn">16</div><div class="sd"><h5>Customer account welcome</h5>
+      <p>Asymmetric hero ("You're one of us now.") → short welcome → Start-shopping → "What you just unlocked" perks card → TAKE10OFF welcome gift (only when <code>orders_count</code> is 0 or 1) → 5% Rule → Ambassador. <strong>Note:</strong> only fires on classic accounts, see §09.</p></div></div>
+  </div>
+
+  <!-- WHEN EACH FIRES -->
+  <h2>— 07 · When each email fires</h2>
+  <p style="max-width:760px;">Each notification has a specific Shopify trigger. Two of them have important gotchas for EASTEAM's setup, flagged below.</p>
+  <div class="qa">
+    <div class="cell"><div class="lbl">Order confirmation</div><p>Order is placed and payment is accepted.</p></div>
+    <div class="cell"><div class="lbl">Shipping confirmation</div><p>A fulfillment is created with tracking.</p></div>
+    <div class="cell"><div class="lbl">Delivered</div><p>Carrier marks the shipment delivered.</p></div>
+    <div class="cell"><div class="lbl">Out for local delivery</div><p>Shipment is out for delivery (local/last-mile).</p></div>
+    <div class="cell"><div class="lbl">Shipping update</div><p>Tracking info on an existing fulfillment changes.</p></div>
+    <div class="cell"><div class="lbl">Store credit issued</div><p>Store credit is added to a customer's account.</p></div>
+    <div class="cell"><div class="lbl">Order refund</div><p>A refund is processed on the order (EASTEAM = store credit).</p></div>
+    <div class="cell"><div class="lbl">Return request received</div><p>Customer submits a return request.</p></div>
+    <div class="cell"><div class="lbl">Return request approved / declined</div><p>You approve or decline that request in admin.</p></div>
+    <div class="cell"><div class="lbl">Return shipping instructions ⚠</div><p>Fires when a label or tracking is attached to a return. EASTEAM never issues labels, so on its own it may never fire — the self-ship branch is the fallback and mirrors the approved email.</p></div>
+    <div class="cell"><div class="lbl">Order canceled</div><p>An order is canceled in admin.</p></div>
+    <div class="cell"><div class="lbl">Payment error</div><p>A payment attempt fails at checkout.</p></div>
+    <div class="cell"><div class="lbl">Order edited</div><p>Items on an existing order are changed via order editing.</p></div>
+    <div class="cell"><div class="lbl">Order invoice</div><p>You send an invoice / draft order with an outstanding balance.</p></div>
+    <div class="cell"><div class="lbl">Customer account welcome ⚠</div><p>Fires only on <strong>classic</strong> (password) customer accounts, on activation. EASTEAM is on <strong>NEW passwordless accounts</strong> (login at account.easteamny.com), so this will <strong>not</strong> fire — use the Klaviyo welcome flow ("Social Scout | Welcome Flow V2", Added-to-List) instead.</p></div>
+  </div>
+
+  <!-- CLIENT QUIRKS -->
+  <h2>— 08 · Email-client survival rules</h2>
+  <p style="max-width:760px;">These are real bugs we hit. Email HTML is not web HTML.</p>
+  <div class="qa">
+    <div class="cell"><div class="lbl">Rounded corners</div><p>A global <code>border-collapse:collapse !important</code> reset kills <code>border-radius</code>. On the card table, add inline <code>border-collapse:separate !important; border-spacing:0;</code> next to the radius. Card radius is 25px. Outlook desktop ignores radius entirely, accept square corners there.</p></div>
+    <div class="cell"><div class="lbl">Shadows</div><p><code>box-shadow</code> is stripped by Outlook, most Outlook web, Yahoo, and Android Gmail. Don't rely on it. We use a simple 1px Dusty Pink border instead of a shadow.</p></div>
+    <div class="cell"><div class="lbl">Layout</div><p>No flexbox, float, <code>transform</code>, <code>writing-mode</code>, or <code>margin:auto</code> — these broke the Ambassador panel in Shopify's preview. Table-based, inline styles only.</p></div>
+    <div class="cell"><div class="lbl">Paid block</div><p>The "Paid with" section only renders when transactions exist. Always include an <code>{% unless paid_shown %}</code> fallback showing <code>total_price</code> so the preview isn't empty.</p></div>
+    <div class="cell"><div class="lbl">Images</div><p>Use <code>image_url: width: N</code> (notification filter). <code>img_url: '600x'</code> is for themes and renders blank here.</p></div>
+    <div class="cell"><div class="lbl">Ampersands</div><p>In any href query string, write every <code>&amp;</code> as <code>&amp;amp;</code> or the URL breaks in some clients.</p></div>
+    <div class="cell"><div class="lbl">Mobile side padding</div><p>Use the <code>.oc_side</code> class for body padding: <strong>30px</strong> on mobile (not 18px — that felt too tight). Desktop stays 56px.</p></div>
+    <div class="cell"><div class="lbl">Mobile-centered CTAs</div><p>Where a button should center on phones, add <code>.btn-mobile-center</code> (sets <code>margin:auto</code> inside the mobile media query only).</p></div>
+    <div class="cell"><div class="lbl">No horizontal scroll</div><p>Every email must pass a Chromium check asserting <code>document.body.scrollWidth ≤ window.innerWidth</code> at <strong>360 / 375 / 390 / 430px</strong> before delivery.</p></div>
+    <div class="cell"><div class="lbl">python-liquid preview quirk</div><p>In the preview renderer, <code>nil != blank</code> can render as true and print empty labels. Use truthy <code>{% if x %}</code> checks instead. A trailing <code>&amp;amp;</code> in a preview URL is harmless preview-only noise.</p></div>
+  </div>
+
+  <!-- KLAVIYO REVIEW -->
+  <h2>— 09 · Klaviyo "leave a review"</h2>
+  <p style="max-width:760px;">The delivered email's review button fires Klaviyo's "Ready to review" event by carrying order and product data to a landing page that hosts the Klaviyo tracking snippet.</p>
+  <pre class="code">https://easteamny.com/pages/leave-a-review
+  ?email={{ email | url_encode }}
+  &amp;order={{ order_number }}
+  &amp;product_id={{ line_items.first.product_id }}
+  &amp;product_name={{ line_items.first.title | url_encode }}
+  &amp;product_url={{ shop.url }}{{ line_items.first.product.url }}
+  &amp;product_image={{ line_items.first.image | image_url: width: 600 | url_encode }}</pre>
+  <div class="specbox">
+    <p>The landing page must host the Klaviyo <code>_learnq</code> snippet that fires <code>track('Ready to review', …)</code> on load, and a Klaviyo flow must listen for that event.</p>
+    <p><strong>Limitation:</strong> <code>line_items.first</code> sends only the first item. For multi-item orders, give each product in the items list its own review link so every purchased piece is reviewable.</p>
+  </div>
+
+  <!-- COMPONENTS -->
+  <h2>— 10 · Reusable brand components</h2>
+  <p style="max-width:760px;">These are the recurring building blocks across the library. Reuse them, don't reinvent. They all live in <code>build_emails.py</code>.</p>
+  <div class="qa">
+    <div class="cell"><div class="lbl">Asymmetric headline</div><p>Oversized Jost Light, left-aligned, last word in Dusty Pink (e.g. "You're one of us <em>now.</em>"). Off-balance is the brand.</p></div>
+    <div class="cell"><div class="lbl">3-dot progress stepper</div><p>Placed · Shipping · Delivered. Filled Dusty Pink for the current stage, soft pink for upcoming. Used in order / shipping / delivered.</p></div>
+    <div class="cell"><div class="lbl">Numbered vertical timeline</div><p>Numbered circles with a connecting rail. Used for self-ship return steps (1 Pack · 2 Ship · 3 Store credit).</p></div>
+    <div class="cell"><div class="lbl">The 5% Rule box</div><p>Bordered panel: "Tag us, take 5% off." Tag @easteam_official, code sent by DM.</p></div>
+    <div class="cell"><div class="lbl">Ambassador card</div><p>"Keep it all, free." — film yourself, if we feature it the order is free. Two-column, stacks on mobile. Send-your-video button → <code>forms.gle/ckXGPyXkxQNeMayU6</code>.</p></div>
+    <div class="cell"><div class="lbl">Seal closer</div><p>Two pink hairlines with a center dot. Quiet body closer; the header + footer carry the wordmark.</p></div>
+    <div class="cell"><div class="lbl">Address card</div><p>Bordered "Send your return to" card — never a pink background. Design, not a paragraph.</p></div>
+    <div class="cell"><div class="lbl">Info as design</div><p>Cute boxes and cards over text walls. No paragraph longer than two sentences; split or box it.</p></div>
+  </div>
+
+  <!-- POLICIES -->
+  <h2>— 11 · Policies baked into the emails</h2>
+  <div class="specbox">
+    <p><strong>Refunds:</strong> store credit only, valid 1 year. Issued 3–5 business days after an approved return arrives and passes review.</p>
+    <p><strong>Returns:</strong> 7-day return window. Customers pay their own return shipping — <strong>we never issue a return label to any customer.</strong></p>
+    <p><strong>Return address:</strong> EASTEAM LLC, 20 Broad St, Unit 2801, New York, NY 10005. (Distinct from the footer's corporate address, 100 E 53rd St, New York, NY 10022.)</p>
+    <p><strong>No false promises:</strong> never offer personal replies, DMs back, or human help we won't actually deliver.</p>
+    <p><strong>Personalization limit:</strong> Shopify notification Liquid can't see browse or cart history or product recommendations. "Recently browsed" grids are a Klaviyo job, not a notification email.</p>
+    <p><strong>OrderlyEmails base:</strong> always delete the mis-pasted customs/duties/taxes closing paragraph that ships in the base templates.</p>
+  </div>
+
+  <!-- ASSETS -->
+  <h2>— 12 · Asset &amp; link registry</h2>
+  <div class="specbox">
+    <p><strong>Ambassador form:</strong> <code>https://forms.gle/ckXGPyXkxQNeMayU6</code> ("Send your video")</p>
+    <p><strong>5% tag target:</strong> <code>https://instagram.com/easteam_official</code></p>
+    <p><strong>Decline offer code:</strong> EASTEAM20 → <code>https://easteamny.com/discount/easteam20</code></p>
+    <p><strong>Welcome code:</strong> TAKE10OFF → <code>https://easteamny.com/discount/TAKE10OFF</code> (10% off, shown only when <code>customer.orders_count</code> is 0 or 1)</p>
+    <p><strong>Review landing:</strong> <code>https://easteamny.com/pages/leave-a-review</code> (hosts the Klaviyo Ready-to-review snippet)</p>
+    <p style="margin-top:10px;"><strong>Source of truth:</strong> <code>build_emails.py</code> (builder) + <code>render_previews.py</code> (preview renderer). Never hand-edit the generated <code>.liquid</code> files.</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right">Notification Emails · Shopify + Klaviyo</span>
+  </footer>
+</div>
+
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

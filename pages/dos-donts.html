@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Do's &amp; Don'ts — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .duo {
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+    gap: 28px;
+    margin-top: 28px;
+  }
+  .duo .col {
+    border: 1px solid var(--rule);
+    padding: 28px 28px 32px;
+  }
+  .duo .col.keep {
+    border-top: 3px solid var(--pink);
+  }
+  .duo .col.cut {
+    border-top: 3px solid var(--pink-dusty);
+    transform: translateY(28px);
+  }
+  .duo .col h4 {
+    color: var(--ink); font-size: 12px;
+    letter-spacing: 0.22em; margin-bottom: 18px;
+  }
+  .duo .col ul { list-style: none; padding: 0; margin: 0; }
+  .duo .col li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-size: 14px; line-height: 1.6;
+  }
+  .duo .col li:last-child { border-bottom: none; }
+  .duo .col.cut li::before {
+    content: "✕"; color: var(--pink-dusty);
+    font-family: 'Roboto Mono', monospace;
+    margin-right: 10px; font-weight: 500;
+  }
+  .duo .col.keep li::before {
+    content: "✓"; color: var(--pink);
+    font-family: 'Roboto Mono', monospace;
+    margin-right: 10px; font-weight: 500;
+  }
+  .duo .col em { color: var(--pink); font-style: italic; }
+  @media (max-width: 900px) {
+    .duo { grid-template-columns: 1fr; }
+    .duo .col.cut { transform: none; }
+  }
+  h3.cat {
+    margin-top: 80px;
+    font-family: 'Staatliches', sans-serif;
+    font-size: clamp(40px, 5vw, 64px);
+    color: var(--ink); letter-spacing: 0;
+    text-transform: none; line-height: 1;
+  }
+  h3.cat .dust { color: var(--pink-dusty); }
+  h3.cat .pop { color: var(--pink); }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="files.html">← Files</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">13</span>
+    <div class="left">
+      <span class="eyebrow">Section 13</span>
+      <h1 class="display">Do's<br/>&amp; Don'ts.</h1>
+    </div>
+    <div class="right">
+      <p>The whole guide compressed into pairs. When you're not sure, this is the answer. <em>Print this page. Pin it next to your screen.</em></p>
+    </div>
+  </div>
+
+  <h3 class="cat">Voice <span class="dust">&amp; Copy.</span></h3>
+  <div class="duo">
+    <div class="col keep">
+      <h4>Do</h4>
+      <ul>
+        <li>Lead with the offer or the ask in the first sentence</li>
+        <li>Short sentences and real words</li>
+        <li>Name the set + list what's inside (e.g. <em>Daydream Set — skirt + top</em>)</li>
+        <li>Pick one tone per email: <em>funny / quirky / sassy / bossy</em></li>
+        <li>One CTA per email, one primary per screen</li>
+        <li>Read it out loud — if you wouldn't text it, don't send it</li>
+      </ul>
+    </div>
+    <div class="col cut">
+      <h4>Don't</h4>
+      <ul>
+        <li>No mystery numbers (<em>EST 0042</em>)</li>
+        <li>No poetic filler (<em>softer than expected</em>, <em>uncracked</em>, <em>chapter boasts</em>)</li>
+        <li>No vague references (<em>the second piece</em> with no piece named)</li>
+        <li>Don't run all four tone moods at once</li>
+        <li>Don't compete with yourself — never two primary CTAs</li>
+        <li>Don't address her as "ladies / girls / babes"</li>
+        <li>Never use the long dash "—" in any copy, internal or external <em>(use a period, comma, or colon instead)</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="cat">Design <span class="dust">&amp; Color.</span></h3>
+  <div class="duo">
+    <div class="col keep">
+      <h4>Do</h4>
+      <ul>
+        <li>Black + three pinks only (Light, Dusty, Deep Dusty)</li>
+        <li>Page background always <em>#0A0807</em> on dark · <em>#F5F0EC</em> on light</li>
+        <li>Light Pink #F9DDE1 — dark theme accent only</li>
+        <li>Deep Dusty #8E4F58 — light theme / email only</li>
+        <li>Dusty Pink #C49099 — one pop per surface</li>
+        <li>Body in Jost Light 300, headers Roboto Mono ALL CAPS</li>
+        <li>Staatliches for wordmark + display only</li>
+        <li>Asymmetric layouts — off-balance is the brand</li>
+      </ul>
+    </div>
+    <div class="col cut">
+      <h4>Don't</h4>
+      <ul>
+        <li>Don't use Light Pink on Warm Ivory — it disappears</li>
+        <li>Don't use Deep Dusty on black — it goes muddy</li>
+        <li>Don't use any retired pink (#F2D8DB, #D89AA4, #864048, #3A1218, #F2C6CC) on web/app surfaces</li>
+        <li>Exception — <em>email</em> uses Dusty Pink #D9A5AC + Blush #F9EAEC (the notification palette); these are <strong>not</strong> retired there</li>
+        <li>Don't use italic fonts — anywhere</li>
+        <li>Don't use Roboto Mono for body</li>
+        <li>Don't use Staatliches outside wordmark / display</li>
+        <li>Don't recolor or modify the logo</li>
+        <li>Don't center-align everything — symmetric is off-brand</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="cat">Buttons <span class="dust">&amp; UI.</span></h3>
+  <div class="duo">
+    <div class="col keep">
+      <h4>Do</h4>
+      <ul>
+        <li>Primary = black bg, pink text, pink border, hover inverts + lifts 2px</li>
+        <li>One primary per screen — max</li>
+        <li>Outline = pink border, fills dusty pink on hover</li>
+        <li>Ghost only for tertiary navigation links</li>
+        <li>Keep button padding tight — 11px vertical on Medium</li>
+        <li>Always 4px radius</li>
+        <li>Always 38px min-height on Medium+ for tap target</li>
+      </ul>
+    </div>
+    <div class="col cut">
+      <h4>Don't</h4>
+      <ul>
+        <li>Don't put Ghost on an add-to-cart, checkout, or sign-up</li>
+        <li>Don't use two primary buttons on the same screen</li>
+        <li>Don't bloat vertical padding "for breathing room"</li>
+        <li>Don't change the radius</li>
+        <li>Don't drop the border on Primary — the border is the silhouette</li>
+        <li>Don't use Light Pink primary on a Warm Ivory email — switch to Deep Dusty</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="cat">Email <span class="dust">&amp; Social.</span></h3>
+  <div class="duo">
+    <div class="col keep">
+      <h4>Do</h4>
+      <ul>
+        <li>Body at 12–13px on email + social — never web sizes</li>
+        <li>One reason per email: Sell / Collect / Testimonial</li>
+        <li>Use Deep Dusty #8E4F58 as the email accent</li>
+        <li>Inline styles only in email HTML (Gmail strips <code>&lt;style&gt;</code>)</li>
+        <li>Asymmetric layout in every email</li>
+        <li>Caption line 1 = the headline, the offer, the ask</li>
+        <li>5/7 rule on IG Story: 5 lifestyle, max 2 catalog</li>
+        <li>Info as design — cute boxes and cards, not text walls</li>
+        <li>Open transactional emails with <em>"Hey [name]."</em></li>
+        <li>Start hard moments (canceled / declined) with empathy</li>
+      </ul>
+    </div>
+    <div class="col cut">
+      <h4>Don't</h4>
+      <ul>
+        <li>Don't open with "Hi babe, hope you've been good"</li>
+        <li>Don't use two CTAs in one email</li>
+        <li>Don't write captions longer than 3 lines for feed</li>
+        <li>Don't post catalog stills on Story</li>
+        <li>Don't copy-paste the same caption across IG / TikTok / Pinterest</li>
+        <li>Don't write a 4-paragraph email — tighten or split</li>
+        <li>Don't promise human replies you can't deliver</li>
+        <li>Don't write "recently browsed" into a Shopify notification — that's Klaviyo</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="cat">Imagery.</h3>
+  <div class="duo">
+    <div class="col keep">
+      <h4>Do</h4>
+      <ul>
+        <li>Catalog: 3:4, 4K, transparent BG, 5 poses per look</li>
+        <li>Lifestyle: candid, on-body, real environments</li>
+        <li>Two-source soft natural lighting</li>
+        <li>Keep lighting + color consistent across a whole drop</li>
+        <li>Edit invisibly — if anyone notices, it's too much</li>
+      </ul>
+    </div>
+    <div class="col cut">
+      <h4>Don't</h4>
+      <ul>
+        <li>Don't oversaturate or push contrast</li>
+        <li>Don't distort body proportions</li>
+        <li>Don't mix harsh shadows with soft frames</li>
+        <li>Don't ship without final review by Creative Director</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="cat">Files <span class="dust">&amp; Folders.</span></h3>
+  <div class="duo">
+    <div class="col keep">
+      <h4>Do</h4>
+      <ul>
+        <li>Pattern: <code>Parent_Subcategory_Detail_Number.ext</code></li>
+        <li>Underscores only between segments</li>
+        <li>CamelCase inside segments (<code>MaiSterling</code>, not <code>mai_sterling</code>)</li>
+        <li>Zero-padded numbers (<code>01</code>, not <code>1</code>)</li>
+        <li>Every file inherits its parent folder's prefix</li>
+        <li>Date stamps as <code>_MMDDYYYY</code> on folder names</li>
+        <li>Use the two-step temp rename for batches</li>
+      </ul>
+    </div>
+    <div class="col cut">
+      <h4>Don't</h4>
+      <ul>
+        <li>No spaces, no hyphens, no special characters in filenames</li>
+        <li>No single-digit numbers (use <code>01</code>, not <code>1</code>)</li>
+        <li>Don't skip the parent prefix because "it's obvious"</li>
+        <li>Don't batch-rename in one pass — overwrites happen</li>
+        <li>Don't leave duplicates in a sequence — inspect before final numbering</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pull-quote" style="margin-top:80px;">Composed.<br/><span style="color:var(--pink);">Cinematic.</span><br/>Intimate.</div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="../index.html">↑ Back to top</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

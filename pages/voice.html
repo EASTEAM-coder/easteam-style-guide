@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Voice — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .pillar-asym {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px 80px;
+    margin: 40px 0 100px;
+  }
+  .pillar-asym .pillar:nth-child(2) { transform: translateY(40px); }
+  .pillar-asym .pillar:nth-child(3) { transform: translateY(-20px); }
+  @media (max-width: 900px) {
+    .pillar-asym { grid-template-columns: 1fr; gap: 40px; }
+    .pillar-asym .pillar { transform: none !important; }
+  }
+  .pillar .num {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 80px; line-height: 0.9;
+    color: var(--pink-dusty);
+    margin-bottom: 12px;
+  }
+  .pillar h3 { font-size: 18px; letter-spacing: 0.08em; }
+  .pillar p { color: var(--ink-soft); font-size: 15px; line-height: 1.7; max-width: 36ch; }
+
+  .audience {
+    display: grid;
+    grid-template-columns: 3fr 5fr 4fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .audience .acard {
+    padding: 32px 28px;
+    border: 1px solid var(--rule);
+  }
+  .audience .acard.feat {
+    background: var(--dusty-tint);
+    border-left: 2px solid var(--pink-dusty);
+  }
+  .audience .acard h4 {
+    font-size: 11px; letter-spacing: 0.24em;
+    color: var(--pink); margin-bottom: 12px;
+  }
+  .audience .acard p {
+    font-size: 14px; line-height: 1.65; margin: 0; color: var(--ink-soft);
+  }
+  @media (max-width: 900px) { .audience { grid-template-columns: 1fr; } }
+
+  .ex-box {
+    margin: 32px 0;
+    border: 1px solid var(--rule);
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .ex-box .col {
+    padding: 28px;
+  }
+  .ex-box .col.cut { background: rgba(196, 144, 153, 0.04); border-right: 1px solid var(--rule); }
+  .ex-box .col h5 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+  }
+  .ex-box .col.cut h5 { color: var(--pink-dusty); }
+  .ex-box .col.keep h5 { color: var(--pink); }
+  .ex-box .col p {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 14px; line-height: 1.6; color: var(--ink-soft);
+    margin: 0 0 12px;
+  }
+  .ex-box .col p:last-child { margin: 0; }
+  .ex-box .col.cut p { color: var(--ink-muted); text-decoration: line-through; text-decoration-color: rgba(196, 144, 153, 0.4); }
+  .ex-box .col.keep p { color: var(--ink); }
+  @media (max-width: 900px) {
+    .ex-box { grid-template-columns: 1fr; }
+    .ex-box .col.cut { border-right: none; border-bottom: 1px solid var(--rule); }
+  }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="typography.html">← Typography</a>
+      <a href="imagery.html">Next →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">06</span>
+    <div class="left">
+      <span class="eyebrow">Section 06</span>
+      <h1 class="display">Voice.</h1>
+    </div>
+    <div class="right">
+      <p>Direct, simple, human. Like a real, confident woman texting a friend who's about to buy something. <em>Meaning in the first sentence.</em> Not poetic. Not abstract. Not AI-written.</p>
+    </div>
+  </div>
+
+  <div class="pull-quote">If she'd never text it,<br/>don't <span style="color:var(--pink);">send</span> it.</div>
+
+  <h2>Four pillars</h2>
+  <div class="pillar-asym">
+    <div class="pillar">
+      <div class="num">01</div>
+      <h3>Direct, not poetic.</h3>
+      <p>Say what it is, what it does, what to do next. If a normal person wouldn't say it out loud, cut it.</p>
+    </div>
+    <div class="pillar">
+      <div class="num">02</div>
+      <h3>Simple, not abstract.</h3>
+      <p>Short sentences. Real words. Name the look, name the set, name what's inside it.</p>
+    </div>
+    <div class="pillar">
+      <div class="num">03</div>
+      <h3>Human, not AI.</h3>
+      <p>No mystery numbers like "EST 0042." No filler phrases. Write the way you'd actually talk.</p>
+    </div>
+    <div class="pillar">
+      <div class="num">04</div>
+      <h3>Punchy, with personality.</h3>
+      <p>Funny / quirky / sassy / bossy — pick one per piece and use it cleanly. Don't run all four at once.</p>
+    </div>
+  </div>
+
+  <h2>Tone by audience</h2>
+  <div class="audience">
+    <div class="acard feat">
+      <h4>The Customer</h4>
+      <p>Direct, simple, human. Close second person. Talk TO her, not about her. Clarity is the new intimacy.</p>
+    </div>
+    <div class="acard">
+      <h4>The Wholesale Buyer</h4>
+      <p>Composed, confident, commercial — still recognizably EASTEAM. Lead with proof: best-sellers, sell-through, margin, delivery.</p>
+    </div>
+    <div class="acard">
+      <h4>The Email Reader</h4>
+      <p>Every email exists for ONE reason — sell, comment, or testimonial. Pick it before writing. One CTA, no competing buttons.</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:80px;">Cut vs Keep — real examples</h2>
+
+  <h3>The drop announcement</h3>
+  <div class="ex-box">
+    <div class="col cut">
+      <h5>✕ Cut</h5>
+      <p>The chapter boasts a kohl-toned silhouette, uncracked by trend, softer than expected.</p>
+    </div>
+    <div class="col keep">
+      <h5>✓ Keep</h5>
+      <p>The Daydream Set is back in black. Skirt + top. Drops Friday, 10AM ET.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;">The reorder ask</h3>
+  <div class="ex-box">
+    <div class="col cut">
+      <h5>✕ Cut</h5>
+      <p>Hello dear, we hope this finds you in a season of softness — perhaps a moment to reflect on a new piece.</p>
+    </div>
+    <div class="col keep">
+      <h5>✓ Keep</h5>
+      <p>Hey. The skirt you bought just dropped in pink. Want one?</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;">The UGC ask</h3>
+  <div class="ex-box">
+    <div class="col cut">
+      <h5>✕ Cut</h5>
+      <p>We'd love to invite you, should the moment feel right, to share a snippet of your experience.</p>
+    </div>
+    <div class="col keep">
+      <h5>✓ Keep</h5>
+      <p>Send us a 15-second clip of you in it. We'll share it on our story and send you a $25 credit.</p>
+    </div>
+  </div>
+
+  <div class="killed-box">
+    <span class="label">The meaning rule</span>
+    <p>The meaning of an email, an ad, a caption, or a page <em>must arrive in the first sentence.</em> If she has to read three lines to figure out what you want from her, you've already lost her. Lead with the offer or the ask. Decoration comes after.</p>
+  </div>
+
+  <div class="killed-box">
+    <span class="label">The no-dash rule</span>
+    <p>Never use the long dash, the "<em>—</em>" character, anywhere in EASTEAM copy. It is banned in product descriptions, emails, captions, ads, website text, social, and internal docs alike. <em>Internal or external, it does not belong in our writing.</em> Rewrite the sentence with a period, a comma, or a colon instead, or split it in two. The one exception is data we do not author: a Shopify product name or an imported field may already contain one, and that is data, not voice.</p>
+  </div>
+
+  <h2 style="margin-top:80px;">Notification email voice</h2>
+  <p style="max-width:760px;">The transactional emails follow all of the above, plus these specifics (full build rules live on the <a href="notification-emails.html">Notification Emails</a> page).</p>
+  <div style="border:1px solid var(--rule); background:rgba(196,144,153,0.04); padding:26px 28px; margin:24px 0 40px;">
+    <p style="font-family:'Jost',sans-serif; font-weight:300; font-size:14px; line-height:1.7; color:var(--ink-soft); margin:0 0 12px;">Open with <em>"Hey [name]."</em></p>
+    <p style="font-family:'Jost',sans-serif; font-weight:300; font-size:14px; line-height:1.7; color:var(--ink-soft); margin:0 0 12px;">Refund emails lead with <em>"Your refund is on the way."</em> — never remind her in the headline that it's store credit. Say "total refund," never hardcode the amount.</p>
+    <p style="font-family:'Jost',sans-serif; font-weight:300; font-size:14px; line-height:1.7; color:var(--ink-soft); margin:0 0 12px;">Hard moments (canceled, declined) <em>start with empathy</em>, then the facts.</p>
+    <p style="font-family:'Jost',sans-serif; font-weight:300; font-size:14px; line-height:1.7; color:var(--ink-soft); margin:0 0 12px;">No false promises — don't offer personal replies, DMs back, or help we won't actually give.</p>
+    <p style="font-family:'Jost',sans-serif; font-weight:300; font-size:14px; line-height:1.7; color:var(--ink-soft); margin:0;">Always delete the customs/duties closing paragraph that ships in the OrderlyEmails base. No dashes in our copy (Shopify product names may contain them — that's data, not voice).</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="imagery.html">Next · Imagery →</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

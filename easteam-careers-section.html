@@ -1,0 +1,267 @@
+<section id="et-careers" aria-label="Careers">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap');
+
+    #et-careers{
+      --ink:#0A0807; --ivory:#F5F0EC; --soft:#3a3330; --mut:#6a615d;
+      --pink:#F9DDE1; --dusty:#C49099; --deep:#8E4F58;
+      background:var(--ivory); color:var(--ink); width:100%;
+      font-family:'Jost',sans-serif; -webkit-font-smoothing:antialiased; box-sizing:border-box;
+    }
+    #et-careers *{box-sizing:border-box;}
+    #et-careers .wrap{max-width:1080px; margin:0 auto; padding:48px 44px 64px;}
+    #et-careers .mono{font-family:'Roboto Mono',monospace !important; font-weight:500 !important; text-transform:uppercase;}
+    #et-careers .bd{font-family:'Jost',sans-serif; font-weight:300; line-height:1.7; color:var(--soft);}
+    #et-careers .rule{height:1px; background:rgba(10,8,7,.16);}
+
+    #et-careers .mast{display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(10,8,7,.18); padding-bottom:12px;}
+    #et-careers .mast .l{font-size:10px; letter-spacing:.24em; color:var(--ink);}
+    #et-careers .mast .r{font-size:10px; letter-spacing:.24em; color:var(--deep);}
+
+    #et-careers .hero-row{display:grid; grid-template-columns:7fr 5fr; gap:28px; align-items:end; margin:20px 0 4px;}
+    #et-careers .hero{font-family:'Staatliches',sans-serif; font-size:clamp(64px,9vw,108px); line-height:.82; color:var(--ink); margin:0;}
+    #et-careers .intro{font-family:'Jost'; font-weight:300; font-size:15px; line-height:1.7; color:var(--soft); margin:0 0 8px;}
+    #et-careers .who{display:flex; justify-content:flex-end; margin-top:6px;}
+    #et-careers .who span{font-family:'Roboto Mono',monospace; font-weight:500; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--deep);}
+
+    #et-careers .val{display:grid; grid-template-columns:40px 1fr; gap:16px; padding:18px 0; align-items:center;}
+    #et-careers .val .n{font-family:'Roboto Mono',monospace !important; font-weight:500 !important; font-size:14px; letter-spacing:.08em; line-height:1; color:var(--dusty);}
+    #et-careers .val .t{font-family:'Roboto Mono',monospace; font-weight:500; font-size:14px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); margin-bottom:4px;}
+
+    #et-careers .feature{margin:56px 0 48px; background:#C49099; min-height:340px; display:flex; align-items:flex-end; padding:16px;}
+    #et-careers .feature .cap{font-family:'Roboto Mono',monospace; font-weight:500; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:rgba(10,8,7,.55);}
+    #et-careers .roles-label{font-family:'Roboto Mono',monospace; font-weight:500; font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink); margin:0 0 14px;}
+    #et-careers .role{width:100%; text-align:left; border:1px solid rgba(10,8,7,.18); background:transparent; padding:24px; display:flex; align-items:center; justify-content:space-between; gap:16px; cursor:pointer; transition:background .15s ease;}
+    #et-careers .role:hover{background:rgba(196,144,153,.08);}
+    #et-careers .role .rt{display:block; font-family:'Roboto Mono',monospace; font-weight:500; font-size:18px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink); margin-bottom:10px;}
+    #et-careers .role .rm{display:block; font-family:'Jost'; font-weight:300; font-size:13px; color:var(--soft);}
+    #et-careers .role .arr{font-family:'Roboto Mono',monospace; font-weight:500; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--deep); white-space:nowrap;}
+
+    #et-careers .detail{margin-top:18px;}
+    #et-careers .detail h2{font-family:'Roboto Mono',monospace; font-weight:500; font-size:26px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); margin:0 0 12px;}
+    #et-careers .chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px;}
+    #et-careers .chip{font-family:'Roboto Mono',monospace; font-weight:500; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--deep); border:1px solid var(--dusty); padding:6px 12px;}
+    #et-careers .sub{font-family:'Roboto Mono',monospace; font-weight:500; font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink); margin:26px 0 10px;}
+    #et-careers .detail p.bd{font-size:15px; margin:0 0 12px;}
+    #et-careers .detail ul{font-family:'Jost'; font-weight:300; font-size:15px; line-height:1.6; color:var(--soft); margin:0 0 12px; padding-left:18px;}
+    #et-careers .detail li{margin-bottom:7px;}
+
+    #et-careers .cta{border:1px solid rgba(10,8,7,.18); padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:28px; flex-wrap:wrap;}
+    #et-careers .cta .q{font-family:'Roboto Mono',monospace; font-weight:500; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink);}
+    #et-careers .btn{padding:14px 30px; background:var(--ink); color:var(--pink); border:1px solid var(--ink); border-radius:4px; font-family:'Jost'; font-weight:500; font-size:11px; letter-spacing:.14em; text-transform:uppercase; cursor:pointer; transition:opacity .15s ease;}
+    #et-careers .btn:hover{opacity:.85;}
+    #et-careers .btn:disabled{opacity:.6; cursor:default;}
+
+    #et-careers .formwrap{background:var(--ink); margin-top:16px; padding:40px;}
+    #et-careers .formwrap .lbl{font-family:'Roboto Mono',monospace; font-weight:500; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--dusty); margin-bottom:10px;}
+    #et-careers .formwrap .h{font-family:'Roboto Mono',monospace; font-weight:500; font-size:22px; letter-spacing:.06em; text-transform:uppercase; color:var(--ivory); margin-bottom:24px;}
+    #et-careers .f{display:flex; flex-direction:column; gap:14px; max-width:560px;}
+    #et-careers .f .row{display:flex; gap:14px;}
+    #et-careers .inp{padding:13px 16px; background:transparent; border:1px solid rgba(245,240,236,.2); color:var(--ivory); font-family:'Jost'; font-weight:300; font-size:14px; border-radius:0; outline:none; width:100%;}
+    #et-careers .inp::placeholder{color:rgba(245,240,236,.5);}
+    #et-careers .inp:focus{border-color:var(--pink); box-shadow:none; background:transparent;}
+    #et-careers textarea.inp{resize:vertical;}
+    #et-careers .file{display:flex; align-items:center; gap:12px; width:100%; border:1px dashed rgba(245,240,236,.3); padding:13px 16px; font-family:'Jost'; font-weight:300; font-size:13px; color:#B8B2AC; cursor:pointer;}
+    #et-careers .file span.tag{font-family:'Roboto Mono',monospace; font-weight:500; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--pink); border:1px solid var(--dusty); padding:6px 12px;}
+    #et-careers .file input{display:none;}
+    #et-careers .btn-pink{padding:14px 30px; background:var(--pink); color:var(--ink); border:none; border-radius:4px; font-family:'Jost'; font-weight:500; font-size:11px; letter-spacing:.14em; text-transform:uppercase; cursor:pointer; align-self:flex-start; margin-top:6px;}
+    #et-careers .btn-pink:disabled{opacity:.6; cursor:default;}
+    #et-careers .note{font-family:'Jost'; font-weight:400; font-size:12px; color:var(--dusty); margin:14px 0 0; min-height:16px;}
+    #et-careers .sent{font-family:'Jost'; font-weight:300; font-size:12px; color:#B8B2AC; margin-top:14px;}
+
+    #et-careers .success{display:none; text-align:center; padding:8px 0;}
+    #et-careers .success h3{font-family:'Roboto Mono',monospace; font-weight:500; font-size:24px; letter-spacing:.08em; text-transform:uppercase; color:var(--ivory); margin:0 0 14px;}
+    #et-careers .success p{font-family:'Jost'; font-weight:300; font-size:15px; line-height:1.65; color:#E4DED8; margin:0;}
+
+    [hidden]{display:none !important;}
+
+    @media (max-width:760px){
+      #et-careers .wrap{padding:36px 22px 48px;}
+      #et-careers .hero-row{grid-template-columns:1fr; gap:16px;}
+      #et-careers .f .row{flex-direction:column;}
+      #et-careers .formwrap{padding:28px 22px;}
+    }
+  </style>
+
+  <div class="wrap">
+    <div class="mast">
+      <span class="l mono">EASTEAM</span>
+      <span class="r mono">Careers &middot; New York &middot; 2026</span>
+    </div>
+
+    <div class="hero-row">
+      <h1 class="hero">Join<br>the team.</h1>
+      <p class="intro">We're a small New York startup &mdash; tiny team, high standards. Everyone's work shows, everyone wears many hats, and we move fast. We hire for taste, drive, and the kind of person who makes the whole team better.</p>
+    </div>
+
+    <div class="who"><span>&mdash; Who we're looking for</span></div>
+
+    <div style="margin-top:8px;">
+      <div class="rule"></div>
+      <div class="val"><div class="n">01</div><div><div class="t">Goes above &amp; beyond</div><p class="bd" style="margin:0; font-size:14px;">You don't wait to be asked. You see what needs doing and do it.</p></div></div>
+      <div class="rule"></div>
+      <div class="val"><div class="n">02</div><div><div class="t">Creative &amp; fast-thinking</div><p class="bd" style="margin:0; font-size:14px;">Ideas and execution, both quick. You think on your feet and keep up.</p></div></div>
+      <div class="rule"></div>
+      <div class="val"><div class="n">03</div><div><div class="t">Built for startup pace</div><p class="bd" style="margin:0; font-size:14px;">You follow through and thrive when things move fast and change often.</p></div></div>
+      <div class="rule"></div>
+      <div class="val"><div class="n">04</div><div><div class="t">A real eye for it</div><p class="bd" style="margin:0; font-size:14px;">Taste we can trust &mdash; you know the difference between fine and beautiful.</p></div></div>
+      <div class="rule"></div>
+      <div class="val"><div class="n">05</div><div><div class="t">An owner's mindset</div><p class="bd" style="margin:0; font-size:14px;">You think on the company's behalf &mdash; careful with time and with money.</p></div></div>
+      <div class="rule"></div>
+      <div class="val"><div class="n">06</div><div><div class="t">Detail &amp; organization</div><p class="bd" style="margin:0; font-size:14px;">Organized and thorough. Nothing slips, and the small things are right.</p></div></div>
+      <div class="rule"></div>
+    </div>
+
+    <div class="feature" aria-hidden="true"><span class="cap">Image placeholder &mdash; team / studio</span></div>
+
+    <div class="roles-label">Open roles &mdash; 01</div>
+    <button class="role" id="et-role-toggle" type="button" aria-expanded="false" aria-controls="et-detail">
+      <span><span class="rt">AI Content Creator</span><span class="rm">Remote (EST hours) &middot; Full-time</span></span>
+      <span class="arr" id="et-role-arr">Read more &rarr;</span>
+    </button>
+
+    <div class="detail" id="et-detail" hidden>
+      <h2>AI Content Creator</h2>
+      <div class="chips">
+        <span class="chip">Remote &middot; EST hours</span>
+        <span class="chip">Full-time</span>
+        <span class="chip">Reports to Founder &amp; Creative Director</span>
+        <span class="chip">Comp. commensurate w/ experience</span>
+      </div>
+
+      <div class="sub">About EASTEAM</div>
+      <p class="bd">EASTEAM is a New York-based contemporary womenswear brand and AI-native creative house. We build cinematic worlds, not just clothing &mdash; combining original design, curated pieces, and a fully AI-driven content engine to tell stories that feel like they were made to love you. Beyond our own brand, we run an AI creative production studio that produces campaign content and lookbooks for outside brands, and an AI talent agency that develops and manages a roster of AI influencers across fashion, beauty, and lifestyle.</p>
+
+      <div class="sub">The role</div>
+      <p class="bd">We're looking for an AI Content Creator who lives and breathes AI tools &mdash; someone who can turn a creative brief into a polished image or a finished short-form video using the best (and newest) AI models available. You'll be hands-on every day generating content for our brand, our AI influencer roster, and our agency clients. This is not a role for someone who has only used one or two tools: we need someone who follows what's being released, tests new platforms the week they launch, and has strong opinions about which model is right for which job.</p>
+
+      <div class="sub">What you'll do</div>
+      <ul>
+        <li>Produce AI-generated images for editorial, campaign, social, e-commerce, and ads &mdash; across EASTEAM's brand, our AI influencer roster, and agency clients.</li>
+        <li>Produce AI video (cinematic clips, UGC-style, product motion, narrative shorts) for Instagram, TikTok, Xiaohongshu, YouTube Shorts, and paid ads.</li>
+        <li>Train and maintain consistent character identities (Soul Characters / LoRAs / reference libraries) across our AI influencer personas.</li>
+        <li>Stay on top of every major AI release and bring new tools into our workflow the moment they improve quality or speed.</li>
+        <li>Work from briefs, mood boards, and shot lists, then deliver finished, on-brand assets ready for publishing.</li>
+        <li>Iterate quickly through multiple revision rounds &mdash; fast, organized, and able to handle feedback without ego.</li>
+        <li>Edit and refine output (color, retouching, compositing, simple motion) so deliverables feel intentional, not raw.</li>
+        <li>Help build and document our internal AI production playbook, and coordinate in Notion + Slack.</li>
+      </ul>
+
+      <div class="sub">What we're looking for</div>
+      <ul>
+        <li>Deep, hands-on experience with current AI tools &mdash; Nano Banana, Higgsfield, Kling, Veo, Runway, Midjourney, Sora, Flux, ComfyUI and similar.</li>
+        <li>A strong visual eye: you know the difference between generic AI and fashion-editorial, and how to push prompts and references to get the latter.</li>
+        <li>Genuine obsession with what's new &mdash; you read launch notes and test models the week they drop.</li>
+        <li>Fashion, beauty, or lifestyle sensibility; you understand quiet luxury and cinematic mood.</li>
+        <li>Strong written English (bilingual English + Mandarin a plus). Self-driven, organized, comfortable with direct feedback.</li>
+        <li>Available during EST business hours (~9am&ndash;6pm ET). Located anywhere, but overlapping NYC.</li>
+      </ul>
+
+      <div class="sub">Tools you'll work with</div>
+      <p class="bd">Image: Nano Banana Pro, Midjourney, Flux, GPT Image, Kling Image, Higgsfield Soul. Video: Higgsfield, Kling, Veo, Runway, Sora, Seedance. Consistency: Higgsfield Soul Characters, LoRAs, reference libraries. Finishing: Photoshop, Lightroom, Premiere or CapCut, After Effects. Workflow: Notion, Slack, Google Drive. You won't be expected to know every tool on day one, but you should be fluent in the majority and able to learn new ones quickly.</p>
+
+      <div class="sub">What you'll get</div>
+      <ul>
+        <li>A central role on one of the most AI-forward creative teams in fashion.</li>
+        <li>Direct mentorship and creative collaboration with the founder.</li>
+        <li>A front-row seat to every new tool, model, and workflow we adopt.</li>
+        <li>Portfolio-worthy work across brand, agency, and AI talent projects.</li>
+        <li>A clear path to grow into a senior creative or production lead role as the team scales.</li>
+      </ul>
+
+      <div class="cta">
+        <span class="q">Interested in this role?</span>
+        <button class="btn" id="et-apply-toggle" type="button" aria-expanded="false" aria-controls="et-form-wrap">I'm interested &darr;</button>
+      </div>
+
+      <div class="formwrap" id="et-form-wrap" hidden>
+        <div class="lbl">Application &middot; AI Content Creator</div>
+        <div class="h">Tell us why you, why now.</div>
+        <form class="f" id="et-career-form" novalidate>
+          <input class="inp" type="text" name="name" placeholder="Full name (required)" required>
+          <input class="inp" type="email" name="email" placeholder="Email (required)" required>
+          <input class="inp" type="text" name="location" placeholder="Where are you based? Can you work EST hours?">
+          <textarea class="inp" name="cover_letter" rows="5" placeholder="Cover letter — why this role, and why you're a great fit (required, paste text)" required></textarea>
+          <input class="inp" type="url" name="portfolio" placeholder="Portfolio link (required)" required>
+          <label class="file"><span class="tag" id="et-file-tag">Upload resume</span><span id="et-file-name">PDF or DOC &middot; required</span><input type="file" name="resume" id="et-resume" accept=".pdf,.doc,.docx" required></label>
+          <input type="hidden" name="form_tag" value="Career application — AI Content Creator">
+          <input type="checkbox" name="botcheck" style="display:none !important;" tabindex="-1" autocomplete="off">
+          <button class="btn-pink" id="et-career-submit" type="submit">Submit application</button>
+        </form>
+        <p class="note" id="et-career-note" role="status" aria-live="polite"></p>
+        <div class="sent">Goes straight to careers@easteamny.com</div>
+        <div class="success" id="et-career-success">
+          <h3>Application received.</h3>
+          <p>Thank you &mdash; we've got your application for AI Content Creator. If it's a fit, we'll be in touch from careers@easteamny.com.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var ACCESS_KEY = "REPLACE_WITH_WEB3FORMS_KEY_CAREERS"; // careers@easteamny.com
+      var root = document.getElementById("et-careers");
+      if(!root) return;
+      var roleBtn = document.getElementById("et-role-toggle");
+      var detail  = document.getElementById("et-detail");
+      var roleArr = document.getElementById("et-role-arr");
+      var applyBtn= document.getElementById("et-apply-toggle");
+      var formWrap= document.getElementById("et-form-wrap");
+      var form    = document.getElementById("et-career-form");
+      var note    = document.getElementById("et-career-note");
+      var success = document.getElementById("et-career-success");
+      var submit  = document.getElementById("et-career-submit");
+      var resume  = document.getElementById("et-resume");
+      var fileName= document.getElementById("et-file-name");
+
+      roleBtn.addEventListener("click", function(){
+        var open = !detail.hasAttribute("hidden");
+        if(open){ detail.setAttribute("hidden",""); roleBtn.setAttribute("aria-expanded","false"); roleArr.textContent="Read more →"; }
+        else { detail.removeAttribute("hidden"); roleBtn.setAttribute("aria-expanded","true"); roleArr.textContent="Close ↑"; detail.scrollIntoView({behavior:"smooth", block:"start"}); }
+      });
+
+      applyBtn.addEventListener("click", function(){
+        var open = !formWrap.hasAttribute("hidden");
+        if(open){ formWrap.setAttribute("hidden",""); applyBtn.setAttribute("aria-expanded","false"); applyBtn.textContent="I'm interested ↓"; }
+        else { formWrap.removeAttribute("hidden"); applyBtn.setAttribute("aria-expanded","true"); applyBtn.textContent="Hide form ↑"; formWrap.scrollIntoView({behavior:"smooth", block:"start"}); }
+      });
+
+      if(resume){ resume.addEventListener("change", function(){ fileName.textContent = resume.files && resume.files[0] ? resume.files[0].name : "PDF or DOC · required"; }); }
+
+      form.addEventListener("submit", function(e){
+        e.preventDefault();
+        note.textContent = "";
+        var name = form.name.value.trim(), email = form.email.value.trim(), cl = form.cover_letter.value.trim(), pf = form.portfolio.value.trim();
+        if(!name || !email || !cl || !pf){ note.textContent = "Please fill in your name, email, cover letter, and portfolio link."; return; }
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ note.textContent = "Please enter a valid email address."; return; }
+        if(!resume.files || !resume.files[0]){ note.textContent = "Please attach your resume (PDF or DOC)."; return; }
+        if(resume.files[0].size > 5*1024*1024){ note.textContent = "That resume is over 5MB — please attach a smaller file or share a link in your cover letter."; return; }
+        submit.disabled = true; submit.textContent = "Sending…";
+
+        var fd = new FormData(form);
+        fd.append("access_key", ACCESS_KEY);
+        fd.append("subject", "New application — AI Content Creator");
+        fd.append("from_name", "EASTEAM Careers");
+
+        fetch("https://api.web3forms.com/submit", { method:"POST", body: fd })
+          .then(function(r){ return r.json(); })
+          .then(function(d){
+            if(d && d.success){ form.style.display="none"; note.style.display="none"; document.querySelector('#et-careers .sent').style.display="none"; success.style.display="block"; success.scrollIntoView({behavior:"smooth", block:"center"}); }
+            else { submit.disabled=false; submit.textContent="Submit application"; note.textContent = (d && d.message) ? d.message : "Something went wrong sending your application. Please try again."; }
+          })
+          .catch(function(){ submit.disabled=false; submit.textContent="Submit application"; note.textContent="Couldn't reach us — check your connection and try again."; });
+      });
+    })();
+  </script>
+</section>
+{% schema %}
+{
+  "name": "EASTEAM careers",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    { "name": "EASTEAM careers" }
+  ]
+}
+{% endschema %}

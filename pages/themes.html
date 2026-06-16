@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Themes — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .theme-grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 32px;
+    margin: 40px 0 80px;
+  }
+  @media (max-width: 900px) { .theme-grid { grid-template-columns: 1fr; } }
+  .theme-card {
+    border: 1px solid var(--rule);
+    padding: 56px 44px;
+    min-height: 520px;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .theme-card .badge {
+    position: absolute; top: 24px; right: 24px;
+    background: var(--pink-dusty); color: var(--bg);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px; letter-spacing: 0.22em;
+    padding: 5px 10px; border-radius: 2px;
+  }
+  .theme-card.light { background: var(--ivory); color: var(--bg); }
+  .theme-card.dark { background: var(--bg); color: var(--ivory); }
+  .theme-card .te {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .theme-card.light .te { color: var(--pink-email); }
+  .theme-card.dark .te { color: var(--pink); }
+  .theme-card .tt {
+    font-family: 'Staatliches', sans-serif;
+    font-size: clamp(56px, 8vw, 96px); line-height: 1;
+    margin-bottom: 32px; letter-spacing: 0;
+  }
+  .theme-card.light .tt .acc { color: var(--pink-email); }
+  .theme-card.dark .tt .acc { color: var(--pink); }
+  .theme-card .lede {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 16px; line-height: 1.7; margin-bottom: 36px;
+    max-width: 42ch;
+  }
+  .theme-card.light .lede { color: #4A4641; }
+  .theme-card.dark .lede { color: var(--ink-soft); }
+  .theme-card .specs {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 18px 24px;
+    padding-top: 28px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+  }
+  .theme-card.light .specs { border-top: 1px solid var(--rule-light); }
+  .theme-card.dark .specs { border-top: 1px solid var(--rule); }
+  .theme-card .specs .k {
+    display: block; font-size: 9px;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .theme-card.light .specs .k { color: #8A847E; }
+  .theme-card.dark .specs .k { color: var(--ink-muted); }
+  .theme-card .specs .v { display: block; }
+  .theme-card.light .specs .v { color: var(--bg); }
+  .theme-card.dark .specs .v { color: var(--ivory); }
+  .theme-card .uses {
+    margin-top: auto; padding-top: 28px;
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 14px; line-height: 1.65;
+  }
+  .theme-card.light .uses { color: #4A4641; }
+  .theme-card.dark .uses { color: var(--ink-soft); }
+  .theme-card .uses strong {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase;
+    display: block; margin-bottom: 10px; font-weight: 500;
+  }
+  .theme-card.light .uses strong { color: var(--pink-email); }
+  .theme-card.dark .uses strong { color: var(--pink); }
+
+  .surface-tags {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0 0;
+  }
+  .surface-tags .st {
+    padding: 22px 24px;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--pink-dusty);
+  }
+  .surface-tags .st .stl {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 9px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 8px;
+  }
+  .surface-tags .st .sn {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 24px; line-height: 1;
+    color: var(--ink);
+    margin-bottom: 8px; letter-spacing: 0;
+  }
+  .surface-tags .st .sd {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+  @media (max-width: 900px) { .surface-tags { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .surface-tags { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="colors.html">← Colors</a>
+      <a href="typography.html">Next →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">04</span>
+    <div class="left">
+      <span class="eyebrow">Section 04</span>
+      <h1 class="display">Themes.</h1>
+    </div>
+    <div class="right">
+      <p>Two canvases, two different pinks. <em>Light is the default</em> for the website, every email, and most surfaces. Dark is for the fun moments — campaign covers, packaging fronts, statement drops.</p>
+    </div>
+  </div>
+
+  <div class="theme-grid">
+    <div class="theme-card light">
+      <span class="badge">DEFAULT</span>
+      <div class="te">— Surface 01 · Primary</div>
+      <div class="tt">Light <span class="acc">Theme.</span></div>
+      <div class="lede">Warm Ivory base. Deep Dusty Pink as the only accent that's actually visible against cream. The everyday EASTEAM canvas.</div>
+      <div class="specs">
+        <div><span class="k">Background</span><span class="v">#F5F0EC</span></div>
+        <div><span class="k">Primary text</span><span class="v">#0A0807</span></div>
+        <div><span class="k">Secondary</span><span class="v">#6B6661</span></div>
+        <div><span class="k">Accent</span><span class="v">#8E4F58</span></div>
+        <div><span class="k">Pop</span><span class="v">#C49099</span></div>
+        <div><span class="k">Body type</span><span class="v">12–18px</span></div>
+      </div>
+      <div class="uses">
+        <strong>Use for</strong>
+        easteamny.com (default), every email, decks, lookbooks, line sheets, hangtags. Web body 17–18px; email body 12–13px.
+      </div>
+    </div>
+    <div class="theme-card dark">
+      <span class="badge">OCCASIONAL</span>
+      <div class="te">— Surface 02 · For fun</div>
+      <div class="tt">Dark <span class="acc">Theme.</span></div>
+      <div class="lede">Page Black canvas. Light Pink as the accent. Use for moments where the brand wants to be loud — campaign covers, packaging fronts, a single drop landing page.</div>
+      <div class="specs">
+        <div><span class="k">Background</span><span class="v">#0A0807</span></div>
+        <div><span class="k">Primary text</span><span class="v">#F5F0EC</span></div>
+        <div><span class="k">Secondary</span><span class="v">#B8B2AC</span></div>
+        <div><span class="k">Accent</span><span class="v">#F9DDE1</span></div>
+        <div><span class="k">Pop</span><span class="v">#C49099</span></div>
+        <div><span class="k">Body type</span><span class="v">14–18px</span></div>
+      </div>
+      <div class="uses">
+        <strong>Use for</strong>
+        Campaign hero pages, ad cards, packaging exteriors, occasional dark sections inside a light email. <em>Statement moments, not the everyday.</em>
+      </div>
+    </div>
+  </div>
+
+  <h2>Per surface — which canvas wins</h2>
+  <div class="surface-tags">
+    <div class="st">
+      <div class="stl">— Surface</div>
+      <div class="sn">Website</div>
+      <div class="sd">Light default. Dark sections allowed for hero / campaign moments.</div>
+    </div>
+    <div class="st">
+      <div class="stl">— Surface</div>
+      <div class="sn">Email</div>
+      <div class="sd">Light always. Dark panels allowed inside for editorial breaks.</div>
+    </div>
+    <div class="st">
+      <div class="stl">— Surface</div>
+      <div class="sn">Social</div>
+      <div class="sd">Mix. Lifestyle leans light, drop graphics can go dark for the pop.</div>
+    </div>
+    <div class="st">
+      <div class="stl">— Surface</div>
+      <div class="sn">Packaging</div>
+      <div class="sd">Dark for outer (mailer + box). Light for inside (tissue, card).</div>
+    </div>
+  </div>
+
+  <div class="pull-quote">Light most of the time.<br/>Dark <span style="color:var(--pink);">when we want to.</span></div>
+
+  <div class="killed-box">
+    <span class="label">Rule</span>
+    <p>Don't use Light Pink #F9DDE1 on Warm Ivory — it disappears. Don't use Deep Dusty #8E4F58 on black — it goes muddy. Each pink has its theme. Don't cross them. <em>If a page can't decide, default to Light.</em></p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="typography.html">Next · Typography →</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

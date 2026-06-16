@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Buttons — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .btn-block {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 36px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .btn-block { grid-template-columns: 1fr; } }
+  .btn-block.flip { grid-template-columns: 4fr 5fr; }
+  .btn-block .demo-side .btn-row { padding: 32px 28px; }
+  .btn-block .info-side .lbl {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 12px;
+  }
+  .btn-block .info-side h3 {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 38px; line-height: 1;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: 0; text-transform: none;
+  }
+  .btn-block .info-side h3 .pop { color: var(--pink); }
+  .btn-block .info-side p { font-size: 14px; line-height: 1.65; max-width: 38ch; }
+
+  .hover-hint {
+    margin-top: 14px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-muted);
+  }
+  .hover-hint::before { content: "→ "; color: var(--pink); }
+
+  .priority-asym {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .priority-asym .pri {
+    padding: 22px 20px;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--pink);
+  }
+  .priority-asym .pri.lower { border-top-color: var(--ink-muted-dark); }
+  .priority-asym .pri .pn {
+    font-family: 'Staatliches', sans-serif;
+    font-size: 32px; line-height: 1; color: var(--pink-dusty);
+    margin-bottom: 8px;
+  }
+  .priority-asym .pri h5 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink);
+    margin: 0 0 10px;
+  }
+  .priority-asym .pri p { font-size: 13px; line-height: 1.55; margin: 0; color: var(--ink-soft); }
+  @media (max-width: 900px) { .priority-asym { grid-template-columns: 1fr 1fr; } }
+
+  .type-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 24px 0 60px;
+    border: 1px solid var(--rule);
+  }
+  .type-row .t {
+    padding: 28px 24px;
+    border-right: 1px solid var(--rule);
+    text-align: center;
+    display: flex; flex-direction: column;
+    gap: 14px; align-items: center; justify-content: center;
+  }
+  .type-row .t:last-child { border-right: none; }
+  .type-row .tn {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink-dusty);
+  }
+  @media (max-width: 900px) {
+    .type-row { grid-template-columns: 1fr; }
+    .type-row .t { border-right: none; border-bottom: 1px solid var(--rule); }
+  }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div><div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="imagery.html">← Imagery</a>
+      <a href="email.html">Next →</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">08</span>
+    <div class="left">
+      <span class="eyebrow">Section 08</span>
+      <h1 class="display">Buttons.</h1>
+    </div>
+    <div class="right">
+      <p>Six button types. Two primaries — <em>pink-fill</em> and <em>black-fill</em> — both lift on hover. One primary per screen, max.</p>
+    </div>
+  </div>
+
+  <h2>The system at a glance</h2>
+  <div class="type-row">
+    <div class="t"><div class="tn">— 01</div><a class="btn btn-primary-pink" href="#">Primary · Pink</a></div>
+    <div class="t"><div class="tn">— 02</div><a class="btn btn-primary-dark" href="#">Primary · Dark</a></div>
+    <div class="t"><div class="tn">— 03</div><a class="btn btn-outline" href="#">Outline</a></div>
+  </div>
+  <div class="type-row">
+    <div class="t"><div class="tn">— 04</div><a class="btn btn-secondary" href="#">Secondary</a></div>
+    <div class="t"><div class="tn">— 05</div><a class="btn btn-ghost" href="#">Ghost link →</a></div>
+    <div class="t"><div class="tn">— 06</div><a class="btn btn-pill" href="#">Pill / Tag</a></div>
+  </div>
+
+  <!-- 01 · PRIMARY PINK -->
+  <div class="btn-block">
+    <div class="info-side">
+      <div class="lbl">Type 01 · The CTA</div>
+      <h3>Primary · <span class="pop">Pink fill.</span></h3>
+      <p>Light Pink fill with black text — easy to scan, easy to tap. <em>Shop. Add to bag. Checkout. Subscribe.</em> Hover inverts to black with light pink text. <em>No lift, no shadow — just a clean color swap.</em></p>
+      <div class="hover-hint">Hover one of them — that's the spec.</div>
+    </div>
+    <div class="demo-side">
+      <div class="btn-row">
+        <a class="btn btn-primary-pink" href="#">Shop the drop</a>
+        <a class="btn btn-primary-pink" href="#">Add to bag</a>
+        <a class="btn btn-primary-pink is-disabled" href="#">Disabled</a>
+      </div>
+      <div class="btn-meta">
+        <span class="k">BG</span>#F9DDE1 <span class="sep">·</span>
+        <span class="k">Text</span>#0A0807 <span class="sep">·</span>
+        <span class="k">Border</span>1px #F9DDE1 <span class="sep">·</span>
+        <span class="k">Radius</span>4px <br>
+        <span class="k">Hover</span>bg #0A0807, text #F9DDE1, border #F9DDE1 <span class="sep">·</span>
+        <span class="k">Motion</span>color swap only — no transform, no shadow
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 · PRIMARY DARK -->
+  <div class="btn-block flip">
+    <div class="demo-side">
+      <div class="btn-row">
+        <a class="btn btn-primary-dark" href="#">Shop the drop</a>
+        <a class="btn btn-primary-dark" href="#">Add to bag</a>
+        <a class="btn btn-primary-dark is-disabled" href="#">Disabled</a>
+      </div>
+      <div class="btn-meta">
+        <span class="k">BG</span>#0A0807 <span class="sep">·</span>
+        <span class="k">Text</span>#F9DDE1 <span class="sep">·</span>
+        <span class="k">Border</span>1px #F9DDE1 <span class="sep">·</span>
+        <span class="k">Radius</span>4px <br>
+        <span class="k">Hover</span>bg #F9DDE1, text #0A0807, border #F9DDE1 <span class="sep">·</span>
+        <span class="k">Motion</span>color swap only — no transform, no shadow
+      </div>
+    </div>
+    <div class="info-side">
+      <div class="lbl">Type 02 · The Statement CTA</div>
+      <h3>Primary · <span class="pop">Dark fill.</span></h3>
+      <p>Black background with Light Pink text + border. The first pick on light surfaces. Hover inverts cleanly — color change only, no shadow, no lift.</p>
+    </div>
+  </div>
+
+  <!-- 03 · OUTLINE -->
+  <div class="btn-block">
+    <div class="info-side">
+      <div class="lbl">Type 03 · The Second-loudest</div>
+      <h3>Outline.</h3>
+      <p>Sits next to a primary. <em>View collection. Watch the film. Read the story.</em> Hover swaps to Dusty Pink — the pop appears exactly once, on contact.</p>
+    </div>
+    <div class="demo-side">
+      <div class="btn-row">
+        <a class="btn btn-outline" href="#">View collection</a>
+        <a class="btn btn-outline" href="#">Watch the film</a>
+      </div>
+      <div class="btn-meta">
+        <span class="k">BG</span>Transparent <span class="sep">·</span>
+        <span class="k">Border</span>1px #F9DDE1 <span class="sep">·</span>
+        <span class="k">Text</span>#F9DDE1 <span class="sep">·</span>
+        <span class="k">Hover</span>fills #C49099, text #0A0807
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 · SECONDARY -->
+  <div class="btn-block flip">
+    <div class="demo-side">
+      <div class="btn-row">
+        <a class="btn btn-secondary" href="#">Save for later</a>
+        <a class="btn btn-secondary" href="#">Size guide</a>
+      </div>
+      <div class="btn-meta">
+        <span class="k">BG</span>Transparent <span class="sep">·</span>
+        <span class="k">Border</span>1px #B8B2AC <span class="sep">·</span>
+        <span class="k">Text</span>#F5F0EC <span class="sep">·</span>
+        <span class="k">Hover</span>border + text → #F9DDE1
+      </div>
+    </div>
+    <div class="info-side">
+      <div class="lbl">Type 04 · The Quiet One</div>
+      <h3>Secondary.</h3>
+      <p>For lower-priority actions on dense screens — <em>save for later, size guide, share</em>. Never use as the primary CTA.</p>
+    </div>
+  </div>
+
+  <!-- 05 · GHOST -->
+  <div class="btn-block">
+    <div class="info-side">
+      <div class="lbl">Type 05 · The Inline Link</div>
+      <h3>Ghost.</h3>
+      <p>For tertiary navigation only — <em>Learn more, Size guide, See all</em>. Never use for any action that <em>costs</em> her something.</p>
+    </div>
+    <div class="demo-side">
+      <div class="btn-row">
+        <a class="btn btn-ghost" href="#">Learn more →</a>
+        <a class="btn btn-ghost" href="#">See all collections →</a>
+      </div>
+      <div class="btn-meta">
+        <span class="k">BG</span>None <span class="sep">·</span>
+        <span class="k">Text</span>#F9DDE1 <span class="sep">·</span>
+        <span class="k">Hover</span>underline + text → #C49099
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 · PILL / TAG -->
+  <div class="btn-block flip">
+    <div class="demo-side">
+      <div class="btn-row" style="gap:10px;">
+        <a class="btn btn-pill is-active" href="#">All</a>
+        <a class="btn btn-pill" href="#">Daydream</a>
+        <a class="btn btn-pill" href="#">Bloom</a>
+        <a class="btn btn-pill" href="#">HS</a>
+        <a class="btn btn-pill" href="#">SS26</a>
+      </div>
+      <div class="btn-meta">
+        <span class="k">BG</span>Transparent · or filled when active <span class="sep">·</span>
+        <span class="k">Radius</span>999px <span class="sep">·</span>
+        <span class="k">Active</span>fills #F9DDE1
+      </div>
+    </div>
+    <div class="info-side">
+      <div class="lbl">Type 06 · Filters &amp; Tags</div>
+      <h3>Pill.</h3>
+      <p>Small, rounded, for collection filters and category chips. <em>"All / Daydream / Bloom / HS / SS26".</em> Active state fills with Light Pink.</p>
+    </div>
+  </div>
+
+  <h2 style="margin-top:80px;">Light theme — for email + light surfaces</h2>
+  <p style="max-width:680px;">On the Warm Ivory <code>#F5F0EC</code> canvas, the primary stays the same as on dark: <em>black bg + light pink text</em>. Hover inverts to light pink bg + black text. No shadow, no lift.</p>
+
+  <div class="btn-row on-light" style="margin-top:24px; gap:16px;">
+    <a class="btn btn-primary-dark" href="#">Shop the drop</a>
+    <a class="btn btn-primary-pink" href="#">Add to bag</a>
+    <a class="btn btn-outline" href="#">View collection</a>
+    <a class="btn btn-secondary" href="#">Save</a>
+    <a class="btn btn-ghost" href="#">Learn more →</a>
+    <a class="btn btn-pill" href="#">Daydream</a>
+  </div>
+  <div class="btn-meta">
+    <span class="k">Primary · Dark</span>bg #0A0807, text #F9DDE1 → hover bg #F9DDE1, text #0A0807 <span class="sep">·</span>
+    <span class="k">Primary · Pink</span>bg #F9DDE1, text #0A0807 → hover bg #0A0807, text #F9DDE1 <span class="sep">·</span>
+    <span class="k">Outline</span>border #8E4F58, text #8E4F58 → hover fills #8E4F58 <span class="sep">·</span>
+    <span class="k">Motion</span>color swap only — no transform, no shadow
+  </div>
+
+  <h2 style="margin-top:80px;">Sizes — one system, four sizes</h2>
+  <p style="max-width:600px;">Every button type uses the same scale. Padding is intentionally tight on the vertical axis — buttons should feel snug, not balloon-y.</p>
+  <table class="spec">
+    <thead>
+      <tr><th>Size</th><th>Label</th><th>Padding (y / x)</th><th>Min height</th><th>Tracking</th><th>Where</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Large</td><td class="mono">Jost 500 · 11px</td><td class="mono">12px / 30px</td><td class="mono">42px</td><td class="mono">+0.14em</td><td>Hero, campaign landing, checkout.</td></tr>
+      <tr><td>Medium</td><td class="mono">Jost 500 · 10px</td><td class="mono">10px / 26px</td><td class="mono">36px</td><td class="mono">+0.12em</td><td>Product pages, email CTAs, collections. <em>Default.</em></td></tr>
+      <tr><td>Small</td><td class="mono">Jost 500 · 9px</td><td class="mono">8px / 20px</td><td class="mono">30px</td><td class="mono">+0.12em</td><td>Product cards, inline actions, mobile rows.</td></tr>
+      <tr><td>X-Small</td><td class="mono">Jost 500 · 8px</td><td class="mono">6px / 14px</td><td class="mono">24px</td><td class="mono">+0.10em</td><td>Filter pills, size selectors, chips.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 style="margin-top:80px;">Priority hierarchy on a page</h2>
+  <div class="priority-asym">
+    <div class="pri">
+      <div class="pn">1×</div>
+      <h5>Primary</h5>
+      <p>Per screen. Pick Pink-fill or Dark-fill — never both.</p>
+    </div>
+    <div class="pri">
+      <div class="pn">0–1×</div>
+      <h5>Outline</h5>
+      <p>The alternate path next to the primary.</p>
+    </div>
+    <div class="pri lower">
+      <div class="pn">N×</div>
+      <h5>Secondary &amp; Ghost</h5>
+      <p>Fine for lower-priority actions in the same view.</p>
+    </div>
+    <div class="pri lower">
+      <div class="pn">N×</div>
+      <h5>Pill</h5>
+      <p>Filters and tags. Use as a row, not standalone CTAs.</p>
+    </div>
+  </div>
+
+  <div class="killed-box">
+    <span class="label">Rules</span>
+    <p>Never two Primary on the same screen — they compete and conversion drops. Never substitute Ghost for an add-to-cart or checkout. Always preserve the 4px radius on rectangular buttons and 999px on Pills. Always meet 36px min-height on Medium+ for tap targets. Don't bloat vertical padding "for breathing room" — it kills the snug feel.</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="email.html">Next · Email →</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Website — EASTEAM Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* Local helpers specific to this page */
+  .token-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin: 24px 0 40px;
+  }
+  .token-card {
+    background: var(--bg);
+    padding: 24px 22px;
+  }
+  .token-card .swatch {
+    width: 100%; height: 60px;
+    margin-bottom: 14px;
+    border: 1px solid var(--rule);
+  }
+  .token-card .label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 4px;
+  }
+  .token-card .name {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink);
+    margin-bottom: 4px; font-weight: 500;
+  }
+  .token-card .hex {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .token-card .use {
+    font-size: 12px; line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 900px) { .token-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .token-grid { grid-template-columns: 1fr; } }
+
+  .rule-block {
+    border-left: 2px solid var(--pink-dusty);
+    padding: 4px 0 4px 24px;
+    margin: 32px 0;
+  }
+  .rule-block .lbl {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 10px;
+  }
+  .rule-block p { margin: 0 0 8px; }
+  .rule-block p:last-child { margin: 0; }
+
+  .code-block {
+    background: rgba(196, 144, 153, 0.06);
+    border-left: 2px solid var(--pink-dusty);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px; line-height: 1.6;
+    color: var(--ink-soft);
+    padding: 18px 22px;
+    margin: 18px 0 24px;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .code-block .comment { color: var(--ink-muted-dark); }
+  .code-block .selector { color: var(--pink); }
+  .code-block .prop { color: var(--ink); }
+
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin: 32px 0;
+  }
+  @media (max-width: 720px) { .do-dont { grid-template-columns: 1fr; } }
+  .do-col, .dont-col {
+    padding: 24px 26px;
+    border: 1px solid var(--rule);
+  }
+  .do-col { border-left: 3px solid var(--pink); }
+  .dont-col { border-left: 3px solid var(--pink-dusty); }
+  .do-col .head, .dont-col .head {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 16px;
+  }
+  .do-col ul, .dont-col ul { padding: 0; margin: 0; list-style: none; }
+  .do-col li, .dont-col li {
+    padding: 8px 0 8px 22px;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+    position: relative; line-height: 1.55;
+    font-size: 13px;
+  }
+  .do-col li:last-child, .dont-col li:last-child { border-bottom: none; }
+  .do-col li::before {
+    content: "✓"; position: absolute; left: 0; top: 8px;
+    color: var(--pink); font-weight: 500;
+  }
+  .dont-col li::before {
+    content: "✕"; position: absolute; left: 0; top: 8px;
+    color: var(--pink-dusty); font-weight: 500;
+  }
+
+  .anchor-nav {
+    position: sticky;
+    top: 72px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    padding: 18px 22px;
+    margin: 32px 0 48px;
+    z-index: 100;
+  }
+  .anchor-nav .lbl {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--pink-dusty);
+    margin-bottom: 12px;
+  }
+  .anchor-nav ul {
+    display: flex; flex-wrap: wrap; gap: 12px 22px;
+    padding: 0; margin: 0; list-style: none;
+  }
+  .anchor-nav a {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink);
+    text-decoration: none;
+  }
+  .anchor-nav a:hover { color: var(--pink); }
+
+  .sub-section { margin: 80px 0 0; }
+  .sub-section h3 { font-size: 18px; letter-spacing: 0.12em; margin-bottom: 8px; }
+  .sub-section .sub-lede {
+    font-size: 14px; color: var(--ink-muted);
+    margin-bottom: 24px; max-width: 640px;
+  }
+</style>
+</head>
+<body class="locked">
+
+<div class="gate" id="gate">
+  <div class="gate-mark">EASTEAM</div>
+  <div class="gate-tag">The Ultimate Style Guide</div>
+  <form class="gate-form" id="gateForm" autocomplete="off">
+    <label class="gate-label" for="gatePass">Enter access code</label>
+    <input class="gate-input" id="gatePass" type="password" placeholder="••••••••" autofocus />
+    <button class="gate-btn" type="submit">Enter</button>
+    <div class="gate-error" id="gateError">&nbsp;</div>
+  </form>
+</div>
+
+<div class="site">
+  <div class="topnav">
+    <a class="mark" href="../index.html">EASTEAM</a>
+    <div class="links" data-nav-dd>
+      <a class="back" href="../index.html">Home</a>
+      <a href="dos-donts.html">← Do's &amp; Don'ts</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <span class="pnum">14</span>
+    <div class="left">
+      <span class="eyebrow">Section 14</span>
+      <h1 class="display">Website.</h1>
+    </div>
+    <div class="right">
+      <p>Every rule for how easteamny.com is designed and built. <em>The Shopify theme has been heavily customized</em> — these are the patterns we follow, the cascade rules that make them stick, and the do's/don'ts that keep the site coherent.</p>
+    </div>
+  </div>
+
+  <!-- Anchor nav -->
+  <nav class="anchor-nav">
+    <div class="lbl">On this page</div>
+    <ul>
+      <li><a href="#canvas">01 Canvas</a></li>
+      <li><a href="#typography">02 Type on the web</a></li>
+      <li><a href="#buttons">03 Buttons</a></li>
+      <li><a href="#cards">04 Product cards</a></li>
+      <li><a href="#marquee">05 Marquees</a></li>
+      <li><a href="#cart">06 Cart &amp; quick view</a></li>
+      <li><a href="#newsletter">07 Newsletter</a></li>
+      <li><a href="#footer">08 Footer</a></li>
+      <li><a href="#filters">09 Filters</a></li>
+      <li><a href="#search">10 Search</a></li>
+      <li><a href="#mobile">11 Mobile rules</a></li>
+      <li><a href="#careers">12 Careers &amp; forms</a></li>
+      <li><a href="#implementation">13 Implementation</a></li>
+      <li><a href="#dos-donts">14 Do's &amp; Don'ts</a></li>
+      <li><a href="#may-2026">15 May 2026 update</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================================ 01 CANVAS ============================================ -->
+  <h2 id="canvas">01 · Canvas &amp; surface colors</h2>
+  <p style="max-width:640px;">The website uses a <strong>white-dominant canvas</strong> with ink-black text and three pinks as accents. Warm ivory <em>was tried and rejected</em> on screen — it read as nude/beige. White is the default. The header gets a barely-there pink wash so it doesn't feel sterile.</p>
+
+  <div class="token-grid">
+    <div class="token-card">
+      <div class="swatch" style="background:#FFFFFF; border:1px solid var(--rule);"></div>
+      <div class="label">Canvas</div>
+      <div class="name">Pure White</div>
+      <div class="hex">#FFFFFF</div>
+      <p class="use">Every primary surface — page body, product cards, search drawer, form inputs.</p>
+    </div>
+    <div class="token-card">
+      <div class="swatch" style="background:#FDF5F7; border:1px solid var(--rule);"></div>
+      <div class="label">Soft pink whisper</div>
+      <div class="name">Header / Selects</div>
+      <div class="hex">#FDF5F7</div>
+      <p class="use">Barely-there pink wash. Used on the header bar and availability/size selects. <em>Reads pink without being pink.</em> (The newsletter band moved to ink-black in the May 2026 rebuild — see §07.)</p>
+    </div>
+    <div class="token-card">
+      <div class="swatch" style="background:#0A0807;"></div>
+      <div class="label">Ink black</div>
+      <div class="name">Text + Primary buttons</div>
+      <div class="hex">#0A0807</div>
+      <p class="use">All body text on light surfaces, footer background, primary button fills, hero CTA fills.</p>
+    </div>
+    <div class="token-card">
+      <div class="swatch" style="background:#F9DDE1;"></div>
+      <div class="label">Pink — light</div>
+      <div class="name">Button text on dark / dark-surface accents</div>
+      <div class="hex">#F9DDE1</div>
+      <p class="use">Light pink text on ink-black buttons. Tertiary/dark-theme link color. Marquee text on ink-black band.</p>
+    </div>
+    <div class="token-card">
+      <div class="swatch" style="background:#C49099;"></div>
+      <div class="label">Pink — dusty (POP)</div>
+      <div class="name">Links, hovers, highlights</div>
+      <div class="hex">#C49099</div>
+      <p class="use">The primary interactive accent. Links, hover states, "selected" filter chips, marquee outlines, eyebrows. <em>Use sparingly as fills.</em></p>
+    </div>
+    <div class="token-card">
+      <div class="swatch" style="background:#8E4F58;"></div>
+      <div class="label">Pink — deep</div>
+      <div class="name">Hover-state typography only</div>
+      <div class="hex">#8E4F58</div>
+      <p class="use">Deep dusty rose. Reserved for link <em>hover</em> states and small accent text. <em>Reads brown if used as a fill</em> — never use as button background or large surface.</p>
+    </div>
+  </div>
+
+  <div class="rule-block">
+    <div class="lbl">Color rule</div>
+    <p>Black is the anchor. White is the canvas. Pink-dusty is the primary accent. Light pink is the dark-theme accent. Deep pink is hover-only.</p>
+    <p style="color:var(--ink-muted); font-size:13px;">If something is reading "muddy" or "too brown," it's because <em>#8E4F58 is being used as a fill</em>. Move it to hover/text and replace the fill with #C49099 or #F9DDE1.</p>
+  </div>
+
+  <!-- ============================================ 02 TYPOGRAPHY ============================================ -->
+  <h2 id="typography" style="margin-top:100px;">02 · Type on the web</h2>
+  <p style="max-width:640px;">Three fonts, same as the rest of the brand. But the website has specific roles that override the general rules — product card titles use body font (not heading), and marquees use Staatliches as their special display moment.</p>
+
+  <table class="spec">
+    <thead>
+      <tr><th>Element</th><th>Font</th><th>Size</th><th>Weight</th><th>Tracking</th><th>Case</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Section title ("Most Wanted")</td><td class="mono">Roboto Mono</td><td class="mono">clamp(13–16)</td><td class="mono">400</td><td class="mono">+0.16em</td><td>UPPER</td></tr>
+      <tr><td>Hero headline (slideshow)</td><td class="mono">Roboto Mono</td><td class="mono">clamp(28–48)</td><td class="mono">400</td><td class="mono">+0.08em</td><td>UPPER</td></tr>
+      <tr><td>PDP product title</td><td class="mono">Jost</td><td class="mono">22–28</td><td class="mono">400</td><td class="mono">0</td><td>Sentence</td></tr>
+      <tr><td>Product card title (catalog)</td><td class="mono">Jost Light</td><td class="mono">15</td><td class="mono">300</td><td class="mono">0</td><td>Sentence</td></tr>
+      <tr><td>Product card price</td><td class="mono">Jost Medium</td><td class="mono">14</td><td class="mono">500</td><td class="mono">0</td><td>—</td></tr>
+      <tr><td>Cart drawer item title</td><td class="mono">Jost Light</td><td class="mono">14</td><td class="mono">300</td><td class="mono">0</td><td>Sentence</td></tr>
+      <tr><td>Eyebrow / breadcrumb / nav</td><td class="mono">Roboto Mono</td><td class="mono">11–13</td><td class="mono">400</td><td class="mono">+0.22em</td><td>UPPER</td></tr>
+      <tr><td>Body / description</td><td class="mono">Jost Light</td><td class="mono">17–18</td><td class="mono">300</td><td class="mono">0</td><td>Sentence</td></tr>
+      <tr><td>Footer header</td><td class="mono">Roboto Mono</td><td class="mono">13</td><td class="mono">400</td><td class="mono">+0.22em</td><td>UPPER</td></tr>
+      <tr><td>Footer body link</td><td class="mono">Jost Light</td><td class="mono">13</td><td class="mono">300</td><td class="mono">0</td><td>Sentence</td></tr>
+      <tr><td>Button label (any)</td><td class="mono">Jost Medium</td><td class="mono">10–11</td><td class="mono">500</td><td class="mono">+0.14–0.18em</td><td>UPPER</td></tr>
+      <tr><td>Featured product marquee</td><td class="mono">Staatliches</td><td class="mono">80–180</td><td class="mono">400</td><td class="mono">0</td><td>UPPER</td></tr>
+      <tr><td>Text marquee section</td><td class="mono">Roboto Mono</td><td class="mono">26</td><td class="mono">400</td><td class="mono">+0.16em</td><td>UPPER</td></tr>
+      <tr><td>Drawer / submenu item</td><td class="mono">Roboto Mono</td><td class="mono">13</td><td class="mono">400</td><td class="mono">+0.14em</td><td>UPPER</td></tr>
+    </tbody>
+  </table>
+
+  <div class="killed-box">
+    <span class="label">Rule</span>
+    <p>Section titles and section headers always use <em>Roboto Mono uppercase</em>. Product card titles and cart drawer item names use <em>Jost Light sentence case</em> — they're labels, not headings. Description copy <em>never italicizes</em>, anywhere.</p>
+  </div>
+
+  <!-- ============================================ 03 BUTTONS ============================================ -->
+  <h2 id="buttons" style="margin-top:100px;">03 · Buttons</h2>
+  <p style="max-width:640px;">All website buttons follow strict dimensions, fonts, and a no-outline rule. Hero CTAs and featured-collection "Shop Now" buttons are styled <em>identically</em> — same width, height, fill, hover. Consistency is non-negotiable.</p>
+
+  <div class="sub-section">
+    <h3>Hero &amp; section CTAs</h3>
+    <p class="sub-lede">Slideshow buttons, featured-collection Shop Now, image-with-text CTAs, banner buttons.</p>
+    <table class="spec">
+      <thead><tr><th>Property</th><th>Desktop</th><th>Mobile</th></tr></thead>
+      <tbody>
+        <tr><td>Width</td><td class="mono">200px (fixed)</td><td class="mono">160px (fixed)</td></tr>
+        <tr><td>Height</td><td class="mono">48px (fixed)</td><td class="mono">44px (fixed)</td></tr>
+        <tr><td>Background</td><td class="mono">#0A0807 (ink)</td><td class="mono">#0A0807 (ink)</td></tr>
+        <tr><td>Text color</td><td class="mono">#F9DDE1 (light pink)</td><td class="mono">#F9DDE1 (light pink)</td></tr>
+        <tr><td>Border</td><td class="mono">1px solid #0A0807 (matches fill)</td><td class="mono">same</td></tr>
+        <tr><td>Border-radius</td><td class="mono">0 (sharp)</td><td class="mono">0</td></tr>
+        <tr><td>Hover</td><td class="mono">bg pink, text ink, border pink</td><td class="mono">same</td></tr>
+        <tr><td>Outline / shadow</td><td class="mono">none, ever</td><td class="mono">none, ever</td></tr>
+        <tr><td>Layout (hero only)</td><td class="mono">side-by-side, 12px gap</td><td class="mono">stacked vertically, 10px gap, 240×44</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-section">
+    <h3>PDP button hierarchy</h3>
+    <p class="sub-lede">On product detail pages, "Buy It Now" is the primary intent, "Add to Cart" is secondary.</p>
+    <div class="asym left-heavy">
+      <div>
+        <h4>Buy It Now (primary)</h4>
+        <ul class="clean">
+          <li><strong>Background:</strong> #F9DDE1 (light pink)</li>
+          <li><strong>Text:</strong> #0A0807 (ink black)</li>
+          <li><strong>Hover:</strong> bg shifts to #C49099 (dusty pink)</li>
+          <li>Shopify class: <code>.shopify-payment-button__button</code></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Add to Cart (secondary)</h4>
+        <ul class="clean">
+          <li><strong>Background:</strong> #0A0807 (ink black)</li>
+          <li><strong>Text:</strong> #F9DDE1 (light pink)</li>
+          <li><strong>Hover:</strong> bg #F9DDE1, text ink</li>
+          <li>Shopify class: <code>.product-form__submit</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="killed-box" style="margin-top:32px;">
+    <span class="label">Button rules — never break</span>
+    <p>No outline color on any button, any state — including focus, hover, active, and focus-visible. <em>Border must always match the fill</em> (or be transparent on transparent buttons). Border-radius is always 0. Box-shadow is always none.</p>
+  </div>
+
+  <!-- ============================================ 04 PRODUCT CARDS ============================================ -->
+  <h2 id="cards" style="margin-top:100px;">04 · Product cards (catalog &amp; search)</h2>
+  <p style="max-width:640px;">Product cards in collection lists, search results, recently-viewed, and "Most Wanted" sections all follow the same pattern. <em>Catalog titles are body font, not heading font</em> — they're labels.</p>
+
+  <div class="sub-section">
+    <h3>Card anatomy</h3>
+    <table class="spec">
+      <thead><tr><th>Element</th><th>Style</th></tr></thead>
+      <tbody>
+        <tr><td>Image background</td><td class="mono">#FFFFFF (no gray default)</td></tr>
+        <tr><td>Product title</td><td class="mono">Jost Light 300, 15px, sentence case, ink black</td></tr>
+        <tr><td>Price (regular)</td><td class="mono">Jost Medium 500, 14px, ink black</td></tr>
+        <tr><td>Price (compare-at)</td><td class="mono">Jost Light 300, 14px, ink-muted, line-through, margin-left 6px</td></tr>
+        <tr><td>Quick-add icon</td><td class="mono">Plain "+" (Jost 22px, ink black). No background, no border, no circle.</td></tr>
+        <tr><td>Quick-add hover</td><td class="mono">+ turns dusty pink #C49099</td></tr>
+        <tr><td>Quick-add position</td><td class="mono">Absolute, bottom-right, below image at price line</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note-box">
+    <span class="label">Why "+" instead of a button</span>
+    <p>The previous quick-add was a pink circle with a white plus and a soft shadow. It read as gimmicky and competed with the product. A bare "+" character at the price line is faster to recognize, doesn't compete with photography, and matches the editorial restraint of the brand.</p>
+  </div>
+
+  <!-- ============================================ 05 MARQUEES ============================================ -->
+  <h2 id="marquee" style="margin-top:100px;">05 · Marquees (two types)</h2>
+
+  <div class="sub-section">
+    <h3>Featured product vertical scroll</h3>
+    <p class="sub-lede">Big chunky scrolling text on PDPs (e.g. "DAYDREAM SKIRT" repeating vertically beside the product). Display moment.</p>
+    <ul class="clean">
+      <li><strong>Font:</strong> Staatliches</li>
+      <li><strong>Size:</strong> 80px mobile → 180px desktop</li>
+      <li><strong>Color:</strong> transparent fill</li>
+      <li><strong>Stroke:</strong> 2.5–3.5px solid #C49099 (dusty pink)</li>
+      <li><strong>Tracking:</strong> 0 (Staatliches rule)</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Horizontal text marquee section</h3>
+    <p class="sub-lede">Section-level scrolling band (used between content sections).</p>
+    <ul class="clean">
+      <li><strong>Background:</strong> #0A0807 (ink black band)</li>
+      <li><strong>Font:</strong> Roboto Mono Regular</li>
+      <li><strong>Size:</strong> 26px</li>
+      <li><strong>Color:</strong> #F9DDE1 (light pink) — solid fill</li>
+      <li><strong>Tracking:</strong> +0.16em uppercase</li>
+      <li><strong>Inline icons (svg):</strong> #C49099 dusty pink</li>
+    </ul>
+  </div>
+
+  <!-- ============================================ 06 CART & QUICK VIEW ============================================ -->
+  <h2 id="cart" style="margin-top:100px;">06 · Cart drawer &amp; quick view</h2>
+  <p style="max-width:640px;">Both the slide-out cart and the quick-view popup follow the same product-naming pattern as catalog cards — Jost Light body, sentence case, never mono caps.</p>
+
+  <table class="spec">
+    <thead><tr><th>Element</th><th>Style</th></tr></thead>
+    <tbody>
+      <tr><td>Cart drawer item title</td><td class="mono">Jost Light 300, 14px, sentence, ink black</td></tr>
+      <tr><td>Cart drawer meta / variant</td><td class="mono">Jost Light 300, 13px, ink-muted</td></tr>
+      <tr><td>Cart drawer checkout button</td><td class="mono">Jost Medium 500, 11px, +0.14em, ink fill / light-pink text</td></tr>
+      <tr><td>Quick-view product title</td><td class="mono">Jost Regular 400, 24–32px, sentence, ink black</td></tr>
+      <tr><td>Quick-view price</td><td class="mono">Jost Medium 500, 18px, ink black</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================ 07 NEWSLETTER ============================================ -->
+  <h2 id="newsletter" style="margin-top:100px;">07 · Newsletter "Be the first to know" <span style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:.16em; color:var(--pink-dusty);">— REBUILT MAY 2026</span></h2>
+  <p style="max-width:640px;">The above-footer email capture was rebuilt as a custom-coded theme section (<code>sections/et-signup.liquid</code>). It moved from a soft-pink band to an <em>ink-black band</em> — a deliberate "members' inner circle" moment that contrasts with the white page and leads visually into the dark footer below it. Copy leans into exclusivity and membership; no cadence promises ("one email a week" was removed).</p>
+
+  <div class="sub-section">
+    <h3>Layout &amp; type</h3>
+    <ul class="clean">
+      <li><strong>Background:</strong> #0A0807 (ink black), full-width band, 72px top padding. A 1px ivory-at-22% divider separates it from the footer below.</li>
+      <li><strong>Two-column grid:</strong> left = copy + form (flex 1.6); right = "10%" offer rail (flex 1), separated by a 1px ivory-at-12% vertical rule. Stacks on mobile (offer on top).</li>
+      <li><strong>Eyebrow ("— The inner circle"):</strong> Roboto Mono 500, 10px, +0.24em, UPPER, dusty pink #C49099. <em>Must match the offer-rail font weight — both are Roboto Mono 500, not Jost.</em></li>
+      <li><strong>Headline ("Be the first to know."):</strong> Roboto Mono 500, 26px, +0.08em, UPPER, ivory #F5F0EC. <em>Force the color — the theme tries to paint h2 ink-black, which is invisible on the dark band.</em></li>
+      <li><strong>Body:</strong> Jost Light 300, 15px, ivory-soft #E4DED8, max-width 42ch. ("First dibs on new drops, 10% off your first order, and content made just for members.")</li>
+      <li><strong>Offer rail:</strong> "10%" in Staatliches 120px pink #F9DDE1 (the "%" in dusty pink), clean SVG heart, "Off first order" in Roboto Mono 500 10px dusty pink.</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Form, input &amp; button</h3>
+    <ul class="clean">
+      <li><strong>Email input:</strong> transparent bg, 1px border ivory-at-18%, with a <em>pink #F9DDE1 bottom-border</em> as the accent. Ivory text, Jost Light 14px, radius 0.</li>
+      <li><strong>Autofill override (required):</strong> Chrome autofill repaints inputs blue/white. Pin it with <code>-webkit-box-shadow: 0 0 0 1000px #0A0807 inset</code> and <code>-webkit-text-fill-color: #F5F0EC</code> on <code>:-webkit-autofill</code>.</li>
+      <li><strong>"Join us" button:</strong> pink #F9DDE1 fill, ink-black text, 4px radius, Jost Medium 11px +0.14em UPPER. Hover: transparent fill, pink text. (Note: this is the one place a 4px radius is allowed — the rest of the site is sharp 0.)</li>
+      <li><strong>Error messages:</strong> friendly + per-status — empty, invalid format, rate-limited (429), and network all get their own copy in the <code>.et-note</code> line.</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Success state &amp; delivery</h3>
+    <ul class="clean">
+      <li><strong>On submit:</strong> the form swaps to a success block — "You're on the list." (Roboto Mono 500 26px ivory) + a dashed dusty-pink "Check your inbox ♥" code chip.</li>
+      <li><strong>Backend:</strong> posts client-side to the Klaviyo Client Subscriptions API (<code>a.klaviyo.com/client/subscriptions</code>, company id <code>R2LGSi</code>, revision <code>2024-10-15</code>) into the <strong>Pop-up Subscribers</strong> list (<code>SsCkHS</code>). A 202 = success.</li>
+      <li><strong>Payload gotcha:</strong> do <em>not</em> include a <code>subscriptions</code> block under <code>profile</code> — Klaviyo rejects it with a 400. Just <code>type: subscription</code> + profile email + list relationship.</li>
+    </ul>
+  </div>
+
+  <div class="killed-box">
+    <span class="label">Heart icon rule</span>
+    <p>Use the clean Material-style heart SVG path everywhere a heart appears (offer rail + success chip) — <em>never an emoji ❤️</em>, and never the old malformed path. The brand heart is one continuous filled shape, no notch artifacts.</p>
+  </div>
+
+  <!-- ============================================ 08 FOOTER ============================================ -->
+  <h2 id="footer" style="margin-top:100px;">08 · Footer</h2>
+  <p style="max-width:640px;">Dark band at the bottom — ink-black background, ivory text, light-pink hovers. Section headers are mono caps, body links are Jost Light sentence case.</p>
+
+  <table class="spec">
+    <thead><tr><th>Element</th><th>Style</th></tr></thead>
+    <tbody>
+      <tr><td>Footer background</td><td class="mono">#0A0807 (ink)</td></tr>
+      <tr><td>Footer text</td><td class="mono">#F5F0EC (ivory)</td></tr>
+      <tr><td>Link hover</td><td class="mono">#F9DDE1 (light pink)</td></tr>
+      <tr><td>Column header (CUSTOMER CARE / ABOUT EASTEAM / LEGAL / FOLLOW US)</td><td class="mono">Roboto Mono 400, 13px, +0.22em, UPPER, margin-bottom 18px</td></tr>
+      <tr><td>Column body link (Shipping, FAQ, Returns…)</td><td class="mono">Jost Light 300, 13px, sentence case, line-height 1.7</td></tr>
+      <tr><td>Copyright row</td><td class="mono">Jost Light 300, 11px, +0.04em</td></tr>
+      <tr><td>Footer subscribe button</td><td class="mono">10px, weight 400, +0.14em, padding 10×16, min-height 36</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================ 09 FILTERS ============================================ -->
+  <h2 id="filters" style="margin-top:100px;">09 · Filters &amp; sort</h2>
+  <p style="max-width:640px;">Filter UI is text-first, no shadows, no swatch dots. Selected state is a <em>pink fill</em>, not a checkmark icon — it reads as "applied" without explanation.</p>
+
+  <div class="sub-section">
+    <h3>Sizes filter</h3>
+    <ul class="clean">
+      <li><strong>Unselected:</strong> 18×18 white square, 1px ink-black border</li>
+      <li><strong>Selected:</strong> filled #C49099 (dusty pink), border #C49099, no checkmark icon</li>
+      <li><strong>No shadow ever.</strong></li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Color filter</h3>
+    <ul class="clean">
+      <li><strong>Display as text chips, not swatch dots.</strong> Show color names (BEIGE, BLACK, BLUE), not paint splotches.</li>
+      <li><strong>Font:</strong> Roboto Mono Regular 11px, +0.18em, UPPERCASE</li>
+      <li><strong>Unselected:</strong> transparent bg, no border, ink-black text, 6×12 padding</li>
+      <li><strong>Selected:</strong> filled #C49099, ink-black text</li>
+      <li><strong>Hide the swatch image entirely</strong> (<code>.filter-swatch-image { display: none }</code>).</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Price range slider</h3>
+    <ul class="clean">
+      <li>Track: 3px tall, #E4DED8 (soft ink), filled portion #0A0807</li>
+      <li>Thumb: 20px white circle, 2px ink border, sits <em>on top of track</em> (z-index 4), no shadow</li>
+      <li>Price range field-wrapper: single 1px ink-soft border — never nested boxes</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Sort By dropdown</h3>
+    <ul class="clean">
+      <li>Dropdown panel: white bg, 1px ink-soft border, <em>no box-shadow</em>, no border-radius</li>
+      <li>Option labels: Jost Light 300, 13px, sentence case, ink-black</li>
+      <li>Selected option: color shifts to #C49099 (dusty pink)</li>
+      <li><strong>Critical:</strong> the hidden radio inputs behind sort labels must stay transparent. Don't apply generic <code>input { background:white }</code> rules — it paints them visible and covers labels.</li>
+    </ul>
+  </div>
+
+  <!-- ============================================ 10 SEARCH ============================================ -->
+  <h2 id="search" style="margin-top:100px;">10 · Search drawer &amp; suggestions</h2>
+  <ul class="clean">
+    <li><strong>Drawer background:</strong> #FFFFFF (white) — <em>never pink wash</em></li>
+    <li><strong>Search input:</strong> transparent bg with 1px ink-black bottom-border only</li>
+    <li><strong>Suggestion chips ("daydream", "Daydream SS26"):</strong> transparent bg, 1px ink-black border, Jost Light 13px, ink-black text. Hover: ink fill, soft-pink text.</li>
+    <li><strong>"Result for" heading:</strong> Roboto Mono uppercase, 12px, +0.18em, ink-black</li>
+    <li><strong>Quick-add on search result cards:</strong> same plain "+" as catalog — never the pink circle.</li>
+  </ul>
+
+  <!-- ============================================ 11 MOBILE ============================================ -->
+  <h2 id="mobile" style="margin-top:100px;">11 · Mobile rules</h2>
+  <p style="max-width:640px;">Mobile gets smaller type and tighter layouts. Anything that's 15–17px on desktop drops to 11–13px on mobile. Hero buttons stack vertically. Submenu items are forced ALL CAPS.</p>
+
+  <table class="spec">
+    <thead><tr><th>Surface (under 767px)</th><th>Element</th><th>Mobile size</th></tr></thead>
+    <tbody>
+      <tr><td>Account page</td><td>Body / list copy</td><td class="mono">12px</td></tr>
+      <tr><td>Account page</td><td>h1</td><td class="mono">20px</td></tr>
+      <tr><td>Account page</td><td>h2 / h3</td><td class="mono">14px</td></tr>
+      <tr><td>Header nav</td><td>Top bar links (New, Best Seller, Occasions)</td><td class="mono">12px, +0.16em</td></tr>
+      <tr><td>Mobile drawer</td><td>Menu items (Date Night, Vacation Mood…)</td><td class="mono">13px, +0.14em, ALL CAPS</td></tr>
+      <tr><td>Login</td><td>Copy</td><td class="mono">12px</td></tr>
+      <tr><td>Login</td><td>h1</td><td class="mono">22px, +0.16em</td></tr>
+      <tr><td>Login</td><td>Labels</td><td class="mono">10px, +0.14em</td></tr>
+      <tr><td>Login</td><td>Inputs</td><td class="mono">12px, padding 12×14</td></tr>
+      <tr><td>Login</td><td>Buttons</td><td class="mono">11px, padding 12×20</td></tr>
+      <tr><td>Hero</td><td>Button group</td><td class="mono">flex-column, 10px gap, 240×44 stacked</td></tr>
+      <tr><td>Hero</td><td>Each button</td><td class="mono">10px font, 160×44</td></tr>
+    </tbody>
+  </table>
+
+  <div class="rule-block">
+    <div class="lbl">Mobile rule</div>
+    <p>Hero buttons <em>always</em> stack vertically under 767px. Side-by-side on mobile looks cramped and the buttons end up too narrow to read. Centered column with full-width buttons is the only acceptable layout.</p>
+  </div>
+
+  <!-- ============================================ 12 CAREERS & FORMS ============================================ -->
+  <h2 id="careers" style="margin-top:100px;">12 · Careers &amp; application forms <span style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:.16em; color:var(--pink-dusty);">— NEW MAY 2026</span></h2>
+  <p style="max-width:640px;">The Careers experience was rebuilt from scratch as native, custom-coded theme sections to <em>kill the slow third-party hiring app</em>. It's the brand's first long-form editorial page pattern — ivory canvas, asymmetrical/magazine layout, Staatliches as the display moment. Two pages: a values <strong>landing</strong> and a per-role <strong>detail</strong> page with an inline application form.</p>
+
+  <div class="rule-block">
+    <div class="lbl">Editorial-page canvas exception</div>
+    <p>Long-form content pages (Careers) use warm <strong>ivory #F5F0EC</strong> as the canvas, <em>not</em> the white #FFFFFF used for shop/catalog surfaces. Ivory reads as "editorial / magazine" here; white stays the rule for product surfaces. This is the one sanctioned place ivory is the page background.</p>
+  </div>
+
+  <div class="sub-section">
+    <h3>Landing — <code>/pages/careers</code></h3>
+    <ul class="clean">
+      <li><strong>Masthead:</strong> "EASTEAM" + "Careers · New York · 2026" in Roboto Mono 10px +0.24em, ink / deep-pink, under a hairline rule.</li>
+      <li><strong>Hero ("Join the team."):</strong> Staatliches clamp(64–108)px, line-height .82, ink black — set as a 7fr/5fr grid against a Jost Light 15px intro.</li>
+      <li><strong>Values list (01–06):</strong> two-column grid (40px number column + content). Numbers are <em>small Roboto Mono 500, 14px, dusty pink #C49099</em> — <strong>not</strong> large Staatliches/gray. Each value title is Roboto Mono 500 14px UPPER ink; body Jost Light 14px soft. Hairline rules between rows.</li>
+      <li><strong>Interlude divider band:</strong> centered, 64px vertical padding, bottom border. Kicker "— Why EASTEAM" (Roboto Mono 500 10px +0.26em deep pink) over a Staatliches clamp(32–50)px pull-quote. Use this to <em>separate sections without crowding</em> — no image placeholders.</li>
+      <li><strong>Role cards:</strong> full-width <code>&lt;a&gt;</code>, 1px ink-at-18% border, 24px padding. Title Roboto Mono 500 18px UPPER (display:block), meta Jost Light 13px soft on its own line, "Read more →" arrow Roboto Mono 10px deep pink. Hover: bg dusty-pink-at-8%. <em>Clicking navigates to the role's own page — not a dropdown.</em></li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Role detail — <code>/pages/{role-handle}</code></h3>
+    <ul class="clean">
+      <li><strong>Back link:</strong> "← All roles" Roboto Mono 500 10px +0.22em deep pink → <code>/pages/careers</code>.</li>
+      <li><strong>Title:</strong> Roboto Mono 500 30px +0.05em UPPER ink. <strong>Chips</strong> (remote / full-time / reports-to / comp): Roboto Mono 500 10px UPPER, 1px dusty-pink border, 6×12 padding.</li>
+      <li><strong>Section sub-heads:</strong> Roboto Mono 500 13px +0.16em UPPER ink ("About EASTEAM", "The role", "What you'll do"…). Body Jost Light 15px soft; bulleted lists Jost Light 15px.</li>
+      <li><strong>Wrap width:</strong> 840px max (narrower than catalog) for reading comfort.</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Application form (inline toggle)</h3>
+    <ul class="clean">
+      <li><strong>Toggle:</strong> an "I'm interested ↓" button (ink fill, pink text) reveals the form inline via a <code>hidden</code> attribute — it does <em>not</em> jump to a separate page. Button flips to "Hide form ↑" when open.</li>
+      <li><strong>Panel:</strong> dark ink-black #0A0807 block, 40px padding. Label Roboto Mono 10px dusty; heading Roboto Mono 22px ivory.</li>
+      <li><strong>Inputs:</strong> transparent, 1px ivory-at-20% border, ivory text, focus border pink #F9DDE1, radius 0. Résumé upload is a dashed-border file row with a pink "Upload resume" tag.</li>
+      <li><strong>Required fields:</strong> full name, email, cover letter (text — never PDF-only), portfolio link, and résumé file. Location is the only optional field.</li>
+      <li><strong>Submit ("Submit application"):</strong> pink fill, ink text, 4px radius. Success state: "Application received." (Roboto Mono ivory) + reassurance line.</li>
+    </ul>
+  </div>
+
+  <div class="killed-box">
+    <span class="label">Form delivery (no native Shopify contact form)</span>
+    <p>Custom forms deliver via <strong>Web3Forms</strong> (<code>api.web3forms.com/submit</code>, POST FormData incl. file ≤5MB), each routed to its own inbox by access key — Careers → <code>careers@easteamny.com</code>. <em>Don't reuse the native Shopify contact form</em> (it only goes to the store's default inbox and can't route per-form). Keep the honeypot <code>botcheck</code> field. The access key is a publishable client key — safe in theme code.</p>
+  </div>
+
+  <!-- ============================================ 13 IMPLEMENTATION ============================================ -->
+  <h2 id="implementation" style="margin-top:100px;">13 · Implementation (cascade &amp; rules)</h2>
+  <p style="max-width:640px;">This is the technical stuff for whoever's editing CSS on the theme. <em>The Shopify theme injects per-section CSS inline within the body, after <code>&lt;head&gt;</code>.</em> Anything you write in head loses the cascade. The brand layer fixes this in one place.</p>
+
+  <div class="sub-section">
+    <h3>The brand CSS layer</h3>
+    <ul class="clean">
+      <li><strong>File:</strong> <code>assets/easteam-brand.css</code></li>
+      <li><strong>Loaded:</strong> preloaded in <code>&lt;head&gt;</code> (for FOUC), then applied via <code>&lt;link rel="stylesheet"&gt;</code> at the <em>end of <code>&lt;body&gt;</code></em></li>
+      <li>Loading at end of body means it cascades <em>last</em>, naturally winning against every section's inline CSS without needing nuclear <code>!important</code> everywhere.</li>
+      <li>Every selector uses <code>html body</code> prefix to guarantee specificity wins.</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Specificity pattern</h3>
+    <div class="code-block"><span class="comment">/* Standard EASTEAM override pattern */</span>
+<span class="selector">html body .real-class-name</span>,
+<span class="selector">html body [id^='section-id-prefix-'] .real-class-name</span> {
+  <span class="prop">property</span>: value !important;
+}</div>
+    <p style="font-size:13px; color:var(--ink-muted);">The <code>[id^='...']</code> attribute selector matches per-section ID-prefixed inline CSS rules — this is what the Shopify theme generates for things like slideshow blocks and marquee blocks.</p>
+  </div>
+
+  <div class="sub-section">
+    <h3>Inspect, don't guess</h3>
+    <p style="max-width:640px;">When something isn't applying, the cause is almost always one of:</p>
+    <ul class="clean">
+      <li><strong>Wrong class name.</strong> Inspect the actual rendered HTML — the theme uses real class names like <code>.slideshow__button</code>, <code>.mini-atc-btn</code>, <code>.section-heading-title</code>, <code>.product-actual-price</code>. Don't assume <code>.btn</code> or <code>.add-to-cart</code>.</li>
+      <li><strong>Inline <code>&lt;style&gt;</code> from a section.</strong> Section .liquid files inject styles like <code>#shopify-section-XXX { ... }</code>. Match them with <code>[id^='shopify-section-'] .your-class</code>.</li>
+      <li><strong>CSS variable being set inline.</strong> Some sections set <code>--node-color</code>, <code>--button-bg</code>, etc. via the theme customizer's color picker. Override the variable at the same ID-prefix level with <code>!important</code>.</li>
+    </ul>
+  </div>
+
+  <div class="killed-box" style="margin-top:32px;">
+    <span class="label">Don't break the sort dropdown</span>
+    <p>Never apply a generic <code>input { background: white; border: 1px solid ... }</code> rule. The theme uses hidden radio inputs overlaid on sort/filter labels — painting them visible covers the labels with empty boxes. Always scope input styling to specific forms: <code>.product-form input</code>, <code>.newsletter-form input</code>, etc.</p>
+  </div>
+
+  <div class="sub-section">
+    <h3>Safe deploy workflow</h3>
+    <p class="sub-lede">How structural theme changes (new sections, page templates, rebuilds) get to the live site without risk.</p>
+    <ul class="clean">
+      <li><strong>Never edit the live theme directly.</strong> Duplicate the live theme first, build and test on the <em>unpublished</em> copy, then publish. (Theme-file writes to the live/MAIN theme are blocked anyway.)</li>
+      <li><strong>Preview unpublished work</strong> by appending <code>?preview_theme_id=THEME_ID</code> to any URL.</li>
+      <li><strong>New page = three pieces.</strong> A custom page needs (1) a section <code>.liquid</code> file, (2) a page template <code>templates/page.{suffix}.json</code> that references the section, and (3) a Shopify page (handle + matching template suffix). The section must be uploaded <em>before</em> the template, or the template upload fails ("section does not exist").</li>
+      <li><strong>Upload large files as base64.</strong> Big paste-based theme uploads occasionally corrupt (homoglyph/encoding errors); Shopify rejects the bad upload and keeps the last good version. Encode the file to base64 and verify a round-trip before upserting.</li>
+    </ul>
+  </div>
+
+  <div class="sub-section">
+    <h3>Navigation menus &amp; the publish order</h3>
+    <p class="sub-lede">The single biggest gotcha from the Careers rebuild: a page and the link that points to it are two different things.</p>
+    <ul class="clean">
+      <li><strong>Menus are global, not per-theme.</strong> Editing a navigation menu link changes it on <em>every</em> theme instantly, including the live one. A menu edit is not scoped to the duplicate.</li>
+      <li><strong>Publish first, then repoint.</strong> Always publish the new theme <em>before</em> updating a menu link to a new page. Repointing first sends live visitors to a page the live theme can't render yet.</li>
+      <li><strong>A new page handle does nothing on its own.</strong> Styling <code>/pages/careers</code> has zero visible effect until the footer's "Career" menu item is repointed to it. The footer links live in the <strong>"ABOUT EASTEAM"</strong> menu (handle <code>about-easteam</code>) — they are navigation items, not hardcoded in the theme.</li>
+      <li><strong>Internal links = PAGE type + resourceId.</strong> When updating a menu item to an internal page, use <code>type: PAGE</code> with the page's <code>resourceId</code>. <em>Do not</em> use <code>type: HTTP</code> with a relative <code>/pages/x</code> URL — Shopify mangles it to <code>http://x</code> (treats it as an external host). Reserve <code>HTTP</code> type for genuinely external URLs only.</li>
+      <li><strong>menuUpdate replaces the whole menu.</strong> You must pass <em>all</em> items in the menu, each with its correct type/resourceId — any item you omit or downgrade gets dropped or broken.</li>
+    </ul>
+  </div>
+
+  <div class="killed-box" style="margin-top:32px;">
+    <span class="label">Removing an app cleanly</span>
+    <p>When a third-party app is uninstalled (e.g. the old hiring app, UpPromote), its app-proxy URLs — like <code>/pages/hiring/careers</code> — go dead. Make sure no menu item or in-page link still points to them, and sweep the theme for leftover app-embed blocks in <code>settings_data.json</code> and orphaned snippet includes so they don't quietly slow the site.</p>
+  </div>
+
+  <!-- ============================================ 14 DOS AND DONTS ============================================ -->
+  <h2 id="dos-donts" style="margin-top:100px;">14 · Website do's &amp; don'ts</h2>
+
+  <div class="do-dont">
+    <div class="do-col">
+      <div class="head">Do</div>
+      <ul>
+        <li>Load brand CSS at end of <code>&lt;body&gt;</code> so it cascades last</li>
+        <li>Use <code>html body</code> prefix on every override</li>
+        <li>Inspect the rendered HTML to find real class names before writing CSS</li>
+        <li>Use Shopify theme customizer for section colors, copy, and layout</li>
+        <li>Use dusty pink #C49099 as the primary interactive accent (links, hovers, filter-selected)</li>
+        <li>Use Roboto Mono uppercase for all section titles and headings</li>
+        <li>Use Jost Light sentence case for product card titles and cart drawer items</li>
+        <li>Use Staatliches outlined pink for the PDP vertical marquee</li>
+        <li>Stack hero buttons vertically under 767px</li>
+        <li>Force ALL CAPS on every drawer / submenu item</li>
+        <li>Use a plain "+" for quick-add — no circle, no shadow, no background</li>
+        <li>Use ivory #F5F0EC as the canvas for long-form editorial pages (Careers) — but white stays the rule for shop surfaces</li>
+        <li>Override the dark newsletter input's autofill with an inset box-shadow so Chrome can't repaint it</li>
+        <li>Route custom forms through Web3Forms to a per-purpose inbox (Careers → careers@easteamny.com)</li>
+        <li>Build structural changes on a duplicate theme, then publish — never edit the live theme directly</li>
+        <li>Publish the new theme first, then repoint the menu link to the new page</li>
+        <li>Point internal menu links with PAGE type + resourceId (HTTP type is for external URLs only)</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <div class="head">Don't</div>
+      <ul>
+        <li>Don't use italics anywhere — product descriptions, body copy, captions. Brand rule.</li>
+        <li>Don't use #8E4F58 (deep pink) as a fill — it reads brown on screen. Hover state only.</li>
+        <li>Don't use ivory #F5F0EC as the page canvas — it reads as nude/peach. Use white #FFFFFF.</li>
+        <li>Don't add box-shadows to buttons or filter boxes.</li>
+        <li>Don't put any outline color on a button, in any state.</li>
+        <li>Don't use a checkmark icon for selected filter sizes — use a pink fill instead.</li>
+        <li>Don't render color filters as swatch dots — use text chips with color names.</li>
+        <li>Don't use uppercase Roboto Mono for product card titles — that's body content, use Jost Light.</li>
+        <li>Don't use Staatliches outside of the wordmark and the PDP vertical marquee.</li>
+        <li>Don't apply <code>input { ... }</code> globally — break filter radios and sort dropdown.</li>
+        <li>Don't add MutationObserver JS for styling — use CSS only.</li>
+        <li>Don't leave disabled app embed blocks in <code>settings_data.json</code> — remove them for speed.</li>
+        <li>Don't reuse the native Shopify contact form for Careers/Collab — it can't route per-form. Use Web3Forms.</li>
+        <li>Don't send a <code>subscriptions</code> block in the Klaviyo client payload — it 400s. Profile email + list relationship only.</li>
+        <li>Don't use an emoji heart — use the clean Material heart SVG path.</li>
+        <li>Don't repoint a navigation menu link before the new theme is published — menus are global and apply to the live site instantly.</li>
+        <li>Don't use HTTP-type menu links with a relative <code>/pages/x</code> URL — it mangles to <code>http://x</code>. Use PAGE type + resourceId.</li>
+        <li>Don't assume styling a new page handle changes anything — the footer link must be repointed to it separately.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="killed-box" style="margin-top:48px;">
+    <span class="label">Universal website rule</span>
+    <p>Black is the anchor. White is the canvas. Pink-dusty is the primary accent. No italics, no box-shadows, no outlines, no checkmarks. <em>Consistency over cleverness.</em> If you're tempted to add a one-off style, ask first whether the rule already exists in here.</p>
+  </div>
+
+  <!-- ============================================ 15 MAY 2026 UPDATE ============================================ -->
+  <h2 id="may-2026" style="margin-top:100px;">15 · Account, checkout &amp; page templates (May 2026)</h2>
+  <p style="max-width:640px;">This pass aligned the logged-in surfaces with the storefront and rebuilt two page templates. Built on the theme <strong>"Men's + Contact page redesign — May 2026."</strong></p>
+
+  <h3>Customer accounts &amp; checkout</h3>
+  <div class="rule-block">
+    <div class="lbl">Branding rule</div>
+    <p>The new customer accounts (account.easteamny.com) and checkout share one branding profile, edited at <strong>Settings → Checkout → Customize</strong>. Body font = <strong>Jost</strong>, headings = <strong>Roboto Mono</strong>, background = <strong>white #FFFFFF</strong>. Match the storefront — never leave it on Shopify defaults (System UI / Roboto / pink).</p>
+    <p style="color:var(--ink-muted); font-size:13px;">Caveat: the account page body color (#FBEBEE) comes from a customer-accounts color scheme baked server-side. It is <em>not</em> editable on the standard plan — needs Shopify Support or Plus.</p>
+  </div>
+
+  <h3>Men's page — dark placeholder pattern</h3>
+  <div class="rule-block">
+    <div class="lbl">Pattern</div>
+    <p>When a category does not exist yet (e.g. Men), don't ship an empty page — ship a <strong>dark-mood statement</strong>. Page Black #0A0807 background, cream #F5F0EC headline in <strong>Jost Light</strong>, a Roboto Mono eyebrow with a blinking cursor, the punchline keyword in dusty pink #C49099, a dusty-pink <em>outline</em> CTA, a faint oversized outlined ghost word, and a hairline divider so it doesn't blend into the footer/newsletter.</p>
+  </div>
+
+  <h3>Contact page</h3>
+  <div class="rule-block">
+    <div class="lbl">Layout</div>
+    <p>One section: "Get in touch" intro + the "Message us" form stacked on the <strong>left</strong>; contact emails on the <strong>right</strong>, vertically centered, with <strong>bold Roboto Mono</strong> labels and generous spacing. Cream #F5F0EC panel. No banner.</p>
+  </div>
+
+  <h3>Embedding &amp; styling a Klaviyo form in the theme</h3>
+  <div class="rule-block">
+    <div class="lbl">Technique</div>
+    <p>Drop the form's own embed div where you want it: <code>&lt;div class="klaviyo-form-XXXXXX"&gt;&lt;/div&gt;</code> (the onsite script is already installed). Style it in <strong>theme CSS</strong> by targeting <code>.klaviyo-form-XXXXXX input / textarea / button</code> with <code>!important</code> — no need for Klaviyo's Custom CSS box. The form must be set to <strong>"Embed"</strong> type in Klaviyo.</p>
+    <p style="color:var(--ink-muted); font-size:13px;">CSS only ever changes appearance — submissions still flow to Klaviyo and trigger its flows (e.g. the auto-reply). <em>Never</em> rebuild a Klaviyo form as a native Shopify form: it routes to Shopify, not Klaviyo, and silently breaks collection + flows.</p>
+  </div>
+
+  <div class="killed-box" style="margin-top:48px;">
+    <span class="label">Standard button</span>
+    <p>Buttons are square (no radius), <strong>Roboto Mono, uppercase, bold</strong>, ink-black fill with light-pink #F9DDE1 text, normal height (~14px / 36px padding). Dusty-pink outline is the secondary variant. Don't go extreme on height.</p>
+  </div>
+
+  <footer class="foot">
+    <span>EASTEAM · Made to Love You</span>
+    <span class="right"><a href="../index.html">← Back to Home</a></span>
+  </footer>
+</div>
+<script src="../assets/gate.js"></script>
+<script src="../assets/nav.js"></script>
+</body>
+</html>

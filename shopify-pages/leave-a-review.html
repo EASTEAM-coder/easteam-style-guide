@@ -1,0 +1,76 @@
+<!--
+  EASTEAM · Leave a Review landing page
+  ----------------------------------------------------------------------------
+  WHERE THIS GOES: Shopify Admin → Online Store → Pages → Add page.
+    Title:  Leave a Review   (this sets the URL handle /pages/leave-a-review)
+    Then click the "<>" (Show HTML) button in the content editor and paste
+    EVERYTHING below this comment block.
+
+  WHAT IT DOES: when a customer lands here from the Delivered email button,
+  this reads the order/product details out of the URL and fires Klaviyo's
+  "Ready to review" event so your Klaviyo "Review request" flow can take over.
+
+  REQUIREMENTS:
+    1. Klaviyo onsite tracking must already be installed on easteamny.com
+       (it usually is, via the Klaviyo Shopify integration — it provides the
+       global `klaviyo` / `_learnq` object this snippet uses).
+    2. A Klaviyo flow triggered by the "Ready to review" metric.
+  ----------------------------------------------------------------------------
+-->
+
+<style>
+  .ez-review-wrap{max-width:600px;margin:0 auto;padding:64px 24px;text-align:center;
+    font-family:'Jost',Helvetica,Arial,sans-serif;color:#0A0807;background:#F5F0EC;}
+  .ez-review-stars{font-size:22px;letter-spacing:10px;color:#D9A5AC;line-height:1;}
+  .ez-review-eyebrow{font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:11px;
+    letter-spacing:.3em;text-transform:uppercase;color:#D9A5AC;margin:26px 0 0;}
+  .ez-review-title{font-weight:400;font-size:32px;line-height:1.15;margin:14px 0 0;}
+  .ez-review-body{font-weight:300;font-size:15px;line-height:1.7;color:#0A0807;
+    max-width:420px;margin:16px auto 0;}
+  .ez-review-product{font-weight:500;font-size:14px;margin:24px 0 0;color:#0A0807;}
+  /* Klaviyo Reviews widget mount — if you use Klaviyo Reviews, its embed renders here */
+  #ez-review-widget{margin:32px 0 0;}
+</style>
+
+<div class="ez-review-wrap">
+  <div class="ez-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  <div class="ez-review-eyebrow">Your honest review</div>
+  <h1 class="ez-review-title">How did we do?</h1>
+  <p class="ez-review-body">Tell us what you really think. Your honest review helps the next girl find her piece, and it means everything to us.</p>
+  <p class="ez-review-product" id="ez-review-product"></p>
+
+  <!-- If you have the Klaviyo Reviews widget, paste its embed snippet inside this div. -->
+  <div id="ez-review-widget"></div>
+</div>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+
+    // Show the product name on the page (nice touch, optional)
+    var nameEl = document.getElementById('ez-review-product');
+    if (nameEl && params.get('product_name')) {
+      nameEl.textContent = 'Reviewing: ' + params.get('product_name');
+    }
+
+    // Fire the Klaviyo "Ready to review" event
+    var _learnq = window._learnq || (window._learnq = []);
+    if (params.get('email')) {
+      _learnq.push(['identify', { '$email': params.get('email') }]);
+    }
+    _learnq.push(['track', 'Ready to review', {
+      'order_number': params.get('order'),
+      'product_external_id': params.get('product_id'),
+      'structured_product': {
+        'id': params.get('product_id'),
+        'product_name': params.get('product_name'),
+        'url': params.get('product_url'),
+        'image_url': params.get('product_image'),
+        'title': params.get('product_name')
+      },
+      'store_url': 'https://easteamny.com',
+      'package_status': 'delivered',
+      '$service': 'shopify_delivered'
+    }]);
+  })();
+</script>
